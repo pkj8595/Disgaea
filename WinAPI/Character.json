@@ -1,0 +1,117 @@
+{
+  "Animation": [
+    {
+      "name": "laharl",
+      "home_B_Dir": 0,
+      "home_LB_Dir": 1,
+      "home_L_Dir": 2,
+      "home_LT_Dir": 3,
+      "home_T_Dir": 4,
+      "home_RT_Dir": 5,
+      "home_R_Dir": 6,
+      "home_RB_Dir": 7,
+
+      "move_B_Start": 10,
+      "move_B_End": 15,
+      "move_LB_Start": 20,
+      "move_LB_End": 25,
+      "move_L_Start": 30,
+      "move_L_End": 35,
+      "move_LT_Start": 40,
+      "move_LT_End": 45,
+      "move_T_Start": 50,
+      "move_T_End": 55,
+      "move_RT_Start": 60,
+      "move_RT_End": 65,
+      "move_R_Start": 70,
+      "move_R_End": 75,
+      "move_RB_Start": 80,
+      "move_RB_End": 85,
+
+      "battle_beAttacked_LB": 173,
+      "battle_beAttacked_LT": 183,
+      "battle_beAttacked_RT": 193,
+      "battle_beAttacked_RB": 203,
+
+      "battle_victory_LB": 174,
+      "battle_victory_LT": 184,
+      "battle_victory_RT": 194,
+      "battle_victory_RB": 204,
+
+      "battle_idle_LB_Start": 90,
+      "battle_idle_LB_End": 94,
+      "battle_idle_LT_Start": 100,
+      "battle_idle_LT_End": 104,
+      "battle_idle_RT_Start": 110,
+      "battle_idle_RT_End": 114,
+      "battle_idle_RB_Start": 120,
+      "battle_idle_RB_End": 124,
+
+      "battle_collabo_LB_Start": 130,
+      "battle_collabo_LB_End": 137,
+      "battle_collabo_LT_Start": 140,
+      "battle_collabo_LT_End": 147,
+      "battle_collabo_RT_Start": 150,
+      "battle_collabo_RT_End": 157,
+      "battle_collabo_RB_Start": 160,
+      "battle_collabo_RB_End": 167,
+
+      "battle_kick_LB_Start": 172,
+      "battle_kick_LB_End": 173,
+      "battle_kick_LT_Start": 182,
+      "battle_kick_LT_End": 183,
+      "battle_kick_RT_Start": 192,
+      "battle_kick_RT_End": 193,
+      "battle_kick_RB_Start": 202,
+      "battle_kick_RB_End": 203,
+
+      "battle_Att_LB_Start": 170,
+      "battle_Att_LB_End": 171,
+      "battle_Att_LT_Start": 180,
+      "battle_Att_LT_End": 181,
+      "battle_Att_RT_Start": 190,
+      "battle_Att_RT_End": 191,
+      "battle_Att_RB_Start": 200,
+      "battle_Att_RB_End": 201,
+
+
+
+      "patheticFace_Start": 220,
+      "patheticFace_End": 226,
+
+      "sleep_Start": 230,
+      "sleep_End": 236,
+
+      "Look_Around_Start": 237,
+      "Look_Around_End": 241,
+
+      "wackUp_Start": 242,
+      "wackUp_End": 246,
+
+      "wink_eye_Start": 250,
+      "wink_eye_End": 254,
+
+      "laugh_Start": 260,
+      "laugh_End": 268,
+
+      "battle_PickUp_LB_Start": 275,
+      "battle_PickUp_LB_End": 276,
+      "battle_PickUp_LT_Start": 285,
+      "battle_PickUp_LT_End": 286,
+      "battle_PickUp_RT_Start": 295,
+      "battle_PickUp_RT_End": 296,
+      "battle_PickUp_RB_Start": 305,
+      "battle_PickUp_RB_End": 306,
+
+      "battle_Punching_LB_Start": 270,
+      "battle_Punching_LB_End": 274,
+      "battle_Punching_LT_Start": 280,
+      "battle_Punching_LT_End": 284,
+      "battle_Punching_RT_Start": 290,
+      "battle_Punching_RT_End": 294,
+      "battle_Punching_RB_Start": 300,
+      "battle_Punching_RB_End": 304
+    }
+  
+  ]
+}

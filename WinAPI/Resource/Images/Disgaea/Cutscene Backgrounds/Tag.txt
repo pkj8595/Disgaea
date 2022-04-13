@@ -1,0 +1,8 @@
+Game: Disgaea: Hour of Darkness
+Subject: Cutscene Backgrounds
+Copyright: Nippon Ichi
+Sprite Rippers: Random Talking Bush
+Hosting Permissions: The Spriters Resource
+                     Sprite Database
+Note: Some Japanese stuff's currently missing,
+      I will add it whenever I'm able to.
