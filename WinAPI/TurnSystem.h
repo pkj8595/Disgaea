@@ -44,6 +44,7 @@ private:
 	bool _isPlayerTrunStart;
 	CWindowUI* _charBehaviorWindow;
 	CWindowUI* _turnWindow;
+	CWindowUI* _charSponWindow;
 
 	POINT _tileRangeTargetPoint;
 	POINT _tileRangeStartPoint;

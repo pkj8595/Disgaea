@@ -315,7 +315,6 @@ void IsometricMap::update(void)
 				{
 					_currentCharacter->resetSkillMovePoint(6);
 					_currentCharacter->setAniBehavior(E_AniBehavior::Ani_idle);
-					//_currentCharacter->setBehaviorType(E_BehaviorType::NONE);
 					_currentCharacter->setBehaviorType(E_BehaviorType::Attack);
 
 					_isRunningBeAttackedAnimation = false;

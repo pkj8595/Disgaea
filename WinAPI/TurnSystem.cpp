@@ -44,6 +44,14 @@ HRESULT TurnSystem::init(void)
 	_charStatusUI->init(40, 5);
 	_charStatusUI->setIsActive(false);
 
+	_charSponWindow = new CWindowUI;
+	_charSponWindow->init(300, 4, 80, EWindow_Align::WINDOW_LEFTTOP);
+	_charSponWindow->setWindowValue("라하르???", 20, 20, nullptr);
+	/*
+	_charSponWindow가 켜질때 gamemanager에서 캐릭터 리스트를 받아온다.
+	밸류로 넣어주고 선택할시 그 캐릭터를 생성 시킨다. 
+	_map->setplayerchar
+	*/
 
 	return S_OK; 
 }
