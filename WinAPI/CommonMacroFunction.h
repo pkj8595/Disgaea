@@ -134,3 +134,9 @@ inline POINT LinearMovePoint(POINT start, POINT end, float splitCount, int count
 
 	return { (LONG)x,(LONG)y };
 }
+
+inline bool IsSamePoint(POINT pt1, POINT pt2)
+{
+	if (pt1.x == pt2.x && pt1.y == pt2.y) return true;
+	else return false;
+}

@@ -85,7 +85,14 @@ void DataSetUp::ImageClassInit()
 	IMAGEMANAGER->addFrameImage("Number2", "Resource/Images/Disgaea/UI/Number2.bmp", 250, 37, 10, 1, true, RGB(255, 0, 255));
 	IMAGEMANAGER->addFrameImage("Number3", "Resource/Images/Disgaea/UI/Number3.bmp", 200, 30, 10, 1, true, RGB(255, 0, 255));
 
-
+	IMAGEMANAGER->addFrameImage("bold_outline_LT", "Resource/Images/Disgaea/UI/window/WAKU02_01_01.bmp", 7, 7, 1, 1, false, RGB(255, 0, 255));
+	IMAGEMANAGER->addFrameImage("bold_outline_T", "Resource/Images/Disgaea/UI/window/WAKU02_01_02.bmp", 10, 7, 1, 1, false, RGB(255, 0, 255));
+	IMAGEMANAGER->addFrameImage("bold_outline_RT", "Resource/Images/Disgaea/UI/window/WAKU02_01_03.bmp", 7, 7, 1, 1, false, RGB(255, 0, 255));
+	IMAGEMANAGER->addFrameImage("bold_outline_L", "Resource/Images/Disgaea/UI/window/WAKU02_01_04.bmp", 7, 10, 1, 1, false, RGB(255, 0, 255));
+	IMAGEMANAGER->addFrameImage("bold_outline_R", "Resource/Images/Disgaea/UI/window/WAKU02_01_06.bmp", 7, 10, 1, 1, false, RGB(255, 0, 255));
+	IMAGEMANAGER->addFrameImage("bold_outline_LB", "Resource/Images/Disgaea/UI/window/WAKU02_01_07.bmp", 7, 7, 1, 1, false, RGB(255, 0, 255));
+	IMAGEMANAGER->addFrameImage("bold_outline_B", "Resource/Images/Disgaea/UI/window/WAKU02_01_08.bmp", 10, 7, 1, 1, false, RGB(255, 0, 255));
+	IMAGEMANAGER->addFrameImage("bold_outline_RB", "Resource/Images/Disgaea/UI/window/WAKU02_01_09.bmp", 7, 7, 1, 1, false, RGB(255, 0, 255));
 
 #pragma endregion
 

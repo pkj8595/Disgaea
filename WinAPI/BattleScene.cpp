@@ -15,8 +15,6 @@ HRESULT BattleScene::init(void)
 	return S_OK;
 }
 
-
-
 void BattleScene::release(void)
 {
 	_map->release();
@@ -124,12 +122,11 @@ void BattleScene::JsonSetUpIsoMap()
 		);
 	}
 
-	vector<GameCharacter*>::iterator gameCharIter = (*GAMEMANAGER->getAllPlayerUnits()).begin();
-	for (; gameCharIter != (*GAMEMANAGER->getAllPlayerUnits()).end(); ++gameCharIter)
-	{
-		_map->setPlayerCharacter(*gameCharIter, jData["startPointX"].asInt(), jData["startPointY"].asInt());
-		
-	}
+	//vector<GameCharacter*>::iterator gameCharIter = (*GAMEMANAGER->getAllPlayerUnits()).begin();
+	//for (; gameCharIter != (*GAMEMANAGER->getAllPlayerUnits()).end(); ++gameCharIter)
+	//{
+	//	_map->setPlayerCharacter(*gameCharIter, jData["startPointX"].asInt(), jData["startPointY"].asInt());
+	//}
 
 	_turnSystem = new TurnSystem;
 	_turnSystem->registerMapAddress(_map);

@@ -51,6 +51,9 @@ HRESULT Vyers::init(string fileName, int x, int y, int coorX, int coorY, E_UnitT
 	_iconIndex = 7;
 	_battleFaceIndex = 4;
 	_attackIndex = 7;
+
+	_title = "중간보스";
+
 	return S_OK;
 }
 

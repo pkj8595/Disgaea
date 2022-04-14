@@ -50,6 +50,7 @@ HRESULT Etna::init(string fileName, int x, int y, int coorX, int coorY, E_UnitTy
 
 	_iconIndex = 1;
 	_battleFaceIndex = 1;
+	_title = "∏∂ø’¿« ∞°Ω≈";
 
 	return S_OK;
 }

@@ -41,14 +41,14 @@ _DEBUG
 	//assert()
 	if (_timer != nullptr)
 	{
-		sprintf_s(str, "FramePerSec: %d", _timer->getFrameRate());
+	/*	sprintf_s(str, "FramePerSec: %d", _timer->getFrameRate());
 		TextOut(hdc, 0, 0, str, strlen(str));
 
 		sprintf_s(str, "WorldTime: %.2f", _timer->getWorldTime());
 		TextOut(hdc, 0, 20, str, strlen(str));
 
 		sprintf_s(str, "ElapsedTime: %.2f", _timer->getElapsedTime());
-		TextOut(hdc, 0, 40, str, strlen(str));
+		TextOut(hdc, 0, 40, str, strlen(str));*/
 	}
 
 #else  // Release

@@ -372,12 +372,15 @@
     <ClCompile Include="WorldMapScene.cpp">
       <Filter>Disgaea\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="TurnStateUI.cpp" />
     <ClCompile Include="DamageEffectNum.cpp">
       <Filter>Disgaea\Util\DamageUI</Filter>
     </ClCompile>
     <ClCompile Include="DamageMeter.cpp">
       <Filter>Disgaea\Util\DamageUI</Filter>
+    </ClCompile>
+    <ClCompile Include="CharStatusUI.cpp" />
+    <ClCompile Include="TurnStateUI.cpp">
+      <Filter>Disgaea\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -633,12 +636,15 @@
     <ClInclude Include="WorldMapScene.h">
       <Filter>Disgaea\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="TurnStateUI.h" />
     <ClInclude Include="DamageEffectNum.h">
       <Filter>Disgaea\Util\DamageUI</Filter>
     </ClInclude>
     <ClInclude Include="DamageMeter.h">
       <Filter>Disgaea\Util\DamageUI</Filter>
+    </ClInclude>
+    <ClInclude Include="CharStatusUI.h" />
+    <ClInclude Include="TurnStateUI.h">
+      <Filter>Disgaea\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

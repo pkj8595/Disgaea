@@ -68,8 +68,9 @@ protected:
 	E_UnitType	_unitType;
 	CharicterStats* _allStats;
 	CharicterStats* _stats;
-	string		_name;
 	Item*		_equipItem[Equipment_End];
+	string		_name;
+	string		_title;
 
 	E_AniDirection	_dir;
 	E_AniDirection	_beforeDir;
@@ -121,6 +122,8 @@ public:
 	virtual void render(void);
 	
 	void unregisterZData(void);
+	ZOrderData* getZData() { return _zData; }
+
 	void setReservationAniBehavior(E_AniBehavior behavior);
 	bool IsAttackIndex(void);
 	bool IsResetMoveIndex(void);
@@ -149,6 +152,8 @@ public:
 	POINT* getPointAddress() { return &_point; }
 	string getName() { return _name; }
 	void setName(string name) { _name = name; }
+	string getTitle() { return _title; }
+	void setTitle(string title) { _title = title; }
 
 	void setCoorPoint(POINT coor) { _coordinate = coor; }
 	void setPoint(POINT point) { _point = point; }

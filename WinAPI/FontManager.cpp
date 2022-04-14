@@ -50,7 +50,30 @@ void FontManager::drawTextRectCenter(HDC hdc, RECT rangeRect, char* fontName, in
 	SetTextColor(hdc, oldColor);
 }
 
-void FontManager::drawText(HDC hdc, RECT rangeRect, char * fontName, int fontSize, int fontWidth, string printString, COLORREF color, bool isLeft)
+void FontManager::drawTextRectCenter(HDC hdc, RECT rangeRect, char * fontName, int fontSize, int fontWidth, string printString, COLORREF color)
+{
+	SetBkMode(hdc, TRANSPARENT);
+	HFONT hFont = CreateFont
+	(
+		fontSize, 0, 0, 5, fontWidth,
+		0, 0, 0,
+		HANGUL_CHARSET, 0, 0, 0, VARIABLE_PITCH | FF_ROMAN, TEXT(fontName)
+	);
+
+	auto oldFont = (HFONT)SelectObject(hdc, hFont);
+	auto oldColor = GetTextColor(hdc);
+
+	SetTextColor(hdc, color);
+
+	DrawText(hdc, printString.c_str(), -1, &rangeRect, DT_NOCLIP | DT_CENTER);
+
+	SelectObject(hdc, oldFont);
+	DeleteObject(hFont);
+
+	SetTextColor(hdc, oldColor);
+}
+
+void FontManager::drawText(HDC hdc, RECT rangeRect, char* fontName, int fontSize, int fontWidth, string printString, COLORREF color, bool isLeft)
 {
 	SetBkMode(hdc, TRANSPARENT);
 	HFONT hFont = CreateFont
@@ -70,7 +93,7 @@ void FontManager::drawText(HDC hdc, RECT rangeRect, char * fontName, int fontSiz
 	}
 	else
 	{
-		DrawText(hdc, printString.c_str(), -1, &rangeRect, DT_NOCLIP | DT_CENTER);
+		DrawText(hdc, printString.c_str(), -1, &rangeRect, DT_NOCLIP | DT_RIGHT);
 	}
 
 	SelectObject(hdc, oldFont);

@@ -36,7 +36,7 @@ HRESULT GameCharacter::init(string fileName, int x, int y, int coorX, int coorY,
 	_attackRange = 2;
 	for (int i = 0; i < Equipment_End; i++)
 	{
-		_equipItem[i] = nullptr;
+		_equipItem[i] = ItemManager::getSingleton()->getEmptyItem();
 	}
 
 	_dir = E_AniDirection::Ani_Right_Bottom;
@@ -61,10 +61,10 @@ HRESULT GameCharacter::init(string fileName, int x, int y, int coorX, int coorY,
 	_currentAnimation = nullptr;
 	_shakingOffsetCount = 0;
 	_iconIndex = 0;
-	_battleFaceIndex = 0;
 	_attackIndex = 3;
 	_inputCount = 0;
 	_moveCount = 0;
+	_battleFaceIndex = 0;
 	_LinerMoveEndPoint = PointMake(0, 0);
 	_LinerMoveStartPoint = PointMake(0, 0);
 	_reservationBehavior = E_AniBehavior::E_Behavior_end;
@@ -72,8 +72,8 @@ HRESULT GameCharacter::init(string fileName, int x, int y, int coorX, int coorY,
 
 	_zData = new ZOrderData;
 	_zData->setRenderData(&_rc, &_currentAnimation, &_characterImg);
-	(*CAMERA->getVecZData()).push_back(make_pair(ZIndexType_Character, _zData));
-
+	//(*CAMERA->getVecZData()).push_back(make_pair(ZIndexType_Character, _zData));
+	_title = "";
 	//_callback = nullptr;
 	return S_OK;
 }

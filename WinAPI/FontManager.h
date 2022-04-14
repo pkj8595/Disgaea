@@ -16,6 +16,8 @@ public:
 
 	void drawTextRectCenter(HDC hdc, RECT rangeRect, char* fontName, int fontSize, int fontWidth, char* printString, int length, COLORREF color);
 
+	void drawTextRectCenter(HDC hdc, RECT rangeRect, char* fontName, int fontSize, int fontWidth, string printString, COLORREF color);
+
 	//LPCWSTR(W) - wide char ->unicode
 	void drawText(HDC hdc, int destX, int destY, char* fontName, int fontSize, int fontWidth, LPCWSTR printString, int length, COLORREF color);
 

@@ -301,7 +301,6 @@ void IsometricMap::update(void)
 			{
 				_currentCharacter->resetSkillMovePoint(6);
 			}
-
 			_isCurrentCharAttacked = false;
 			_isRunnigBehaviorSetting = false;
 
@@ -407,7 +406,6 @@ void IsometricMap::update(void)
 				_behaviorList->confirmSecond();
 				if (!_behaviorList->empty())
 				{
-					
 					_isRunnigBehaviorSetting = true;
 				}
 				else
@@ -559,6 +557,7 @@ void IsometricMap::setPlayerCharacter(GameCharacter* gameChar, int coorX, int co
 	gameChar->setBeforeCoorPoint(getcoordinateToPoint(coorX, coorY));
 	_vTiles[coorY][coorX]->setTileGameCharacter(gameChar);
 	_characterList.push_back(gameChar);
+	(*CAMERA->getVecZData()).push_back(make_pair(ZIndexType_Character, gameChar->getZData()));
 }
 
 void IsometricMap::setEnemyCharacter(E_ENEMY_CHARACTER enemy, int coorX, int coorY, int level, int move, int jump, int maxHp, int hp, int maxSp, int sp, int atk, int def, int mint, int speed, int hit, int res, int exp, int maxExp)
@@ -582,6 +581,7 @@ void IsometricMap::setEnemyCharacter(E_ENEMY_CHARACTER enemy, int coorX, int coo
 
 	_vTiles[coorY][coorX]->setTileGameCharacter(newCharacter);
 	_characterList.push_back(newCharacter);
+	(*CAMERA->getVecZData()).push_back(make_pair(ZIndexType_Character, newCharacter->getZData()));
 }
 
 GameCharacter* IsometricMap::getNearSameTypeCharacter(GameCharacter* curCharacter)

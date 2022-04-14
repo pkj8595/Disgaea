@@ -50,6 +50,7 @@ HRESULT Flonne::init(string fileName, int x, int y, int coorX, int coorY, E_Unit
 
 	_iconIndex = 2;
 	_battleFaceIndex = 2;
+	_title = "¼§³ÉÇÑ Ãµ»ç";
 
 	return S_OK;
 }

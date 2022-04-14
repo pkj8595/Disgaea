@@ -4,6 +4,7 @@
 #include "CWindowUI.h"
 #include "CharInfoUI.h"
 #include "TurnStateUI.h"
+#include "CharStatusUI.h"
 
 
 #define UI_CAMERA_MOVEING_SPEED		10
@@ -20,6 +21,7 @@ enum class EControl_State
 	Map_Cursor,
 	Character_BehaviorWindow,
 	Turn_Window,
+	Character_SponWindow
 };
 
 enum class EOkBtnState
@@ -51,6 +53,9 @@ private:
 	EOkBtnState _okBtnState;
 	CharInfoUI*	_infoUI;
 	TurnStateUI* _turnStateUI;
+	CharStatusUI* _charStatusUI;
+
+	POINT	_startPt;
 
 public:
 	HRESULT init(void);

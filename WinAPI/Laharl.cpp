@@ -52,6 +52,7 @@ HRESULT Laharl::init(string fileName, int x, int y, int coorX, int coorY, E_Unit
 	_iconIndex = 0;
 	_battleFaceIndex = 0;
 
+	_title = "∏∂ø’¿« æ∆µÈ";
 	return S_OK;
 }
 

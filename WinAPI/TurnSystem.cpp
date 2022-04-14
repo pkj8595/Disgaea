@@ -4,6 +4,7 @@
 
 HRESULT TurnSystem::init(void)
 {
+	_startPt = PointMake(0, 0);
 	_battleUi[UI_MAPSIGN] = new GameMapUI;
 	_battleUi[UI_MAPSIGN]->init("mapSign", PointMake(5,5), _map->getcoordinateToPoint(5, 5), ZIndexType_MapUI);
 	_battleUi[UI_MAPSIGN]->setIsActive(true);
@@ -39,12 +40,18 @@ HRESULT TurnSystem::init(void)
 	_turnStateUI = new TurnStateUI;
 	_turnStateUI->init(turnEnd);
 
+	_charStatusUI = new CharStatusUI;
+	_charStatusUI->init(40, 5);
+	_charStatusUI->setIsActive(false);
+
+
 	return S_OK; 
 }
 
 
 void TurnSystem::release(void)
 {
+	_charStatusUI->release();
 	_battleUi[UI_MAPSIGN]->release();
 	_battleUi[UI_BLUESIGN]->release();
 	_charBehaviorWindow->release();
@@ -53,6 +60,7 @@ void TurnSystem::release(void)
 	_turnStateUI->release();
 
 
+	SAFE_DELETE(_charStatusUI);
 	SAFE_DELETE(_battleUi[UI_MAPSIGN]);
 	SAFE_DELETE(_battleUi[UI_BLUESIGN]);
 	SAFE_DELETE(_charBehaviorWindow);
@@ -65,6 +73,7 @@ void TurnSystem::update(void)
 {
 	_infoUI->update();
 	_turnStateUI->update();
+	_charStatusUI->update();
 
 	_battleUi[UI_MAPSIGN]->update();
 	_battleUi[UI_BLUESIGN]->update();
@@ -112,6 +121,7 @@ void TurnSystem::update(void)
 			}
 			else
 			{
+				_charStatusUI->setIsActive(false);
 				_infoUI->setIsActive(false);
 			}
 		}
@@ -134,6 +144,7 @@ void TurnSystem::update(void)
 			}
 			else
 			{
+				_charStatusUI->setIsActive(false);
 				_infoUI->setIsActive(false);
 			}
 		}
@@ -156,6 +167,7 @@ void TurnSystem::update(void)
 			}
 			else
 			{
+				_charStatusUI->setIsActive(false);
 				_infoUI->setIsActive(false);
 			}
 
@@ -179,6 +191,7 @@ void TurnSystem::update(void)
 			}
 			else
 			{
+				_charStatusUI->setIsActive(false);
 				_infoUI->setIsActive(false);
 			}
 		}
@@ -216,10 +229,15 @@ void TurnSystem::update(void)
 			{
 			case EOkBtnState::Nomal:
 				_isCharacterSelect = true;
+				
 
 				if (_map->selectCharacter(_battleUi[UI_MAPSIGN]->getCoorPoint()) != nullptr)
 				{
 					GameCharacter* tempCharacter = _map->getTile(_battleUi[UI_MAPSIGN]->getCoorPoint())->getTileGameCharacter();
+					_charStatusUI->setGameCharacterInfo(tempCharacter);
+
+					_charStatusUI->setIsActive(true);
+					_infoUI->setIsActive(false);
 
 					if (tempCharacter->getUnitType() == E_UnitType::Controllable)
 					{
@@ -245,6 +263,11 @@ void TurnSystem::update(void)
 						_charBehaviorWindow->setIsActive(true);
 						_controlState = EControl_State::Character_BehaviorWindow;
 					}
+					break;
+				}
+				if (IsSamePoint(_battleUi[UI_MAPSIGN]->getCoorPoint(), _startPt))
+				{
+					//
 				}
 				break;
 
@@ -322,6 +345,7 @@ void TurnSystem::update(void)
 	}
 	if (KEYMANAGER->isOnceKeyDown('L'))
 	{
+		_charStatusUI->setIsActive(false);
 		switch (_controlState)
 		{
 		case EControl_State::Map_Cursor:
@@ -353,6 +377,7 @@ void TurnSystem::update(void)
 			break;
 		case EControl_State::Character_BehaviorWindow:
 			_charBehaviorWindow->setIsActive(false);
+			
 			_controlState = EControl_State::Map_Cursor;
 			break;
 		case EControl_State::Turn_Window:
@@ -374,6 +399,7 @@ void TurnSystem::render(void)
 	//_battleUi[UI_MAPSIGN]->render();
 	_charBehaviorWindow->render();
 	_turnWindow->render();
+	_charStatusUI->render();
 	_turnStateUI->render();
 
 }
@@ -389,6 +415,7 @@ void TurnSystem::setInitBattleUI(POINT point)
 {
 	_battleUi[UI_MAPSIGN]->setCoorPoint(correctionTileIndex(point));
 	updateBattleUI();
+	_startPt = point;
 }
 
 POINT TurnSystem::correctionTileIndex(POINT coordinate)

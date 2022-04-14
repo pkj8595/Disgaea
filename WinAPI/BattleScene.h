@@ -16,7 +16,6 @@ private:
 	my::Image*	_backImg;
 	RECT		_backRc;
 	POINT		_backPoint;
-	
 
 public:
 	HRESULT init(void);

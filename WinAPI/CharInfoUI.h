@@ -27,7 +27,7 @@ public:
 		MOVE,
 		JM,
 		LEVEL,
-		E_InfoText_End
+		E_InfoText_End	
 	};
 private:
 	my::Image*	_img[ECharInfo_End];
@@ -39,6 +39,8 @@ private:
 	string		_name;
 	RECT		_infoRc[E_InfoText_End];
 	int			_infoNum[E_InfoText_End];
+
+
 
 	int			_maxHp;
 	int			_maxSp;

@@ -53,6 +53,12 @@ void CWindowUI::release(void)
 	}
 	_vWindowValue.clear();
 
+	_leftOutLineImg->release();
+	_topOutLineImg->release();
+	_rightOutLineImg->release();
+	_bottomOutLineImg->release();
+	_centerLine._centerImg->release();
+
 	SAFE_DELETE(_leftOutLineImg);
 	SAFE_DELETE(_topOutLineImg);
 	SAFE_DELETE(_rightOutLineImg);

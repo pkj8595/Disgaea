@@ -52,6 +52,7 @@ HRESULT Ghost::init(string fileName, int x, int y, int coorX, int coorY, E_UnitT
 	_iconIndex = 10;
 	_battleFaceIndex = 3;
 	_attackIndex = 7;
+	_title = "À¯·É";
 
 	return S_OK;
 }
