@@ -50,13 +50,14 @@ public:
 	int getIndex(void);
 	
 	void setWindowValue(string valueName, int height, int fontSize, CALLBACKFUNCTION function);
+	void removeValue(int index);
+	void resetValue(void);
+
 	void selectUp(void);
 	void selectDown(void);
 
 	void setWindowValueState(int index, EWindow_ValueState state);
 	virtual EWindow_ValueState getWindowValueState(int index);
-
-
 	
 	bool getIsActive() { return _isActive; }
 	void setIsActive(bool isActive) { _isActive = isActive; }

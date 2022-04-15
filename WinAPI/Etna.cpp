@@ -63,6 +63,7 @@ void Etna::release(void)
 void Etna::update(void)
 {
 	GameCharacter::update();
+
 }
 
 void Etna::render(void)

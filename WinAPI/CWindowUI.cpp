@@ -50,6 +50,7 @@ void CWindowUI::release(void)
 	for (; iter != _vWindowValue.end(); ++iter)
 	{
 		(*iter)->release();
+		SAFE_DELETE(*iter);
 	}
 	_vWindowValue.clear();
 
@@ -134,6 +135,25 @@ void CWindowUI::setWindowValue(string valueName, int height, int fontSize, CALLB
 
 	_rc = RectMake(_x, _y, _width, allHeight);
 
+}
+
+void CWindowUI::removeValue(int index)
+{
+	_vWindowValue.at(index)->release();
+	SAFE_DELETE(_vWindowValue.at(index));
+	_vWindowValue.erase(_vWindowValue.begin() + index);
+	_vWindowIter = _vWindowValue.begin();
+}
+
+void CWindowUI::resetValue(void)
+{
+	vector< CWindowUIValue*>::iterator iter = _vWindowValue.begin();
+	for (; iter != _vWindowValue.end(); ++iter)
+	{
+		(*iter)->release();
+		SAFE_DELETE(*iter);
+	}
+	_vWindowValue.clear();
 }
 
 void CWindowUI::selectUp(void)

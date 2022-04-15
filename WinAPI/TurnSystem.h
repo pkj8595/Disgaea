@@ -11,8 +11,8 @@
 enum EBATTLE_UI_TYPE
 {
 	UI_BLUESIGN = 0,
-	UI_REDSIGN,
 	UI_MAPSIGN,
+	UI_BattleStartObj,
 	EBATTLE_UI_TYPE_END
 };
 
@@ -21,7 +21,7 @@ enum class EControl_State
 	Map_Cursor,
 	Character_BehaviorWindow,
 	Turn_Window,
-	Character_SponWindow
+	Character_CreateWindow
 };
 
 enum class EOkBtnState
@@ -44,7 +44,7 @@ private:
 	bool _isPlayerTrunStart;
 	CWindowUI* _charBehaviorWindow;
 	CWindowUI* _turnWindow;
-	CWindowUI* _charSponWindow;
+	CWindowUI* _charCreateWindow;
 
 	POINT _tileRangeTargetPoint;
 	POINT _tileRangeStartPoint;
@@ -57,6 +57,9 @@ private:
 	CharStatusUI* _charStatusUI;
 
 	POINT	_startPt;
+	vector<GameCharacter*> _vPlayerChar;
+	vector<GameCharacter*>::iterator _vIPlayerChar;
+	int	_playerCharSize;
 
 public:
 	HRESULT init(void);
@@ -73,6 +76,7 @@ public:
 
 	void characterWindowSetup();
 	void turnWindowSetup();
+	void createCharacterWindowSetup();
 
 	inline void updateBattleUI();
 

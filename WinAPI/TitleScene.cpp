@@ -121,13 +121,13 @@ void TitleScene::TitleUISetUp()
 		laharl->init("laharl", 0, 0, 0, 0, E_UnitType::Controllable, 0, 20);
 		(*GAMEMANAGER->getAllPlayerUnits()).push_back(laharl);
 
-		/*GameCharacter* flonne = new Flonne;
+		GameCharacter* flonne = new Flonne;
 		flonne->init("Flonne", 0, 0, 0, 0, E_UnitType::Controllable, 0, 20);
 		(*GAMEMANAGER->getAllPlayerUnits()).push_back(flonne);
 
 		GameCharacter* etna = new Etna;
 		etna->init("Etna",0,0, 0, 0, E_UnitType::Controllable, 0, 20);
-		(*GAMEMANAGER->getAllPlayerUnits()).push_back(etna);*/
+		(*GAMEMANAGER->getAllPlayerUnits()).push_back(etna);
 
 		CAMERA->FadeStart(4);
 		CAMERA->FadeChangeScenceName("WorldMapScene");

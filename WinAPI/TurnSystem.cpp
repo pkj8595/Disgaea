@@ -5,27 +5,20 @@
 HRESULT TurnSystem::init(void)
 {
 	_startPt = PointMake(0, 0);
-	_battleUi[UI_MAPSIGN] = new GameMapUI;
-	_battleUi[UI_MAPSIGN]->init("mapSign", PointMake(5,5), _map->getcoordinateToPoint(5, 5), ZIndexType_MapUI);
-	_battleUi[UI_MAPSIGN]->setIsActive(true);
-
-	_battleUi[UI_BLUESIGN] = new GameMapUI;
-	_battleUi[UI_BLUESIGN]->init("blueSign", PointMake(0, 0), _map->getcoordinateToPoint(5, 5),PointMake(0,-70), ZIndexType_BlueUI);
-	_battleUi[UI_BLUESIGN]->setIsActive(true);
-	
 	_mapSize = _map->getMapSize();
 	_isCharacterMove = _map->getIsCharacterMove();
 	_isRunnigBehavior = _map->getIsRunningBehavior();
 	
 	_isCharacterSelect = false; 
 	_selectedCharRange = 0;
+	_playerCharSize = 0;
 	_okBtnState = EOkBtnState::Nomal;
 	_controlState = EControl_State::Map_Cursor;
 
-	CAMERA->setCameraPoint(_battleUi[UI_MAPSIGN]->getPointAddress());
-
 	characterWindowSetup();
 	turnWindowSetup();
+	_charCreateWindow = new CWindowUI;
+	_charCreateWindow->init(300, 4, 80, EWindow_Align::WINDOW_LEFTTOP);
 
 	_infoUI = new CharInfoUI;
 	_infoUI->init();
@@ -44,37 +37,46 @@ HRESULT TurnSystem::init(void)
 	_charStatusUI->init(40, 5);
 	_charStatusUI->setIsActive(false);
 
-	_charSponWindow = new CWindowUI;
-	_charSponWindow->init(300, 4, 80, EWindow_Align::WINDOW_LEFTTOP);
-	_charSponWindow->setWindowValue("라하르???", 20, 20, nullptr);
-	/*
-	_charSponWindow가 켜질때 gamemanager에서 캐릭터 리스트를 받아온다.
-	밸류로 넣어주고 선택할시 그 캐릭터를 생성 시킨다. 
-	_map->setplayerchar
-	*/
+	_battleUi[UI_MAPSIGN] = new GameMapUI;
+	_battleUi[UI_MAPSIGN]->init("mapSign", PointMake(5, 5), _map->getcoordinateToPoint(5, 5), ZIndexType_MapUI);
+	_battleUi[UI_MAPSIGN]->setIsActive(true);
+
+	_battleUi[UI_BLUESIGN] = new GameMapUI;
+	_battleUi[UI_BLUESIGN]->init("blueSign", PointMake(0, 0), _map->getcoordinateToPoint(5, 5), PointMake(0, -70), ZIndexType_BlueUI);
+	_battleUi[UI_BLUESIGN]->setIsActive(true);
+
+	_battleUi[UI_BattleStartObj] = new GameMapUI;
+	_battleUi[UI_BattleStartObj]->init("battleStartObject", _startPt, _map->getcoordinateToPoint(_startPt), ZIndexType_MapUI);
+	_battleUi[UI_BattleStartObj]->setIsActive(true);
+
+	CAMERA->setCameraPoint(_battleUi[UI_MAPSIGN]->getPointAddress());
+	_vPlayerChar = *GAMEMANAGER->getAllPlayerUnits();
 
 	return S_OK; 
 }
-
 
 void TurnSystem::release(void)
 {
 	_charStatusUI->release();
 	_battleUi[UI_MAPSIGN]->release();
+	_battleUi[UI_BattleStartObj]->release();
 	_battleUi[UI_BLUESIGN]->release();
 	_charBehaviorWindow->release();
 	_turnWindow->release();
 	_infoUI->release();
 	_turnStateUI->release();
+	_charCreateWindow->release();
 
 
 	SAFE_DELETE(_charStatusUI);
 	SAFE_DELETE(_battleUi[UI_MAPSIGN]);
 	SAFE_DELETE(_battleUi[UI_BLUESIGN]);
+	SAFE_DELETE(_battleUi[UI_BattleStartObj]);
 	SAFE_DELETE(_charBehaviorWindow);
 	SAFE_DELETE(_turnWindow);
 	SAFE_DELETE(_infoUI);
 	SAFE_DELETE(_turnStateUI);
+	SAFE_DELETE(_charCreateWindow);
 }
 
 void TurnSystem::update(void)
@@ -82,9 +84,11 @@ void TurnSystem::update(void)
 	_infoUI->update();
 	_turnStateUI->update();
 	_charStatusUI->update();
+	_charCreateWindow->update();
 
 	_battleUi[UI_MAPSIGN]->update();
 	_battleUi[UI_BLUESIGN]->update();
+	_battleUi[UI_BattleStartObj]->update();
 	_charBehaviorWindow->update();
 	_turnWindow->update();
 	if (*_isCharacterMove || *_isRunnigBehavior || _map->getTurnSubject() == TurnSubject::ENUMY) 
@@ -92,6 +96,7 @@ void TurnSystem::update(void)
 		_battleUi[UI_MAPSIGN]->setIsActive(false);
 		_battleUi[UI_BLUESIGN]->setIsActive(false);
 		_infoUI->setIsActive(false);
+		_charStatusUI->setIsActive(false);
 		return;
 	}
 	else
@@ -225,6 +230,16 @@ void TurnSystem::update(void)
 			_turnWindow->selectDown();
 		}
 		break;
+	case EControl_State::Character_CreateWindow:
+		if (KEYMANAGER->isOnceKeyDown('W'))
+		{
+			_charCreateWindow->selectUp();
+		}
+		if (KEYMANAGER->isOnceKeyDown('S'))
+		{
+			_charCreateWindow->selectDown();
+		}
+		break;
 	}
 	
 	if (KEYMANAGER->isOnceKeyDown('K'))
@@ -275,7 +290,9 @@ void TurnSystem::update(void)
 				}
 				if (IsSamePoint(_battleUi[UI_MAPSIGN]->getCoorPoint(), _startPt))
 				{
-					//
+					createCharacterWindowSetup();
+					_charCreateWindow->setIsActive(true);
+					_controlState = EControl_State::Character_CreateWindow;
 				}
 				break;
 
@@ -331,6 +348,9 @@ void TurnSystem::update(void)
 		case EControl_State::Turn_Window:
 			_turnWindow->excute();
 			break;
+		case EControl_State::Character_CreateWindow:
+			_charCreateWindow->excute();
+			break;
 		}
 	
 		updateBattleUI();
@@ -385,11 +405,14 @@ void TurnSystem::update(void)
 			break;
 		case EControl_State::Character_BehaviorWindow:
 			_charBehaviorWindow->setIsActive(false);
-			
 			_controlState = EControl_State::Map_Cursor;
 			break;
 		case EControl_State::Turn_Window:
 			_turnWindow->setIsActive(false);
+			_controlState = EControl_State::Map_Cursor;
+			break;
+		case EControl_State::Character_CreateWindow:
+			_charCreateWindow->setIsActive(false);
 			_controlState = EControl_State::Map_Cursor;
 			break;
 		default:
@@ -409,7 +432,7 @@ void TurnSystem::render(void)
 	_turnWindow->render();
 	_charStatusUI->render();
 	_turnStateUI->render();
-
+	_charCreateWindow->render();
 }
 
 inline void TurnSystem::updateBattleUI()
@@ -422,7 +445,9 @@ inline void TurnSystem::updateBattleUI()
 void TurnSystem::setInitBattleUI(POINT point)
 {
 	_battleUi[UI_MAPSIGN]->setCoorPoint(correctionTileIndex(point));
+	_battleUi[UI_BattleStartObj]->setCoorPoint(correctionTileIndex(point));
 	updateBattleUI();
+	_battleUi[UI_BattleStartObj]->setPoint(_map->getcoordinateToPoint(point));
 	_startPt = point;
 }
 
@@ -515,3 +540,38 @@ void TurnSystem::turnWindowSetup()
 	_turnWindow->setWindowValue("공격 개시", 15, 15, acttackExcuteCallBack);
 	_turnWindow->setWindowValue("포기", 15, 15, exit);
 }
+
+
+void TurnSystem::createCharacterWindowSetup()
+{
+	if (_playerCharSize != _vPlayerChar.size())
+	{
+		if (_vPlayerChar.size() == 0)
+		{
+			_charCreateWindow->resetValue();
+			_charCreateWindow->setWindowValue("0명", 20, 20, nullptr);
+			_playerCharSize = _vPlayerChar.size();
+		}
+		else
+		{
+			_charCreateWindow->resetValue();
+			CALLBACKFUNCTION createCharacter = [this](void)->void
+			{
+				_map->setPlayerCharacter(_vPlayerChar[_charCreateWindow->getIndex()], _startPt.x, _startPt.y);
+				_vPlayerChar.erase(_vPlayerChar.begin() + _charCreateWindow->getIndex());
+				_charCreateWindow->setIsActive(false);
+
+				_controlState = EControl_State::Map_Cursor;
+				_okBtnState = EOkBtnState::Nomal;
+			};
+			_vIPlayerChar = _vPlayerChar.begin();
+			for (; _vIPlayerChar != _vPlayerChar.end(); ++_vIPlayerChar)
+			{
+				_charCreateWindow->setWindowValue((*_vIPlayerChar)->getName(), 20, 20, createCharacter);
+			}
+			_playerCharSize = _vPlayerChar.size();
+		}
+		
+	}
+}
+

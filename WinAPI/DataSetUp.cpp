@@ -37,6 +37,7 @@ void DataSetUp::ImageClassInit()
 #pragma endregion
 
 #pragma region UI
+	IMAGEMANAGER->addFrameImage("battleStartObject", "Resource/Images/Disgaea/UI/battleUI/StartObject.bmp", 60, 30,1,1, true, RGB(255, 0, 255));
 	IMAGEMANAGER->addFrameImage("GameState", "Resource/Images/Disgaea/UI/battleUI/GameState.bmp", 256, 320,1,10, true, RGB(255, 0, 255));
 	IMAGEMANAGER->addImage("red", "Resource/Images/Disgaea/red.bmp", 134, 1, false, RGB(255, 0, 255));
 	IMAGEMANAGER->addImage("shadow", "Resource/Images/Disgaea/shadow.bmp", 20, 10, true, RGB(255, 0, 255));

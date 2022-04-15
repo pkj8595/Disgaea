@@ -21,7 +21,6 @@ void BattleScene::release(void)
 	SAFE_DELETE(_map);
 	_turnSystem->release();
 	SAFE_DELETE(_turnSystem);
-
 }
 
 void BattleScene::update(void)
@@ -121,12 +120,6 @@ void BattleScene::JsonSetUpIsoMap()
 			(*enemyRoot)["_maxExp"].asInt()
 		);
 	}
-
-	//vector<GameCharacter*>::iterator gameCharIter = (*GAMEMANAGER->getAllPlayerUnits()).begin();
-	//for (; gameCharIter != (*GAMEMANAGER->getAllPlayerUnits()).end(); ++gameCharIter)
-	//{
-	//	_map->setPlayerCharacter(*gameCharIter, jData["startPointX"].asInt(), jData["startPointY"].asInt());
-	//}
 
 	_turnSystem = new TurnSystem;
 	_turnSystem->registerMapAddress(_map);

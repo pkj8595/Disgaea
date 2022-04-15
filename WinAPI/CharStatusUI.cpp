@@ -174,7 +174,7 @@ void CharStatusUI::render(void)
 	_lineImg[E_OutLine_RightBottom]->render(getMemDC(), _cententRc.right - 3, _cententRc.bottom - 3);
 
 	
-	_iconImg->frameRender(getMemDC(), _iconRc.left, _iconRc.top);
+	_iconImg->frameRender(getMemDC(), _iconRc.left, _iconRc.top,_iconIndex%10, _iconIndex / 10);
 
 	FONTMANAGER->drawText(getMemDC(), _statRc[E_Stat_Name], "³ª´®°íµñ Bold", 13, 30, _statNum[E_Stat_Name], RGB(255, 255, 255), true);
 	FONTMANAGER->drawText(getMemDC(), _statRc[E_Stat_Title], "³ª´®°íµñ Bold", 13, 30, _statNum[E_Stat_Title], RGB(0, 0, 0), true);
