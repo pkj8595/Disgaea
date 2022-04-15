@@ -121,9 +121,7 @@ LRESULT GameNode::MainProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lPara
 			GetClientRect(_hWnd, &cameraRc);
 			SetWindowExtEx(getHDC(), 600, 330, NULL);
 			SetViewportExtEx(getHDC(), cameraRc.right, cameraRc.bottom, NULL);
-			printf("L : %d, T : %d, R : %d, B : %d,", cameraRc.left, cameraRc.top, cameraRc.right, cameraRc.bottom);
-			cout << "0x0001" << endl;
-
+		
 			break;
 		}
 		case 0x0010:

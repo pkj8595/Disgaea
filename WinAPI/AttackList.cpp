@@ -92,41 +92,27 @@ bool BehaviorList::cancelBehavior(IsometricTile* excute)
 
 void BehaviorList::removeBehavior(IsometricTile* removeObject)
 {
-	cout << " BehaviorList::removeBehavior" << endl;
 	mAttackListIter iter = _behaviorList.begin();
-	for (; iter != _behaviorList.end();)
+	for (; iter != _behaviorList.end(); ++iter)
 	{
 		if ((*iter).first == removeObject)
 		{
 			(*iter).second.clear();
-			iter = _behaviorList.erase(iter);
-			cout << "first" << endl;
 		}
-		else ++iter;
 	}
-	cout << " BehaviorList::removeBehavior -> first object ok" << endl;
-
 	iter = _behaviorList.begin();
 	for (; iter != _behaviorList.end(); ++iter)
 	{
-		cout << "sub size : " << (*iter).second.size() << endl;
 		list<IsometricTile*>::iterator subIter = (*iter).second.begin();
 		for (; subIter != (*iter).second.end();)
 		{
 			if (*subIter == removeObject)
 			{
-				cout << "sub erase1" << endl;
 				subIter = (*iter).second.erase(subIter);
 			}
 			else ++subIter;
 		}
 
-		/*if ((*iter).second.size() == 0)
-		{
-			cout << "sub erase2 : "<< (*iter).second.size() << endl;
-			iter = _behaviorList.erase(iter);
-		}
-		else ++iter;*/
 	}
 
 }

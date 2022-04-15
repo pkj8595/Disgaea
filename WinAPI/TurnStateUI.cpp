@@ -21,9 +21,6 @@ HRESULT TurnStateUI::init(CALLBACKFUNCTION function)
 	_backPoint = PointMake(CAMERA->getCameraCenterX(), CAMERA->getCameraCenterY());
 	_backRc = RectMakeCenter(_backPoint.x, _backPoint.y, _backImg->getWidth(), _backImg->getHeight());
 
-	cout << " CAMERA->getCameraCenterY() : " << CAMERA->getCameraCenterY() << endl;
-	cout << " _backRc.top : " << _backRc.top << endl;
-	cout << " _backRc.bottom : " << _backRc.bottom << endl;
 
 	_backAlpha = 0;
 	_stayStartTime = 0.0f;  

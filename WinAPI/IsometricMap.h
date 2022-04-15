@@ -76,8 +76,8 @@ public:
 	virtual HRESULT init(int mapsizeX, int mapsizeY);
 	virtual void release(void);
 	virtual void update(void);
-	void currentCharacterDirCheck(int compareX, int compareY);
 	virtual void render(void);
+	void currentCharacterDirCheck(int compareX, int compareY);
 
 	void removeCharacter(GameCharacter* character);
 	void setPlayerCharacter(GameCharacter* gameChar, int coorX, int coorY);

@@ -381,7 +381,7 @@ void DataSetUp::AnimationClassInit()
 	ANIMATIONMANAGER->addAnimation("Ghost_moveIdle_LB", "Ghost", 0,  4, ANI_FPS, false, true);
 	ANIMATIONMANAGER->addAnimation("Ghost_moveIdle_LT", "Ghost", 10, 14, ANI_FPS, false, true);
 	ANIMATIONMANAGER->addAnimation("Ghost_moveIdle_RT", "Ghost", 20, 24, ANI_FPS, false, true);
-	ANIMATIONMANAGER->addAnimation("Ghost_moveIdle_RB", "Ghost", 30, 35, ANI_FPS, false, true);
+	ANIMATIONMANAGER->addAnimation("Ghost_moveIdle_RB", "Ghost", 30, 34, ANI_FPS, false, true);
 	ANIMATIONMANAGER->addAnimation("Ghost_beAttacked_LB", "Ghost", 5, 5, ANI_FPS, false, false);
 	ANIMATIONMANAGER->addAnimation("Ghost_beAttacked_LT", "Ghost", 15, 15, ANI_FPS, false, false);
 	ANIMATIONMANAGER->addAnimation("Ghost_beAttacked_RT", "Ghost", 25, 25, ANI_FPS, false, false);

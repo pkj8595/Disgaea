@@ -6,6 +6,8 @@ enum ZIndexType
 {
 	ZIndexType_MapUI =0,
 	ZIndexType_Character,
+	ZIndexType_ProgressDownbar,
+	ZIndexType_ProgressUpbar,
 	ZIndexType_BlueUI,
 	ZIndexType_Damage,
 	ZIndexType_Portrait,
@@ -19,6 +21,7 @@ private:
 	my::Image**	_img;
 	int		_frameX;
 	int		_frameY;
+	float*	_numW;
 	bool*	_isActive;
 	BYTE*	_alpha;
 
@@ -28,6 +31,7 @@ public:
 	RECT*	getRECT() { return _rc; }
 	int		getFrameX() { return _frameX; }
 	int		getFrameY() { return _frameY; }
+	float*	getNumW() { return _numW; }
 	BYTE	getAlpha() { return *_alpha; }
 	bool	getIsActive() 
 	{
@@ -69,6 +73,12 @@ public:
 		_frameY = frameY;
 		_alpha = alpha;
 	}
+	void setRenderData(RECT* rc,my::Image** img, float* numW)
+	{
+		_rc = rc;
+		_img = img;
+		_numW = numW;
+	}
 
 	ZOrderData():	_rc(nullptr),
 					_animation(nullptr),
@@ -76,7 +86,8 @@ public:
 					_frameX(0),
 					_frameY(0),
 					_isActive(nullptr),
-					_alpha(0)
+					_alpha(0),
+					_numW(nullptr)
 	{
 	}
 	~ZOrderData() {}

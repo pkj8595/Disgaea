@@ -180,19 +180,12 @@ void IsometricMap::update(void)
 		}
 	}
 
-	for (GameCharacter* character : _characterList)
+	list<GameCharacter*>::iterator _vIterCharList = _characterList.begin();
+	for (; _vIterCharList != _characterList.end(); ++_vIterCharList)
 	{
-		character->update();
+		(*_vIterCharList)->update();
 	}
 	
-	/*for (vector< IsometricTile* > vXTile : _vTiles)
-	{
-		for (IsometricTile* tile : vXTile)
-		{
-			tile->update();
-		}
-	}*/
-
 	if (_isTileAlphaIncrease) _tileAlpha++;
 	else _tileAlpha--;
 	if (_tileAlpha < 50 || _tileAlpha > 130) _isTileAlphaIncrease = !_isTileAlphaIncrease;
@@ -292,7 +285,6 @@ void IsometricMap::update(void)
 					_portait->setPortraitAnimation(_currentCharacter->getBattleFaceIndex());
 					_portait->setPortraitAnimation(subCharacter->getBattleFaceIndex());
 					_portait->StartAnimation();
-					//CAMERA->setCameraPoint(&_collaborationStartPoint);
 				}
 			}
 
@@ -364,7 +356,7 @@ void IsometricMap::update(void)
 				{
 					GameCharacter* attackedChar = _behaviorList->front()->second.front()->getTileGameCharacter();
 					attackedChar->setAniBehavior(E_AniBehavior::Ani_be_Attacked);
-					attackedChar->shakeStart(1.0f);
+					attackedChar->shakeStart(1.5f);
 
 					int damage = computeDamage(_currentCharacter, attackedChar);
 					attackedChar->beAttacked(damage);
@@ -553,10 +545,11 @@ void IsometricMap::setPlayerCharacter(GameCharacter* gameChar, int coorX, int co
 {
 	gameChar->setCoorPoint(PointMake(coorX, coorY));
 	gameChar->setPoint(getcoordinateToPoint(coorX, coorY));
-	gameChar->setBeforeCoorPoint(getcoordinateToPoint(coorX, coorY));
+	gameChar->setBeforeCoorPoint(PointMake(coorX, coorY));
 	_vTiles[coorY][coorX]->setTileGameCharacter(gameChar);
 	_characterList.push_back(gameChar);
 	(*CAMERA->getVecZData()).push_back(make_pair(ZIndexType_Character, gameChar->getZData()));
+	gameChar->registerProgressBarZData();
 }
 
 void IsometricMap::setEnemyCharacter(E_ENEMY_CHARACTER enemy, int coorX, int coorY, int level, int move, int jump, int maxHp, int hp, int maxSp, int sp, int atk, int def, int mint, int speed, int hit, int res, int exp, int maxExp)
@@ -581,6 +574,8 @@ void IsometricMap::setEnemyCharacter(E_ENEMY_CHARACTER enemy, int coorX, int coo
 	_vTiles[coorY][coorX]->setTileGameCharacter(newCharacter);
 	_characterList.push_back(newCharacter);
 	(*CAMERA->getVecZData()).push_back(make_pair(ZIndexType_Character, newCharacter->getZData()));
+	newCharacter->registerProgressBarZData();
+
 }
 
 GameCharacter* IsometricMap::getNearSameTypeCharacter(GameCharacter* curCharacter)
@@ -1050,8 +1045,14 @@ void IsometricMap::computeTileRange(int range, IsometricTile* currentTile, bool 
 
 	if (currentTile->getTileGameCharacter() != nullptr)
 	{
-		if(isMove)
+		if (isMove)
+		{
 			currentTile->setSelectAbleTile(false);
+			/*if (currentTile->getTileGameCharacter()->getUnitType() != _currentCharacter->getUnitType() && getTile(_currentCharacter->getCoorPoint()) != currentTile)
+			{
+				return;
+			}*/
+		}
 		else
 			currentTile->setSelectAbleTile(true);
 	}

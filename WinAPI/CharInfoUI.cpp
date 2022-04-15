@@ -54,10 +54,12 @@ HRESULT CharInfoUI::init(void)
 
 void CharInfoUI::release(void)
 {
+	_spProgressBar->release();
+	_hpProgressBar->release();
+
 	SAFE_DELETE(_img[ECharInfo_Back]);
 	SAFE_DELETE(_spProgressBar);
 	SAFE_DELETE(_hpProgressBar);
-
 }
 
 void CharInfoUI::update(void)

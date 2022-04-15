@@ -1,6 +1,7 @@
 #pragma once
 #include "GameNode.h"
 #include "Item.h"
+#include "ProgressBar.h"
 
 enum class E_UnitType
 {
@@ -111,6 +112,9 @@ protected:
 	//½ºÅ³
 	int			_attackIndex;
 	bool		_isDie;
+
+	ProgressBar*	_hpBar;
+
 	//CALLBACKFUNCTION _callback;
 	//float			 _callbackExcuteTime;
 
@@ -123,6 +127,7 @@ public:
 	
 	void unregisterZData(void);
 	ZOrderData* getZData() { return _zData; }
+	void registerProgressBarZData() { _hpBar->registerZData(); }
 
 	void setReservationAniBehavior(E_AniBehavior behavior);
 	bool IsAttackIndex(void);

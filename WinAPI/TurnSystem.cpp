@@ -247,7 +247,6 @@ void TurnSystem::update(void)
 		switch (_controlState)
 		{
 		case EControl_State::Map_Cursor:
-
 			switch (_okBtnState)
 			{
 			case EOkBtnState::Nomal:
@@ -319,7 +318,6 @@ void TurnSystem::update(void)
 			case EOkBtnState::Attack:
 				//공격리스트 저장
 				_tileRangeTargetPoint = _battleUi[UI_MAPSIGN]->getCoorPoint();
-
 				if (_map->getTile(_tileRangeTargetPoint)->getSelectAbleTile() && 
 					!(_tileRangeStartPoint.x == _tileRangeTargetPoint.x &&
 					_tileRangeStartPoint.y == _tileRangeTargetPoint.y) )
@@ -343,6 +341,7 @@ void TurnSystem::update(void)
 			
 			break;
 		case EControl_State::Character_BehaviorWindow:
+			_charStatusUI->setIsActive(false);
 			_charBehaviorWindow->excute();
 			break;
 		case EControl_State::Turn_Window:
@@ -528,6 +527,7 @@ void TurnSystem::turnWindowSetup()
 		_turnWindow->setIsActive(false);
 		_controlState = EControl_State::Map_Cursor;
 		_okBtnState = EOkBtnState::Nomal;
+		
 	};
 	CALLBACKFUNCTION exit = [this](void)->void
 	{

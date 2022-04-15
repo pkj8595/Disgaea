@@ -47,7 +47,20 @@ HRESULT GameCharacter::init(string fileName, int x, int y, int coorX, int coorY,
 
 	_stats = new CharicterStats;
 	_allStats = new CharicterStats;
+
 	computeStats();
+
+	_hpBar = new ProgressBar;
+	if (_unitType == E_UnitType::Controllable)
+	{
+		_hpBar->init(_point.x,_point.y,37,3,true);
+	}
+	else if (_unitType == E_UnitType::Monster)
+	{
+		_hpBar->init(_point.x, _point.y, 37, 3, false);
+	}
+	_hpBar->setZData();
+
 	for (int i = 0; i < E_CommandFlag_end; i++)
 	{
 		_bsCommandState.set(i, false);
@@ -81,6 +94,8 @@ HRESULT GameCharacter::init(string fileName, int x, int y, int coorX, int coorY,
 void GameCharacter::release(void)
 {
 	CAMERA->removeZData(_zData);
+	_hpBar->release();
+	SAFE_DELETE(_hpBar);
 	SAFE_DELETE(_zData);
 	SAFE_DELETE(_stats);
 	SAFE_DELETE(_allStats);
@@ -118,13 +133,18 @@ void GameCharacter::update(void)
 	//		_bsCommandState.set(reservationCallback, false);
 	//	}
 	//}
+	if (_behavior == E_AniBehavior::Ani_idle && !_currentAnimation->isPlay())
+	{
+		_beforeBehavior = E_AniBehavior::E_Behavior_end;
+	}
 
 	if ((_dir != _beforeDir || _behavior != _beforeBehavior))
 	{
-		if (_currentAnimation != nullptr)
+		if (_currentAnimation == nullptr)
 		{
-			_currentAnimation->AniStop();
+			assert("GameCharacter::update >> Aniamtion nullptr");
 		}
+		_currentAnimation->AniStop();
 		_beforeDir = _dir;
 		_beforeBehavior = _behavior;
 
@@ -163,17 +183,22 @@ void GameCharacter::update(void)
 	_rc = RectMakeCenter((int)_point.x - _imgCorrectionX,(int) _point.y - _imgCorrectionY, _characterImg->getFrameWidth(), _characterImg->getFrameHeight());
 
 	_shadowRc = RectMakeCenter((int)_point.x , (int)_point.y , _shadowImg->getWidth(), _shadowImg->getHeight());
+
+	_hpBar->setPoint(_point);
+	_hpBar->update();
 }
 
 void GameCharacter::render(void)
 {
 	_shadowImg->render(getMemDC(), _shadowRc.left-CAMERA->getLeft(), _shadowRc.top - CAMERA->getTop());
+	_hpBar->render();
 	//_characterImg->aniRender(getMemDC(),_rc.left - CAMERA->getLeft(),_rc.top - CAMERA->getTop(), _currentAnimation);
 }
 
 void GameCharacter::unregisterZData(void)
 {
 	CAMERA->removeZData(_zData);
+	_hpBar->removeZData();
 }
 
 void GameCharacter::setReservationAniBehavior(E_AniBehavior behavior)
@@ -210,6 +235,7 @@ void GameCharacter::beAttacked(int damage)
 		_stats->_hp = 0;
 		_isDie = true;
 	}
+	_hpBar->setGauge(_stats->_hp, _stats->_maxHp);
 }
 
 Item* GameCharacter::setEquipmentItem(E_Equipment_Item itemSlot, Item* item)

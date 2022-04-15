@@ -61,6 +61,16 @@ void BattleScene::render(void)
 					zData->getRECT()->top - CAMERA->getTop(),
 					(*zData->getAnimation()));
 				break;
+			case ZIndexType_ProgressDownbar:
+				(*zData->getImage())->render(getMemDC(),
+					zData->getRECT()->left - CAMERA->getLeft(),
+					zData->getRECT()->top - CAMERA->getTop(),0,0, (*zData->getImage())->getWidth(), (*zData->getImage())->getHeight());
+				break;
+			case ZIndexType_ProgressUpbar:
+				(*zData->getImage())->render(getMemDC(),
+					zData->getRECT()->left - CAMERA->getLeft(),
+					zData->getRECT()->top - CAMERA->getTop(), 0, 0, *zData->getNumW(), (*zData->getImage())->getHeight());
+				break;
 			case ZIndexType_Damage:
 				(*zData->getImage())->alphaFrameRender(getMemDC(), zData->getRECT()->right - zData->getFrameY() - CAMERA->getLeft(), zData->getRECT()->top - CAMERA->getTop(), zData->getFrameX(), 0, zData->getAlpha());
 				break;

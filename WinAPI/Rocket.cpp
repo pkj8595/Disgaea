@@ -28,7 +28,7 @@ HRESULT Rocket::init(void)
 	_maxHp = 10;
 
 	_hpBar = new ProgressBar;
-	_hpBar->init(_x,_y, _rc.right-_rc.left,10);
+	_hpBar->init(_x,_y, _rc.right-_rc.left,10,true);
 
 
 	_aMissile = nullptr;

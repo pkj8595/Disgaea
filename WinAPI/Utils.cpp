@@ -48,10 +48,6 @@ namespace MY_UTIL
 		return vfileNameList;
 	}
 
-	void testCallBack(void)
-	{
-		cout << "testcallback" << endl;
-	}
 
 }
 

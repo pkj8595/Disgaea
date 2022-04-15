@@ -13,13 +13,11 @@ void TempSoundTest::update(void)
 {
 	if (KEYMANAGER->isOnceKeyDown(VK_RETURN)) 
 	{
-		cout << "input : P" << endl;
 		TEMPSOUNDMANAGER->playSoundWithKey("찬란");
 	}
 	if (KEYMANAGER->isOnceKeyDown('A')) 
 	{
 		//TEMPSOUNDMANAGER->playSoundWithKey("문체부");
-		//cout<<"input : A" <<endl;
 		TEMPSOUNDMANAGER->playEffectSoundWave("Resource/Sound/paper_slide.wav");
 	}
 
