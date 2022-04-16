@@ -207,6 +207,13 @@ void GameCharacter::unregisterZData(void)
 	_hpBar->removeZData();
 }
 
+void GameCharacter::registerZData()
+{
+	_rc = RectMakeCenter((int)_point.x - _imgCorrectionX, (int)_point.y - _imgCorrectionY, _characterImg->getFrameWidth(), _characterImg->getFrameHeight());
+	CAMERA->registerZData(ZIndexType::ZIndexType_Character,_zData);
+	_hpBar->registerZData();
+}
+
 void GameCharacter::setReservationAniBehavior(E_AniBehavior behavior)
 {
 	_bsCommandState.set(reservationBehaviorFlag, true);
@@ -235,6 +242,7 @@ bool GameCharacter::IsResetMoveIndex(void)
 
 void GameCharacter::beAttacked(int damage)
 {
+	if (damage < 1) damage = 0;
 	_stats->_hp -= damage;
 	if (_stats->_hp < 1)
 	{

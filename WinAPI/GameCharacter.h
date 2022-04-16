@@ -127,7 +127,7 @@ public:
 	
 	void unregisterZData(void);
 	ZOrderData* getZData() { return _zData; }
-	void registerProgressBarZData() { _hpBar->registerZData(); }
+	void registerZData(); 
 
 	void setReservationAniBehavior(E_AniBehavior behavior);
 	bool IsAttackIndex(void);

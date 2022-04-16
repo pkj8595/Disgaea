@@ -96,6 +96,10 @@ void IsometricMap::release(void)
 			(*_vIterCharList)->release();
 			SAFE_DELETE(*_vIterCharList);
 		}
+		else
+		{
+			(*_vIterCharList)->unregisterZData();
+		}
 	}
 	_characterList.clear();
 
@@ -205,8 +209,14 @@ void IsometricMap::update(void)
 
 			if (_currentCharacter->getBehaviorType() == E_BehaviorType::Attack)
 			{
-			
+				
 				GameCharacter* subCharacter =  getNearSameTypeCharacter(_currentCharacter);
+
+				if (subCharacter != nullptr)
+				{
+					if (IsSamePoint(enemyPt, subCharacter->getCoorPoint()))
+						subCharacter = nullptr;
+				}
 				if (subCharacter == nullptr)
 				{
 					_currentCharacter->setAniBehavior(E_AniBehavior::Ani_attack);
@@ -507,8 +517,7 @@ void IsometricMap::setPlayerCharacter(GameCharacter* gameChar, int coorX, int co
 	gameChar->setBeforeCoorPoint(PointMake(coorX, coorY));
 	_vTiles[coorY][coorX]->setTileGameCharacter(gameChar);
 	_characterList.push_back(gameChar);
-	(*CAMERA->getVecZData()).push_back(make_pair(ZIndexType_Character, gameChar->getZData()));
-	gameChar->registerProgressBarZData();
+	gameChar->registerZData();
 }
 
 void IsometricMap::setEnemyCharacter(E_ENEMY_CHARACTER enemy, int coorX, int coorY, int level, int move, int jump, int maxHp, int hp, int maxSp, int sp, int atk, int def, int mint, int speed, int hit, int res, int exp, int maxExp)
@@ -532,8 +541,7 @@ void IsometricMap::setEnemyCharacter(E_ENEMY_CHARACTER enemy, int coorX, int coo
 
 	_vTiles[coorY][coorX]->setTileGameCharacter(newCharacter);
 	_characterList.push_back(newCharacter);
-	(*CAMERA->getVecZData()).push_back(make_pair(ZIndexType_Character, newCharacter->getZData()));
-	newCharacter->registerProgressBarZData();
+	newCharacter->registerZData();
 
 }
 
@@ -1002,15 +1010,16 @@ void IsometricMap::computeTileRange(int range, IsometricTile* currentTile, bool 
 
 	_vTileRange.push_back(currentTile);
 
+	currentTile->showTileRange(true);
 	if (currentTile->getTileGameCharacter() != nullptr)
 	{
 		if (isMove)
 		{
 			currentTile->setSelectAbleTile(false);
-			/*if (currentTile->getTileGameCharacter()->getUnitType() != _currentCharacter->getUnitType() && getTile(_currentCharacter->getCoorPoint()) != currentTile)
+			if (!IsSamePoint(_currentCharacter->getCoorPoint(), cPoint)&& _thisTurn == TurnSubject::PLAYER)
 			{
 				return;
-			}*/
+			}
 		}
 		else
 			currentTile->setSelectAbleTile(true);
@@ -1022,7 +1031,6 @@ void IsometricMap::computeTileRange(int range, IsometricTile* currentTile, bool 
 		else
 			currentTile->setSelectAbleTile(false);
 	}
-	currentTile->showTileRange(true);
 	
 	
 	for (int i = 0; i < 4; i++)

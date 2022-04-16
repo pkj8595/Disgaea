@@ -19,7 +19,7 @@ HRESULT Flonne::init(void)
 HRESULT Flonne::init(string fileName, int x, int y, int coorX, int coorY, E_UnitType type, int imgCorrectionX, int imgCorrectionY)
 {
 	GameCharacter::init(fileName, x, y, coorX, coorY, type, imgCorrectionX, imgCorrectionY);
-	_stats->setStat(2, 6, 0, 20, 20, 10, 10, 5, 3, 0, 10, 60, 0, 0, 10);
+	_stats->setStat(10, 6, 0, 20, 20, 10, 10, 100, 30, 0, 10, 60, 0, 0, 10);
 
 	_animation[Ani_Left_Bottom][E_AniBehavior::Ani_idle] = ANIMATIONMANAGER->findAnimation("Flonne_Idle_LB");
 	_animation[Ani_Left_Bottom][E_AniBehavior::Ani_move] = ANIMATIONMANAGER->findAnimation("Flonne_move_LB");

@@ -20,7 +20,7 @@ HRESULT Laharl::init(void)
 HRESULT Laharl::init(string fileName, int x, int y, int coorX, int coorY, E_UnitType type, int imgCorrectionX, int imgCorrectionY)
 {
 	GameCharacter::init(fileName,x,y,coorX,coorY,type,imgCorrectionX,imgCorrectionY);
-	_stats->setStat(2, 7, 0, 20, 20, 10, 10, 5, 3, 0, 10, 60, 0, 0, 10);
+	_stats->setStat(2, 7, 0, 20, 20, 10, 10, 100, 50, 0, 10, 60, 0, 0, 10);
 
 	_animation[Ani_Left_Bottom][E_AniBehavior::Ani_idle] = ANIMATIONMANAGER->findAnimation("battle_idle_LB_Start");
 	_animation[Ani_Left_Bottom][E_AniBehavior::Ani_move] = ANIMATIONMANAGER->findAnimation("move_LB_Start");
