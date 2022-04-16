@@ -74,11 +74,11 @@ public:
 	int correctionXIndex(int xindex);
 	int correctionYIndex(int yindex);
 
-	void characterWindowSetup();
-	void turnWindowSetup();
-	void createCharacterWindowSetup();
+	void characterWindowSetup(void);
+	void turnWindowSetup(void);
+	void createCharacterWindowSetup(void);
 
-	inline void updateBattleUI();
+	inline void updateBattleUI(void);
 
 	TurnSystem() {}
 	~TurnSystem() {}

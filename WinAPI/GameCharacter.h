@@ -138,6 +138,7 @@ public:
 	void setY(int y){ _point.y = y; }
 	void beAttacked(int damage);
 	bool getIsDie(void) { return _isDie; }
+	void healCharacter(void);
 
 	int getBattleFaceIndex() { return _battleFaceIndex; }
 	int getIconIndex() { return _iconIndex; }

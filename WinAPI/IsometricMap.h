@@ -5,6 +5,7 @@
 #include "GameCharacter.h"
 #include "PortraitAnimation.h"
 #include "DamageMeter.h"
+#include "EffectManager.h"
 
 //TILE_START_X = RECT_VECTOR_SIZE_Y * 30
 #define TILE_START_X			450
@@ -70,6 +71,7 @@ private:
 	bool _isPortaitEnd;
 
 	DamageMeter* _damageMeter;
+	EffectManager* _effectManager;
 
 public:
 	virtual HRESULT init(void);
@@ -122,10 +124,12 @@ public:
 	void startComputeTileRange(int range, POINT startTilePoint, bool isMove);
 	void resetTileRange(void);
 
+	bool IsEmptyPlayerCharacter(void);
+	bool IsEmptyEnemyCharacter(void);
+
 	GameCharacter* computeNearControlableCharacter(GameCharacter* curCharacter);
 	IsometricTile* computeEnemyMoveTargetTile(GameCharacter* curCharacter);
 	IsometricTile* computeEnemyAttackRangeInPlayerTile(GameCharacter* currentEnemy);
-
 
 private:
 	void CheckEnemyTurnEnd(void);

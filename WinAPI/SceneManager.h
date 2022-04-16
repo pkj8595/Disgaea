@@ -29,6 +29,7 @@ public:
 
 	//씬교체
 	HRESULT changeScene(string sceneName);
+	void releaseCurrentScene(void);
 
 	//로딩 스레드 함수
 	friend DWORD CALLBACK loadingThread(LPVOID prc);

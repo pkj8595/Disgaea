@@ -111,6 +111,7 @@ void Camera::update(void)
 
 		if (_changeSceneName != "" &&!_isFadeOut)
 		{
+			SCENEMANAGER->releaseCurrentScene();
 			SCENEMANAGER->changeScene(_changeSceneName);
 			_changeSceneName = "";
 		}

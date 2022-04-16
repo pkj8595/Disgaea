@@ -17,6 +17,9 @@ public:
 	void update(void);
 	void render(void);
 	void createEffect(const char* fileName, RECT rc);
+	void createEffect(const char* fileName, POINT point);
+	void createEffect(const char* fileName, POINT point, int FPS);
+	void createEffect(const char* fileName, POINT point, int FPS,BYTE alpha);
 
 
 	EffectManager() {}

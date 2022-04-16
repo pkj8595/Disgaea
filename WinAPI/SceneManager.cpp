@@ -98,6 +98,11 @@ GameNode* SceneManager::addLoadingScene(string loadingSceneName, GameNode * scen
 	return scene;
 }
 
+void SceneManager::releaseCurrentScene(void)
+{
+	if (_currentScene) _currentScene->release();
+}
+
 HRESULT SceneManager::changeScene(string sceneName)
 {
 	//변경하려고 하는 씬을 찾는다.

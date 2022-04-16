@@ -108,8 +108,32 @@ void TurnSystem::update(void)
 	if (!_isPlayerTrunStart)
 	{
 		_isPlayerTrunStart = true;
-		CAMERA->moveToTarget(_battleUi[UI_MAPSIGN]->getPointAddress(), UI_CAMERA_MOVEING_SPEED);
-		_turnStateUI->StartTurnStateAnimation(true);
+
+		bool isPlayerGameOver = _map->IsEmptyPlayerCharacter();
+		bool isEnemyGameOver = _map->IsEmptyEnemyCharacter();
+
+		cout << "isPlayerGameOver : " << isPlayerGameOver << endl;
+		cout << "isEnemyGameOver : " << isEnemyGameOver << endl;
+
+		if ((isPlayerGameOver && _vPlayerChar.size()==0)|| isEnemyGameOver)
+		{
+			cout << "excute game end?"<< endl;
+			if (isPlayerGameOver)
+			{
+				CAMERA->FadeStart(4);
+				CAMERA->FadeChangeScenceName("TitleScene");
+			}
+			else if(isEnemyGameOver)
+			{
+				CAMERA->FadeStart(4);
+				CAMERA->FadeChangeScenceName("WorldMapScene");
+			}
+		}
+		else
+		{
+			CAMERA->moveToTarget(_battleUi[UI_MAPSIGN]->getPointAddress(), UI_CAMERA_MOVEING_SPEED);
+			_turnStateUI->StartTurnStateAnimation(true);
+		}
 	}
 	
 	switch (_controlState)
@@ -271,6 +295,7 @@ void TurnSystem::update(void)
 						{
 							_charBehaviorWindow->setWindowValueState(0, EWindow_ValueState::WINDOW_DEFAULT);
 						}
+
 						if (tempCharacter->getCommandState(E_CommandFlag::behaviorFalg))
 						{
 							_charBehaviorWindow->setWindowValueState(1, EWindow_ValueState::WINDOW_NOT_SELECTABLE);
@@ -279,6 +304,7 @@ void TurnSystem::update(void)
 						{
 							_charBehaviorWindow->setWindowValueState(1, EWindow_ValueState::WINDOW_DEFAULT);
 						}
+
 						_selectedCharRange = tempCharacter->getCharicterStats()->_move;
 						_tileRangeStartPoint = _battleUi[UI_MAPSIGN]->getCoorPoint();
 						
@@ -418,8 +444,6 @@ void TurnSystem::update(void)
 			break;
 		}
 	}
-
-
 
 }
 

@@ -644,58 +644,46 @@ namespace my {
 
 		if (_isTrans)
 		{
-			BitBlt
-			(
+			BitBlt(	
 				_blendImage->hMemDc,
 				0, 0,
-				_imageInfo->width,
-				_imageInfo->height,
+				_imageInfo->frameWidth,
+				_imageInfo->frameHeight,
 				hdc,
 				destX, destY,
 				SRCCOPY
 			);
-			GdiTransparentBlt
-			(
+
+			GdiTransparentBlt(
 				_blendImage->hMemDc,
 				0, 0,
-				_imageInfo->width,
-				_imageInfo->height,
-				_imageInfo->hMemDc,
-				0, 0,
-				_imageInfo->width,
-				_imageInfo->height,
+				_imageInfo->frameWidth, 
+				_imageInfo->frameHeight,
+				_imageInfo->hMemDc,     
+				_imageInfo->currentFrameX * _imageInfo->frameWidth,
+				_imageInfo->currentFrameY * _imageInfo->frameHeight,      
+				_imageInfo->frameWidth,      
+				_imageInfo->frameHeight,   
 				_transColor
-			);
-			AlphaBlend
-			(
-				hdc,
+			);         
+
+			GdiAlphaBlend(
+				hdc, 
 				destX, destY,
 				_imageInfo->frameWidth,
 				_imageInfo->frameHeight,
 				_blendImage->hMemDc,
-				_imageInfo->currentFrameX * _imageInfo->frameWidth,
-				_imageInfo->currentFrameY * _imageInfo->frameHeight,
-				_imageInfo->frameWidth,	
+				0, 0,
+				_imageInfo->frameWidth,
 				_imageInfo->frameHeight,
-				_blendFunc
-			);
+				_blendFunc);
 		}
 		else
 		{
-			AlphaBlend
-			(
-				hdc,
-				destX, destY,
-				_imageInfo->frameWidth,
-				_imageInfo->frameHeight,
-				_imageInfo->hMemDc,
-				_imageInfo->currentFrameX * _imageInfo->frameWidth,
-				_imageInfo->currentFrameY * _imageInfo->frameHeight,
-				_imageInfo->frameWidth,
-				_imageInfo->frameHeight,
-				_blendFunc
-			);
+			GdiAlphaBlend(hdc, destX, destY, _imageInfo->frameWidth, _imageInfo->frameHeight,
+				_imageInfo->hMemDc, 0, 0, _imageInfo->frameWidth, _imageInfo->frameHeight, _blendFunc);
 		}
+
 	}
 
 	void Image::loopRender(HDC hdc, const LPRECT drawArea, int offsetX, int offsetY)

@@ -6,7 +6,11 @@
 #include "Flonne.h"
 #include "Ghost.h"
 
-IsometricMap::IsometricMap()
+IsometricMap::IsometricMap():_currentCharacter(nullptr),
+							_behaviorList(nullptr),
+							_portait(nullptr),
+							_damageMeter(nullptr),
+							_effectManager(nullptr)
 {
 }
 
@@ -100,6 +104,9 @@ HRESULT IsometricMap::init(int mapsizeX, int mapsizeY)
 	_damageMeter = new DamageMeter;
 	_damageMeter->init();
 
+	_effectManager = new EffectManager;
+	_effectManager->init();
+
 	_mapSize.x = mapsizeX;
 	_mapSize.y = mapsizeY;
 	_tileAlpha = 100;
@@ -155,6 +162,10 @@ void IsometricMap::release(void)
 			SAFE_DELETE(character);
 		}
 	}
+	_characterList.clear();
+
+	_effectManager->release();
+	SAFE_DELETE(_effectManager);
 	_damageMeter->release();
 	SAFE_DELETE(_damageMeter);
 	_behaviorList->release();
@@ -164,7 +175,7 @@ void IsometricMap::release(void)
 void IsometricMap::update(void)
 {
 	_damageMeter->update();
-
+	_effectManager->update();
 	_portait->update();
 	if (_portait->getIsActive())
 	{
@@ -201,6 +212,8 @@ void IsometricMap::update(void)
 			int compareX = _linearStartPoint.x - _vCMovePointsIter->x;
 			int compareY = _linearStartPoint.y - _vCMovePointsIter->y;
 			_currentCharacter->setAniBehavior(E_AniBehavior::Ani_move);
+
+			
 
 			currentCharacterDirCheck(compareX, compareY);
 
@@ -363,12 +376,14 @@ void IsometricMap::update(void)
 					//데미지 미터기
 					_damageMeter->createDamageEffect(PointMake(attackedChar->getPoint().x, attackedChar->getPoint().y-50), damage);
 
+					_effectManager->createEffect("effect2", PointMake(attackedChar->getPoint().x-5, attackedChar->getPoint().y - 30),8,100);
+					
 					if (attackedChar->getIsDie()&& _currentCharacter->getBehaviorType() != E_BehaviorType::Sub2CollaboAttackStart)
 					{
 						_behaviorList->removeBehavior(getTile(attackedChar->getCoorPoint()));
 						removeCharacter(attackedChar);
 					}
-
+					
 					if (!_behaviorList->front()->second.empty())
 					{
 						_behaviorList->front()->second.pop_front();
@@ -521,15 +536,25 @@ void IsometricMap::render(void)
 	{
 		character->render();
 	}
-	//_portait->render();
 	_damageMeter->render();
+	_effectManager->render();
 
 }
 
 void IsometricMap::removeCharacter(GameCharacter* character)
 {
 	getTile(character->getCoorPoint())->setTileGameCharacter(nullptr);
-	_characterList.remove(character);
+	
+	list<GameCharacter*>::iterator iter = _characterList.begin();
+	for (; iter != _characterList.end();)
+	{
+		if ((*iter) == character)
+		{
+			iter = _characterList.erase(iter);
+		}
+		else ++iter;
+	}
+
 	if (character->getUnitType() == E_UnitType::Monster)
 	{
 		character->release();
@@ -539,6 +564,7 @@ void IsometricMap::removeCharacter(GameCharacter* character)
 	{
 		character->unregisterZData();
 	}
+	cout << "_characterList.size() : " << _characterList.size()<< endl;
 }
 
 void IsometricMap::setPlayerCharacter(GameCharacter* gameChar, int coorX, int coorY)
@@ -1113,6 +1139,37 @@ void IsometricMap::resetTileRange(void)
 	}
 
 }
+
+bool IsometricMap::IsEmptyPlayerCharacter(void)
+{
+	list<GameCharacter*>::iterator iter = _characterList.begin();
+	for (; iter != _characterList.end(); ++iter)
+	{
+		if ((*iter)->getUnitType() == E_UnitType::Controllable )
+		{
+			cout << "플레이어 캐릭터가 있음" << _characterList.size() << endl;
+			return false;
+		}
+	}
+	return true;
+}
+
+bool IsometricMap::IsEmptyEnemyCharacter(void)
+{
+	list<GameCharacter*>::iterator iter = _characterList.begin();
+	for (; iter != _characterList.end(); ++iter)
+	{
+		if ((*iter)->getUnitType() == E_UnitType::Monster)
+		{
+			cout << "에너미 캐릭터가 있음"<< _characterList.size() << endl;
+
+			return false;
+		}
+	}
+	return true;
+}
+
+
 
 GameCharacter* IsometricMap::computeNearControlableCharacter(GameCharacter* curCharacter)
 {

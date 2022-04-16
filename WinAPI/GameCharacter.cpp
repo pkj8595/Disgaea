@@ -3,7 +3,13 @@
 #include "ItemManager.h"
 
 GameCharacter::GameCharacter() : _characterImg(nullptr),
-								_currentAnimation(nullptr)
+								_currentAnimation(nullptr),
+								_allStats(nullptr),
+								_stats(nullptr),
+								_equipItem{nullptr},
+								_animation{nullptr},
+								_hpBar(nullptr)
+
 {
 }
 
@@ -236,6 +242,13 @@ void GameCharacter::beAttacked(int damage)
 		_isDie = true;
 	}
 	_hpBar->setGauge(_stats->_hp, _stats->_maxHp);
+}
+
+void GameCharacter::healCharacter(void)
+{
+	_stats->_hp = _stats->_maxHp;
+	_stats->_sp = _stats->_maxSp;
+	_isDie = false;
 }
 
 Item* GameCharacter::setEquipmentItem(E_Equipment_Item itemSlot, Item* item)

@@ -111,6 +111,14 @@ void DataSetUp::ImageClassInit()
 #pragma region Map
 
 #pragma endregion
+
+#pragma region Effect
+	IMAGEMANAGER->addFrameImage("effect2", "Resource/Images/Disgaea/Effect/effect2.bmp", 354, 124, 3, 1, true, RGB(255, 0, 255));
+	IMAGEMANAGER->addFrameImage("Effect", "Resource/Images/Disgaea/Effect/Effect.bmp", 960, 160, 6, 1, true, RGB(255, 0, 255));
+	IMAGEMANAGER->addFrameImage("wind1", "Resource/Images/Disgaea/Effect/wind1.bmp", 2400, 2880, 8, 10, true, RGB(255, 0, 255));
+	IMAGEMANAGER->addFrameImage("fire1", "Resource/Images/Disgaea/Effect/fire1.bmp", 448, 146, 7, 2, true, RGB(0, 0, 0));
+	IMAGEMANAGER->addFrameImage("fire2", "Resource/Images/Disgaea/Effect/fire2.bmp", 680, 72, 10, 1, true, RGB(0, 0, 0));
+#pragma endregion
 	
 }
 
