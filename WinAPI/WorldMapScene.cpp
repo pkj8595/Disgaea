@@ -1,5 +1,6 @@
 #include "Stdafx.h"
 #include "WorldMapScene.h"
+#include "GameCharacter.h"
 
 HRESULT WorldMapScene::init(void)
 {
@@ -42,6 +43,11 @@ void WorldMapScene::update(void)
 		switch (_mapType)
 		{
 		case E_WorldMapType::HOME:
+			if (_currentUI->getIndex() + 1 == 3)
+			{
+				GAMEMANAGER->healAllCharacter();
+				break;
+			}
 			_mapType = static_cast<E_WorldMapType>(_currentUI->getIndex()+1);
 			_isExcuteChangeScene = false;
 			CAMERA->FadeStart(7);
@@ -137,6 +143,7 @@ void WorldMapScene::stageSetup()
 	home.second->setIsActive(false);
 	home.second->setWindowValue("연습용 맵", 20, 20, nullptr);
 	home.second->setWindowValue("바이어스 성", 20, 20, nullptr);
+	home.second->setWindowValue("캐릭터를 치료한다.", 20, 20, nullptr);
 	_stageList.push_back(home);
 
 	pair< E_WorldMapType, CWindowUI*> stage1;

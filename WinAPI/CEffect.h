@@ -17,19 +17,19 @@ private:
 	bool _useAlphaFrame;
 	bool _isAlphaChange;
 	bool _isAlphaIncrease;
-	BYTE _alpha;
-	float _alphaOffset;
 
+	BYTE _alpha;
+	BYTE _endAlpha;
+	float _alphaOffset;
+	ZOrderData* _zData;
 
 public:
-	
-
 	HRESULT init(void);
 	virtual HRESULT init(const char* imageName, RECT rc);
 	virtual HRESULT init(const char* imageName, POINT pt);
 	virtual HRESULT init(const char* imageName, POINT pt, int FPS);
 	virtual HRESULT init(const char* imageName, POINT pt, int FPS, BYTE alpha);
-	virtual HRESULT init(const char* imageName, POINT pt, int FPS, BYTE alpha, bool isAlphaIncrease);
+	virtual HRESULT init(const char* imageName, POINT pt, int FPS, bool isAlphaIncrease, BYTE startAlpha, BYTE endAlpha , float alphaOffset);
 	void release(void);
 	void update(void);
 	void render(void);

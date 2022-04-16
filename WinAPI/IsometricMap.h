@@ -80,7 +80,7 @@ public:
 	virtual void update(void);
 	virtual void render(void);
 	void currentCharacterDirCheck(int compareX, int compareY);
-
+	list<GameCharacter*>* getCharacterList() { return &_characterList; }
 	void removeCharacter(GameCharacter* character);
 	void setPlayerCharacter(GameCharacter* gameChar, int coorX, int coorY);
 	void setEnemyCharacter(E_ENEMY_CHARACTER enemy, int coorX, int coorY, int level, int move, int jump, int maxHp, int hp, int maxSp, int sp, int atk, int def, int mint, int speed, int hit, int res, int exp, int maxExp);

@@ -57,6 +57,8 @@ HRESULT TurnSystem::init(void)
 
 void TurnSystem::release(void)
 {
+	_vPlayerChar.clear();
+
 	_charStatusUI->release();
 	_battleUi[UI_MAPSIGN]->release();
 	_battleUi[UI_BattleStartObj]->release();
@@ -108,32 +110,8 @@ void TurnSystem::update(void)
 	if (!_isPlayerTrunStart)
 	{
 		_isPlayerTrunStart = true;
-
-		bool isPlayerGameOver = _map->IsEmptyPlayerCharacter();
-		bool isEnemyGameOver = _map->IsEmptyEnemyCharacter();
-
-		cout << "isPlayerGameOver : " << isPlayerGameOver << endl;
-		cout << "isEnemyGameOver : " << isEnemyGameOver << endl;
-
-		if ((isPlayerGameOver && _vPlayerChar.size()==0)|| isEnemyGameOver)
-		{
-			cout << "excute game end?"<< endl;
-			if (isPlayerGameOver)
-			{
-				CAMERA->FadeStart(4);
-				CAMERA->FadeChangeScenceName("TitleScene");
-			}
-			else if(isEnemyGameOver)
-			{
-				CAMERA->FadeStart(4);
-				CAMERA->FadeChangeScenceName("WorldMapScene");
-			}
-		}
-		else
-		{
-			CAMERA->moveToTarget(_battleUi[UI_MAPSIGN]->getPointAddress(), UI_CAMERA_MOVEING_SPEED);
-			_turnStateUI->StartTurnStateAnimation(true);
-		}
+		CAMERA->moveToTarget(_battleUi[UI_MAPSIGN]->getPointAddress(), UI_CAMERA_MOVEING_SPEED);
+		_turnStateUI->StartTurnStateAnimation(true);
 	}
 	
 	switch (_controlState)
@@ -464,6 +442,19 @@ inline void TurnSystem::updateBattleUI()
 	_battleUi[UI_BLUESIGN]->setPoint(_map->getcoordinateToPoint(_battleUi[UI_MAPSIGN]->getCoorPoint()));
 }
 
+bool TurnSystem::confimeAliveCharacter(void)
+{
+	_vIPlayerChar = _vPlayerChar.begin();
+	for (; _vIPlayerChar != _vPlayerChar.end(); ++_vIPlayerChar)
+	{
+		if (!(*_vIPlayerChar)->getIsDie())
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
 
 void TurnSystem::setInitBattleUI(POINT point)
 {
@@ -588,10 +579,16 @@ void TurnSystem::createCharacterWindowSetup()
 				_controlState = EControl_State::Map_Cursor;
 				_okBtnState = EOkBtnState::Nomal;
 			};
+			int count = 0;
 			_vIPlayerChar = _vPlayerChar.begin();
 			for (; _vIPlayerChar != _vPlayerChar.end(); ++_vIPlayerChar)
 			{
 				_charCreateWindow->setWindowValue((*_vIPlayerChar)->getName(), 20, 20, createCharacter);
+				if (_vPlayerChar[count]->getIsDie())
+				{
+					_charCreateWindow->setWindowValueState(count, EWindow_ValueState::WINDOW_NOT_SELECTABLE);
+				}
+				count++;
 			}
 			_playerCharSize = _vPlayerChar.size();
 		}

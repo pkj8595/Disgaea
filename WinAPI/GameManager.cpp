@@ -20,3 +20,12 @@ void GameManager::release(void)
 	_itemManager->releaseSingleton();
 
 }
+
+void GameManager::healAllCharacter(void)
+{
+	vector<GameCharacter*>::iterator iter = _playerUnits.begin();
+	for (; iter != _playerUnits.end(); ++iter)
+	{
+		(*iter)->healCharacter();
+	}
+}

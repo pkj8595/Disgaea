@@ -118,6 +118,8 @@ void DataSetUp::ImageClassInit()
 	IMAGEMANAGER->addFrameImage("wind1", "Resource/Images/Disgaea/Effect/wind1.bmp", 2400, 2880, 8, 10, true, RGB(255, 0, 255));
 	IMAGEMANAGER->addFrameImage("fire1", "Resource/Images/Disgaea/Effect/fire1.bmp", 448, 146, 7, 2, true, RGB(0, 0, 0));
 	IMAGEMANAGER->addFrameImage("fire2", "Resource/Images/Disgaea/Effect/fire2.bmp", 680, 72, 10, 1, true, RGB(0, 0, 0));
+	IMAGEMANAGER->addFrameImage("fire2", "Resource/Images/Disgaea/Effect/fire2.bmp", 680, 72, 10, 1, true, RGB(0, 0, 0));
+	IMAGEMANAGER->addFrameImage("particle", "Resource/Images/Disgaea/Effect/particle.bmp", 25, 5, 6, 1, true, RGB(255, 0, 255));
 #pragma endregion
 	
 }

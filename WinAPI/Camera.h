@@ -9,6 +9,7 @@ enum ZIndexType
 	ZIndexType_ProgressDownbar,
 	ZIndexType_ProgressUpbar,
 	ZIndexType_BlueUI,
+	ZIndexType_Effect,
 	ZIndexType_Damage,
 	ZIndexType_Portrait,
 };
@@ -24,6 +25,7 @@ private:
 	float*	_numW;
 	bool*	_isActive;
 	BYTE*	_alpha;
+	CALLBACKFUNCTION _callback;
 
 public:
 	Animation** getAnimation() { return _animation; }
@@ -33,6 +35,7 @@ public:
 	int		getFrameY() { return _frameY; }
 	float*	getNumW() { return _numW; }
 	BYTE	getAlpha() { return *_alpha; }
+	void	excuteRenderCallback() { _callback(); }
 	bool	getIsActive() 
 	{
 		if (_isActive != nullptr)
@@ -40,6 +43,11 @@ public:
 			return *_isActive; 
 		}
 		return true;
+	}
+	void setRenderCallback(RECT* rc, CALLBACKFUNCTION callback)
+	{
+		_callback = callback;
+		_rc = rc;
 	}
 
 	void setRenderData(RECT* rc, Animation** ani, my::Image** img)

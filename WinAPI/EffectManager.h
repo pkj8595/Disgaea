@@ -20,7 +20,10 @@ public:
 	void createEffect(const char* fileName, POINT point);
 	void createEffect(const char* fileName, POINT point, int FPS);
 	void createEffect(const char* fileName, POINT point, int FPS,BYTE alpha);
+	void createEffect(const char* fileName, POINT point, int FPS, bool isAlphaIncrease, BYTE startAlpha, BYTE endAlpha, float alphaOffset);
+	void createParticleEffect(const char* fileName, POINT point, int FPS, bool isAlphaIncrease, BYTE startAlpha, BYTE endAlpha, float alphaOffset, int particleCount, int cRange);
 
+	POINT CircleRandomPoint(POINT pt , int range);
 
 	EffectManager() {}
 	~EffectManager() {}

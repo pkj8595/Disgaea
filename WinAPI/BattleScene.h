@@ -13,6 +13,7 @@ private:
 	my::Image*		_backImg;
 	RECT			_backRc;
 	POINT			_backPoint;
+	int				_beforeCharCount;
 
 public:
 	HRESULT init(void);

@@ -21,72 +21,6 @@ IsometricMap::~IsometricMap()
 
 HRESULT IsometricMap::init(void)
 {
-	//todo 맵 데이터, 플레어어 캐릭터, 적 정보를 입력받아서 화면에 뿌린다.
-	_currentType = IsoTileType::NONE;
-	_behaviorList = new BehaviorList;
-	_behaviorList->init();
-
-	_portait = new PortraitAnimation;
-	_portait->init();
-
-	_mapSize.x = 13;
-	_mapSize.y = 15;
-	_tileAlpha = 100;
-	for (int y = 0; y < _mapSize.y; y++)
-	{
-		vector< IsometricTile* > vXTile;
-		for (int x = 0; x < _mapSize.x; x++)
-		{
-			IsometricTile* tile = new IsometricTile;
-			tile->init(
-				x,y,
-				TILE_START_X + ((x-y)*(RECTANGLE_X*0.5)),
-				TILE_START_Y + ((x+y)*(RECTANGLE_Y*0.5)),
-				RECTANGLE_X, RECTANGLE_Y);
-			tile->setAlpha(&_tileAlpha);
-			vXTile.push_back(tile);
-		}
-		_vTiles.push_back(vXTile);
-	}
-
-	_isCharacterMoving = false;
-	_onceTileMoveCount = 0;
-
-	_linearStartPoint = PointMake(0, 0);
-	_collaborationStartPoint = PointMake(0, 0);
-	_isTileAlphaIncrease = true;
-	_isRunnigBehavior = false;
-	_isRunnigBehaviorSetting = false;
-	_thisTurn = TurnSubject::PLAYER;
-	_isRunningBeAttackedAnimation = false;
-	_isCurrentCharAttacked = true;
-	_isPortaitEnd = false;
-
-	GameCharacter* laharl = new Laharl;
-	laharl->init("laharl", getcoordinateToPoint(5, 5).x, getcoordinateToPoint(5, 5).y, 5, 5, E_UnitType::Controllable, 0, 20);
-	_vTiles[5][5]->setTileGameCharacter(laharl);
-	_characterList.push_back(laharl);
-
-	GameCharacter* etna = new Etna;
-	etna->init("Etna", getcoordinateToPoint(3, 3).x, getcoordinateToPoint(3, 3).y, 3, 3, E_UnitType::Controllable, 0, 20);
-	_vTiles[3][3]->setTileGameCharacter(etna);
-	_characterList.push_back(etna);
-
-	GameCharacter* vyers = new Vyers;
-	vyers->init("Vyers", getcoordinateToPoint(7, 7).x, getcoordinateToPoint(7, 7).y, 7, 7, E_UnitType::Monster, 0, 20);
-	_vTiles[7][7]->setTileGameCharacter(vyers);
-	_characterList.push_back(vyers);
-
-	GameCharacter* ghost = new Ghost;
-	ghost->init("Ghost", getcoordinateToPoint(8, 8).x, getcoordinateToPoint(8, 8).y, 8, 8, E_UnitType::Monster, 0, 20);
-	_vTiles[8][8]->setTileGameCharacter(ghost);
-	_characterList.push_back(ghost);
-
-	GameCharacter* flonne = new Flonne;
-	flonne->init("Flonne", getcoordinateToPoint(5, 0).x, getcoordinateToPoint(5, 0).y, 5, 0, E_UnitType::Controllable, 0, 20);
-	_vTiles[0][5]->setTileGameCharacter(flonne);
-	_characterList.push_back(flonne);
-
 	return S_OK;
 }
 
@@ -154,12 +88,13 @@ void IsometricMap::release(void)
 	}
 	_vTiles.clear();
 
-	for (GameCharacter* character : _characterList)
+	list<GameCharacter*>::iterator _vIterCharList = _characterList.begin();
+	for (; _vIterCharList != _characterList.end(); ++_vIterCharList)
 	{
-		if (character->getUnitType() == E_UnitType::Monster)
+		if ((*_vIterCharList)->getUnitType() == E_UnitType::Monster)
 		{
-			character->release();
-			SAFE_DELETE(character);
+			(*_vIterCharList)->release();
+			SAFE_DELETE(*_vIterCharList);
 		}
 	}
 	_characterList.clear();
@@ -212,8 +147,6 @@ void IsometricMap::update(void)
 			int compareX = _linearStartPoint.x - _vCMovePointsIter->x;
 			int compareY = _linearStartPoint.y - _vCMovePointsIter->y;
 			_currentCharacter->setAniBehavior(E_AniBehavior::Ani_move);
-
-			
 
 			currentCharacterDirCheck(compareX, compareY);
 
@@ -376,7 +309,7 @@ void IsometricMap::update(void)
 					//데미지 미터기
 					_damageMeter->createDamageEffect(PointMake(attackedChar->getPoint().x, attackedChar->getPoint().y-50), damage);
 
-					_effectManager->createEffect("effect2", PointMake(attackedChar->getPoint().x-5, attackedChar->getPoint().y - 30),8,100);
+					_effectManager->createParticleEffect("particle", PointMake(attackedChar->getPoint().x, attackedChar->getPoint().y - 30),8,false,150,20,5,60,30);
 					
 					if (attackedChar->getIsDie()&& _currentCharacter->getBehaviorType() != E_BehaviorType::Sub2CollaboAttackStart)
 					{

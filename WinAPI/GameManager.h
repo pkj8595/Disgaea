@@ -24,6 +24,7 @@ public:
 	int getStageIndex(void) { return _stageIndex; }
 	int getDetailStageIndex(void) { return _DetailStageIndex; }
 
+	void healAllCharacter(void);
 	vector<GameCharacter*>* getAllPlayerUnits(){return &_playerUnits;}
 	vector<Item*> getAllInvenItems() { return _vInvenItem; }
 	GameCharacter* getPlayerUnit(int index)

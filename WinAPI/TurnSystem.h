@@ -79,6 +79,7 @@ public:
 	void createCharacterWindowSetup(void);
 
 	inline void updateBattleUI(void);
+	bool confimeAliveCharacter(void);
 
 	TurnSystem() {}
 	~TurnSystem() {}

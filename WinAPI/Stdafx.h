@@ -93,6 +93,8 @@ using namespace Gdiplus;
 #include <functional> 
 
 using namespace std;
+typedef function<void(void)> CALLBACKFUNCTION;
+typedef void(*VOIDCALLBACKFUNCTION)(void);
 
 //===================================
 //# 내가 만든 헤더파일을 이곳에 추가 #
@@ -122,6 +124,7 @@ using namespace MY_UTIL;
 //===================================
 //# SingleTon #
 //===================================
+
 #define RND RandomFunction::getSingleton()
 #define KEYMANAGER KeyManager::getSingleton()
 #define IMAGEMANAGER ImageManager::getSingleton()
@@ -195,6 +198,4 @@ extern HWND			_hWnd;
 extern POINT		_ptMouse;	// 마우스 사용시 xy
 //extern mycustom::Image _CImage;  //깡통인데
 
-//typedef void(*CALLBACKFUNCTION)(void);
-typedef function<void(void)> CALLBACKFUNCTION;
 

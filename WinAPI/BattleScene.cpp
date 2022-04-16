@@ -11,6 +11,7 @@ HRESULT BattleScene::init(void)
 	_backImg = IMAGEMANAGER->findImage("battleBack");
 	_backPoint = PointMake(CAMERA->getCameraWidth()*0.5, CAMERA->getCameraHeight()*0.5);
 	_backRc = RectMakeCenter(_backPoint.x, _backPoint.y, _backImg->getWidth(), _backImg->getHeight());
+	_beforeCharCount = 0;
 
 	return S_OK;
 }
@@ -27,6 +28,27 @@ void BattleScene::update(void)
 {
 	_map->update();
 	_turnSystem->update();
+	
+	if (_map->getCharacterList()->size() != _beforeCharCount)
+	{
+		_beforeCharCount = _map->getCharacterList()->size();
+		bool isPlayerGameOver = _map->IsEmptyPlayerCharacter();
+		bool isEnemyGameOver = _map->IsEmptyEnemyCharacter();
+
+		if ((isPlayerGameOver && !_turnSystem->confimeAliveCharacter()) || isEnemyGameOver)
+		{
+			if (isPlayerGameOver)
+			{
+				CAMERA->FadeStart(4);
+				CAMERA->FadeChangeScenceName("TitleScene");
+			}
+			else if (isEnemyGameOver)
+			{
+				CAMERA->FadeStart(4);
+				CAMERA->FadeChangeScenceName("WorldMapScene");
+			}
+		}
+	}
 }
 
 void BattleScene::render(void)
@@ -73,6 +95,9 @@ void BattleScene::render(void)
 				break;
 			case ZIndexType_Damage:
 				(*zData->getImage())->alphaFrameRender(getMemDC(), zData->getRECT()->right - zData->getFrameY() - CAMERA->getLeft(), zData->getRECT()->top - CAMERA->getTop(), zData->getFrameX(), 0, zData->getAlpha());
+				break;
+			case ZIndexType_Effect:
+				(*zData).excuteRenderCallback();
 				break;
 			case ZIndexType_Portrait:
 				(*zData->getImage())->frameRender(getMemDC(), zData->getRECT()->left, zData->getRECT()->top, zData->getFrameX(), zData->getFrameY());
