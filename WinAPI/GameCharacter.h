@@ -136,6 +136,8 @@ public:
 	int getY(){return _point.y;}
 	void setX(int x){ _point.x = x; }
 	void setY(int y){ _point.y = y; }
+
+	bool addExp(int exp);
 	void beAttacked(int damage);
 	bool getIsDie(void) { return _isDie; }
 	void healCharacter(void);
@@ -179,7 +181,8 @@ public:
 	
 	Animation* getCurrentAnimation() { return _currentAnimation; }
 
-	CharicterStats* getCharicterStats() { computeStats(); return _allStats; }
+	CharicterStats* getCharicterAllStats() { computeStats(); return _allStats; }
+	CharicterStats* getCharicterStats() { return _stats; }
 	void computeStats();
 
 	void setSkillMovePoint(POINT targetPoint, int inputCount) 

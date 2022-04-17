@@ -283,7 +283,7 @@ void TurnSystem::update(void)
 							_charBehaviorWindow->setWindowValueState(1, EWindow_ValueState::WINDOW_DEFAULT);
 						}
 
-						_selectedCharRange = tempCharacter->getCharicterStats()->_move;
+						_selectedCharRange = tempCharacter->getCharicterAllStats()->_move;
 						_tileRangeStartPoint = _battleUi[UI_MAPSIGN]->getCoorPoint();
 						
 						_charBehaviorWindow->setIsActive(true);

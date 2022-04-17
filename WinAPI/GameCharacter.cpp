@@ -203,6 +203,7 @@ void GameCharacter::render(void)
 
 void GameCharacter::unregisterZData(void)
 {
+	TurnEnd();
 	CAMERA->removeZData(_zData);
 	_hpBar->removeZData();
 }
@@ -234,15 +235,33 @@ bool GameCharacter::IsResetMoveIndex(void)
 {
 	if (_behavior == E_AniBehavior::Ani_attack)
 	{
-		if (_currentAnimation->getNowPlayIdx() == _attackIndex+1)
+		if (_currentAnimation->getNowPlayIdx() == _attackIndex + 1)
 			return true;
+	}
+	return false;
+}
+
+bool GameCharacter::addExp(int exp)
+{
+	_stats->_exp += exp;
+	if (_stats->_exp > _stats->_maxExp)
+	{
+		while (_stats->_exp > _stats->_maxExp)
+		{
+			_stats->_level++;
+			_stats->_atk += 5;
+			_stats->_hp += 5;
+			_stats->_def += 5;
+			_stats->_maxExp = _stats->_maxExp * 1.4;
+		}
+		return true;
 	}
 	return false;
 }
 
 void GameCharacter::beAttacked(int damage)
 {
-	if (damage < 1) damage = 0;
+	if (damage < 1) damage = 1;
 	_stats->_hp -= damage;
 	if (_stats->_hp < 1)
 	{

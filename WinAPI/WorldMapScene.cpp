@@ -13,7 +13,8 @@ HRESULT WorldMapScene::init(void)
 	_isExcuteChangeScene = true;
 	_stageMainNum = 0;
 	_stageSubNum = 0;
-
+	_healTextActive = false;
+	_healStartTime = 0.0f;
 	return S_OK;
 }
 
@@ -30,6 +31,9 @@ void WorldMapScene::release(void)
 void WorldMapScene::update(void)
 {
 	_currentUI->update();
+
+	
+
 	if (KEYMANAGER->isOnceKeyDown('W'))
 	{
 		_currentUI->selectUp();
@@ -46,6 +50,8 @@ void WorldMapScene::update(void)
 			if (_currentUI->getIndex() + 1 == 3)
 			{
 				GAMEMANAGER->healAllCharacter();
+				_healTextActive = true;
+				_healStartTime = TIMEMANAGER->getWorldTime();
 				break;
 			}
 			_mapType = static_cast<E_WorldMapType>(_currentUI->getIndex()+1);
@@ -97,6 +103,15 @@ void WorldMapScene::update(void)
 void WorldMapScene::render(void)
 {
 	_backImg->render(getMemDC(), _backRc.left, _backRc.top);
+
+	if (_healTextActive)
+	{
+		FONTMANAGER->drawTextRectCenter(getMemDC(), _backRc, "나눔고딕 Bold", 30, 20, "모두 치료되었다.", RGB(255, 255, 255));
+		if (TIMEMANAGER->getWorldTime() > _healStartTime + 2)
+		{
+			_healTextActive = false;
+		}
+	}
 	_currentUI->render();
 }
 
@@ -139,7 +154,7 @@ void WorldMapScene::stageSetup()
 	pair< E_WorldMapType, CWindowUI*> home;
 	home.first = E_WorldMapType::HOME;
 	home.second = new CWindowUI;
-	home.second->init(30, 200, 100, EWindow_Align::WINDOW_LEFTTOP);
+	home.second->init(30, 200, 200, EWindow_Align::WINDOW_LEFTTOP);
 	home.second->setIsActive(false);
 	home.second->setWindowValue("연습용 맵", 20, 20, nullptr);
 	home.second->setWindowValue("바이어스 성", 20, 20, nullptr);
@@ -152,7 +167,6 @@ void WorldMapScene::stageSetup()
 	stage1.second->init(30, 200, 100, EWindow_Align::WINDOW_LEFTTOP);
 	stage1.second->setIsActive(false);
 	stage1.second->setWindowValue("연습용 맵", 20, 20, nullptr);
-	stage1.second->setWindowValue("연습용 맵2", 20, 20, nullptr);
 	_stageList.push_back(stage1);
 
 	pair< E_WorldMapType, CWindowUI*> stage2;

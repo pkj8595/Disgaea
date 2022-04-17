@@ -13,6 +13,7 @@ HRESULT BattleScene::init(void)
 	_backRc = RectMakeCenter(_backPoint.x, _backPoint.y, _backImg->getWidth(), _backImg->getHeight());
 	_beforeCharCount = 0;
 
+
 	return S_OK;
 }
 
@@ -54,6 +55,10 @@ void BattleScene::update(void)
 void BattleScene::render(void)
 {
 	_backImg->render(getMemDC(), _backRc.left, _backRc.top);
+	if (_mapImg != nullptr)
+	{
+		_mapImg->render(getMemDC(),-CAMERA->getLeft(),-CAMERA->getTop());
+	}
 	_map->render();
 
 	sort(CAMERA->getVecZData()->begin(), CAMERA->getVecZData()->end(), ZOrderData::zcmp());
@@ -129,7 +134,12 @@ void BattleScene::JsonSetUpIsoMap()
 	}
 
 	Json::Value jData = *stageIter;
-	_map->init(jData["sizeX"].asInt(), jData["sizeY"].asInt());
+
+	
+	_mapImg = IMAGEMANAGER->findImage(jData["mapImg"].asString());
+	bool isShowTile = _mapImg == nullptr;
+
+	_map->init(jData["sizeX"].asInt(), jData["sizeY"].asInt(), isShowTile, "mapTile");
 
 	Json::Value::iterator enemyRoot = jData["Enemy"].begin();
 	for (; enemyRoot != jData["Enemy"].end(); enemyRoot++)
@@ -160,4 +170,7 @@ void BattleScene::JsonSetUpIsoMap()
 	_turnSystem->registerMapAddress(_map);
 	_turnSystem->init();
 	_turnSystem->setInitBattleUI(PointMake(jData["startPointX"].asInt(), jData["startPointY"].asInt()));
+
+	
+
 }

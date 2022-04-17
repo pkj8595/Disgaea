@@ -75,7 +75,7 @@ private:
 
 public:
 	virtual HRESULT init(void);
-	virtual HRESULT init(int mapsizeX, int mapsizeY);
+	virtual HRESULT init(int mapsizeX, int mapsizeY, bool showTileImg, string tileStr);
 	virtual void release(void);
 	virtual void update(void);
 	virtual void render(void);

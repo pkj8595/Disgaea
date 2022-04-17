@@ -32,6 +32,7 @@ private:
 	int* _alpha;
 	bool _isShowRange;
 	bool _isSelectAble;
+	bool _isShowTileImage;
 
 public:
 	HRESULT init(int coordinateX,int coordinateY,int x , int y, int wight,int height);
@@ -39,6 +40,8 @@ public:
 	void update(void);
 	void render(void);
 
+	void setTileImg(string tileStr);
+	void setIsShowTileImg(bool isShow) { _isShowTileImage = isShow; }
 	void setParentTile(IsometricTile* parentTile)
 	{_parentTile = parentTile; }
 	IsometricTile* getParentTile(){ return _parentTile; }

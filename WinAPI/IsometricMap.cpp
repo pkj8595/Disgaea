@@ -24,7 +24,7 @@ HRESULT IsometricMap::init(void)
 	return S_OK;
 }
 
-HRESULT IsometricMap::init(int mapsizeX, int mapsizeY)
+HRESULT IsometricMap::init(int mapsizeX, int mapsizeY, bool isshowTileImg, string tileStr)
 {
 	//todo 맵 데이터, 플레어어 캐릭터, 적 정보를 입력받아서 화면에 뿌린다.
 	_currentType = IsoTileType::NONE;
@@ -52,10 +52,12 @@ HRESULT IsometricMap::init(int mapsizeX, int mapsizeY)
 			IsometricTile* tile = new IsometricTile;
 			tile->init(
 				x, y,
-				TILE_START_X + ((x - y)*(RECTANGLE_X*0.5)),
+				(_mapSize.y*(RECTANGLE_X*0.5)) + ((x - y)*(RECTANGLE_X*0.5)),
 				TILE_START_Y + ((x + y)*(RECTANGLE_Y*0.5)),
 				RECTANGLE_X, RECTANGLE_Y);
 			tile->setAlpha(&_tileAlpha);
+			tile->setIsShowTileImg(isshowTileImg);
+			tile->setTileImg(tileStr);
 			vXTile.push_back(tile);
 		}
 		_vTiles.push_back(vXTile);
@@ -317,12 +319,17 @@ void IsometricMap::update(void)
 					int damage = computeDamage(_currentCharacter, attackedChar);
 					attackedChar->beAttacked(damage);
 					//데미지 미터기
-					_damageMeter->createDamageEffect(PointMake(attackedChar->getPoint().x, attackedChar->getPoint().y-50), damage);
+					_damageMeter->createDamageEffect(PointMake(attackedChar->getPoint().x, attackedChar->getPoint().y-50), damage<0 ? 1: damage );
 
 					_effectManager->createParticleEffect("particle", PointMake(attackedChar->getPoint().x, attackedChar->getPoint().y - 30),8,false,150,20,5,60,30);
 					
 					if (attackedChar->getIsDie()&& _currentCharacter->getBehaviorType() != E_BehaviorType::Sub2CollaboAttackStart)
 					{
+						//레벨업을 하면 true를 반환한다.
+						if (_currentCharacter->addExp(attackedChar->getCharicterAllStats()->_exp))
+						{
+							_effectManager->createEffect("LevelUp", PointMake(_currentCharacter->getPoint().x, _currentCharacter->getPoint().y - 30), 6, true, 100, 244, 10.0f);
+						}
 						_behaviorList->removeBehavior(getTile(attackedChar->getCoorPoint()));
 						removeCharacter(attackedChar);
 					}
@@ -1168,7 +1175,7 @@ IsometricTile* IsometricMap::computeEnemyMoveTargetTile(GameCharacter* curCharac
 
 	if (originTargetTile == nullptr)	return nullptr;
 
-	startComputeTileRange(curCharacter->getCharicterStats()->_move, curCharacter->getCoorPoint(), true);
+	startComputeTileRange(curCharacter->getCharicterAllStats()->_move, curCharacter->getCoorPoint(), true);
 	minDistance = 10000;
 	compareDistance = 0;
 
@@ -1259,9 +1266,9 @@ void IsometricMap::correctionTileIndex(POINT &coordinate)
 
 int IsometricMap::computeDamage(GameCharacter* subject, GameCharacter* beAttackChar)
 {
-	int att = subject->getCharicterStats()->_atk;
+	int att = subject->getCharicterAllStats()->_atk;
 	int correction = (int)RND->getFloat(att * 0.30f);
-	int def = beAttackChar->getCharicterStats()->_def * 0.5;
+	int def = beAttackChar->getCharicterAllStats()->_def * 0.5;
 
 	if (RND->getInt(1) == 0) return att + correction - def;
 	else return att - correction - def;

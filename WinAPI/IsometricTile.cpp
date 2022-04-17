@@ -34,6 +34,7 @@ HRESULT IsometricTile::init(int coordinateX, int coordinateY, int x, int y, int 
 
 	_isShowRange = false;
 	_isSelectAble = false; 
+	_isShowTileImage = true;
 
 	return S_OK;
 }
@@ -49,15 +50,13 @@ void IsometricTile::update(void)
 
 void IsometricTile::render(void)
 {
-	if (_type != IsoTileType::WALL)
+	if (_type != IsoTileType::WALL && _isShowTileImage)
 	{
 		_tileImg->render(getMemDC(), _rc.left-CAMERA->getLeft(), _rc.top - CAMERA->getTop());
 	}
 
 	if (KEYMANAGER->isToggleKey(VK_F2))
 	{
-
-		//RectangleMakeToRECT(getMemDC(), _rc);
 		COLORREF color;
 		switch (_type)
 		{
@@ -111,8 +110,11 @@ void IsometricTile::render(void)
 		}
 	}
 
-	
-	
+}
+
+void IsometricTile::setTileImg(string tileStr)
+{
+	_tileImg = IMAGEMANAGER->findImage(tileStr);
 }
 
 void IsometricTile::AstarDataReset(void)

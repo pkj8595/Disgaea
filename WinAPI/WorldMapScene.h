@@ -22,6 +22,8 @@ private:
 	int				_stageMainNum;
 	int				_stageSubNum;
 
+	float			_healStartTime;
+	bool			_healTextActive;
 	vector<pair< E_WorldMapType,CWindowUI*>> _stageList;
 
 public:

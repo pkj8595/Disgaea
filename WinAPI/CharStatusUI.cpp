@@ -206,24 +206,24 @@ void CharStatusUI::setGameCharacterInfo(GameCharacter* gameChar)
 {
 	_statNum[E_Stat_Name]	=  gameChar->getName();
 	_statNum[E_Stat_Title]	= gameChar->getTitle();
-	_statNum[E_Stat_Lv]		= to_string(gameChar->getCharicterStats()->_level);
-	_statNum[E_Stat_Mv]		= to_string(gameChar->getCharicterStats()->_move);
+	_statNum[E_Stat_Lv]		= to_string(gameChar->getCharicterAllStats()->_level);
+	_statNum[E_Stat_Mv]		= to_string(gameChar->getCharicterAllStats()->_move);
 	_statNum[E_Stat_Counter] = "0";
-	_statNum[E_Stat_JM]		= to_string(gameChar->getCharicterStats()->_jump);
-	_statNum[E_Stat_Atk]	= to_string(gameChar->getCharicterStats()->_atk);
-	_statNum[E_Stat_Def]	= to_string(gameChar->getCharicterStats()->_def);
-	_statNum[E_Stat_Int]	= to_string(gameChar->getCharicterStats()->_int);
-	_statNum[E_Stat_Speed]	= to_string(gameChar->getCharicterStats()->_speed);
-	_statNum[E_Stat_Hit]	= to_string(gameChar->getCharicterStats()->_hit);
-	_statNum[E_Stat_Res]	= to_string(gameChar->getCharicterStats()->_res);
-	_statNum[E_Stat_Exp]	= to_string(gameChar->getCharicterStats()->_exp);
+	_statNum[E_Stat_JM]		= to_string(gameChar->getCharicterAllStats()->_jump);
+	_statNum[E_Stat_Atk]	= to_string(gameChar->getCharicterAllStats()->_atk);
+	_statNum[E_Stat_Def]	= to_string(gameChar->getCharicterAllStats()->_def);
+	_statNum[E_Stat_Int]	= to_string(gameChar->getCharicterAllStats()->_int);
+	_statNum[E_Stat_Speed]	= to_string(gameChar->getCharicterAllStats()->_speed);
+	_statNum[E_Stat_Hit]	= to_string(gameChar->getCharicterAllStats()->_hit);
+	_statNum[E_Stat_Res]	= to_string(gameChar->getCharicterAllStats()->_res);
+	_statNum[E_Stat_Exp]	= to_string(gameChar->getCharicterAllStats()->_exp);
 
-	_statNum[E_Stat_HP]		= to_string(gameChar->getCharicterStats()->_maxHp) + "/";
-	_statNum[E_Stat_HP].append(to_string( gameChar->getCharicterStats()->_hp));
+	_statNum[E_Stat_HP]		= to_string(gameChar->getCharicterAllStats()->_maxHp) + "/";
+	_statNum[E_Stat_HP].append(to_string( gameChar->getCharicterAllStats()->_hp));
 
-	_statNum[E_Stat_SP]		= to_string(gameChar->getCharicterStats()->_maxSp) + "/";
-	_statNum[E_Stat_SP].append(to_string(gameChar->getCharicterStats()->_sp));
-	_statNum[E_Stat_Next] = to_string(gameChar->getCharicterStats()->_maxExp - gameChar->getCharicterStats()->_exp);
+	_statNum[E_Stat_SP]		= to_string(gameChar->getCharicterAllStats()->_maxSp) + "/";
+	_statNum[E_Stat_SP].append(to_string(gameChar->getCharicterAllStats()->_sp));
+	_statNum[E_Stat_Next] = to_string(gameChar->getCharicterAllStats()->_maxExp - gameChar->getCharicterAllStats()->_exp);
 	_iconIndex = gameChar->getIconIndex();
 
 	_itemName[E_Equipment_Item::Equipment_Weapon] = gameChar->getEquipmentItem(E_Equipment_Item::Equipment_Weapon)->_name;

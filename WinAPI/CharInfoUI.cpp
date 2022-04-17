@@ -97,12 +97,12 @@ void CharInfoUI::infoCharater(GameCharacter* gameCharacter)
 {
 	_name = gameCharacter->getName();
 	_iconIndex = gameCharacter->getIconIndex();
-	_maxHp = gameCharacter->getCharicterStats()->_maxHp;
-	_maxSp = gameCharacter->getCharicterStats()->_maxSp;
-	_infoNum[LEVEL] = gameCharacter->getCharicterStats()->_level;
-	_infoNum[HP] = gameCharacter->getCharicterStats()->_hp;
-	_infoNum[SP] = gameCharacter->getCharicterStats()->_sp;
-	_infoNum[MOVE] = gameCharacter->getCharicterStats()->_move;
-	_infoNum[JM] = gameCharacter->getCharicterStats()->_jump;
+	_maxHp = gameCharacter->getCharicterAllStats()->_maxHp;
+	_maxSp = gameCharacter->getCharicterAllStats()->_maxSp;
+	_infoNum[LEVEL] = gameCharacter->getCharicterAllStats()->_level;
+	_infoNum[HP] = gameCharacter->getCharicterAllStats()->_hp;
+	_infoNum[SP] = gameCharacter->getCharicterAllStats()->_sp;
+	_infoNum[MOVE] = gameCharacter->getCharicterAllStats()->_move;
+	_infoNum[JM] = gameCharacter->getCharicterAllStats()->_jump;
 
 }

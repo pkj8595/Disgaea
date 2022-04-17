@@ -11,6 +11,7 @@ private:
 	TurnSystem*		_turnSystem;
 
 	my::Image*		_backImg;
+	my::Image*		_mapImg;
 	RECT			_backRc;
 	POINT			_backPoint;
 	int				_beforeCharCount;

@@ -109,6 +109,9 @@ void DataSetUp::ImageClassInit()
 #pragma endregion
 
 #pragma region Map
+	IMAGEMANAGER->addFrameImage("Map1", "Resource/Images/Disgaea/Tile/map1.bmp", 900, 600, 1, 1, true, RGB(255, 0, 255));
+	IMAGEMANAGER->addFrameImage("Map2", "Resource/Images/Disgaea/Tile/map2.bmp", 900, 837, 1, 1, true, RGB(255, 0, 255));
+	IMAGEMANAGER->addFrameImage("Map3", "Resource/Images/Disgaea/Tile/map2.bmp", 1200, 1110, 1, 1, true, RGB(255, 0, 255));
 
 #pragma endregion
 
@@ -116,10 +119,9 @@ void DataSetUp::ImageClassInit()
 	IMAGEMANAGER->addFrameImage("effect2", "Resource/Images/Disgaea/Effect/effect2.bmp", 354, 124, 3, 1, true, RGB(255, 0, 255));
 	IMAGEMANAGER->addFrameImage("Effect", "Resource/Images/Disgaea/Effect/Effect.bmp", 960, 160, 6, 1, true, RGB(255, 0, 255));
 	IMAGEMANAGER->addFrameImage("wind1", "Resource/Images/Disgaea/Effect/wind1.bmp", 2400, 2880, 8, 10, true, RGB(255, 0, 255));
-	IMAGEMANAGER->addFrameImage("fire1", "Resource/Images/Disgaea/Effect/fire1.bmp", 448, 146, 7, 2, true, RGB(0, 0, 0));
-	IMAGEMANAGER->addFrameImage("fire2", "Resource/Images/Disgaea/Effect/fire2.bmp", 680, 72, 10, 1, true, RGB(0, 0, 0));
-	IMAGEMANAGER->addFrameImage("fire2", "Resource/Images/Disgaea/Effect/fire2.bmp", 680, 72, 10, 1, true, RGB(0, 0, 0));
-	IMAGEMANAGER->addFrameImage("particle", "Resource/Images/Disgaea/Effect/particle.bmp", 25, 5, 6, 1, true, RGB(255, 0, 255));
+
+	IMAGEMANAGER->addFrameImage("particle", "Resource/Images/Disgaea/Effect/particle.bmp", 50, 10, 5, 1, true, RGB(255, 0, 255));
+	IMAGEMANAGER->addFrameImage("LevelUp", "Resource/Images/Disgaea/Effect/LevelUp.bmp", 240, 16, 4, 1, true, RGB(255, 0, 255));
 #pragma endregion
 	
 }
