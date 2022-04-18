@@ -79,15 +79,6 @@ void Camera::setSceneType(SceneType scene)
 void Camera::update(void)
 {
 	
-	if (KEYMANAGER->isStayKeyDown('9'))
-	{
-		zoomChange(PointMake(_currentCameraSize.x - 1, _currentCameraSize.y - 1));
-	}
-	if (KEYMANAGER->isStayKeyDown('0'))
-	{
-		zoomChange(PointMake(_currentCameraSize.x + 1, _currentCameraSize.y + 1));
-	}
-
 	if (_isZoomChange)
 	{
 		_zommCount++;

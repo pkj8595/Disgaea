@@ -15,6 +15,8 @@ HRESULT WorldMapScene::init(void)
 	_stageSubNum = 0;
 	_healTextActive = false;
 	_healStartTime = 0.0f;
+	SOUNDMANAGER->play("home",1.0f);
+
 	return S_OK;
 }
 
@@ -32,8 +34,6 @@ void WorldMapScene::update(void)
 {
 	_currentUI->update();
 
-	
-
 	if (KEYMANAGER->isOnceKeyDown('W'))
 	{
 		_currentUI->selectUp();
@@ -44,6 +44,7 @@ void WorldMapScene::update(void)
 	}
 	if (KEYMANAGER->isOnceKeyDown('K'))
 	{
+		SOUNDMANAGER->play("OK", 1.0f);
 		switch (_mapType)
 		{
 		case E_WorldMapType::HOME:
@@ -64,6 +65,7 @@ void WorldMapScene::update(void)
 			CAMERA->FadeChangeScenceName("BattleScene");
 			GAMEMANAGER->setStageIndex(static_cast<int>(_mapType) - 1);
 			GAMEMANAGER->setDetailStageIndex(_currentUI->getIndex());
+			SOUNDMANAGER->stop("home");
 			break;
 		default:
 			break;

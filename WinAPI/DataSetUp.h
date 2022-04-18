@@ -2,6 +2,7 @@
 #include "AniData.h"
 
 #define ANI_FPS			6
+#define ANI_ATTACK_FPS			8
 #define ANI_Dialog		4
 
 class DataSetUp

@@ -4,6 +4,7 @@
 
 HRESULT BattleScene::init(void)
 {
+	_soundStr = "";
 	CAMERA->setIsBattleScene(true);
 	CAMERA->setSceneType(Camera::SceneType::BattleScene);
 	JsonSetUpIsoMap();
@@ -13,12 +14,20 @@ HRESULT BattleScene::init(void)
 	_backRc = RectMakeCenter(_backPoint.x, _backPoint.y, _backImg->getWidth(), _backImg->getHeight());
 	_beforeCharCount = 0;
 
+	if (_soundStr != "")
+	{
+		SOUNDMANAGER->play(_soundStr, 1.0f);
+	}
 
 	return S_OK;
 }
 
 void BattleScene::release(void)
 {
+	if (_soundStr != "")
+	{
+		SOUNDMANAGER->stop(_soundStr);
+	}
 	_map->release();
 	SAFE_DELETE(_map);
 	_turnSystem->release();
@@ -139,7 +148,8 @@ void BattleScene::JsonSetUpIsoMap()
 	_mapImg = IMAGEMANAGER->findImage(jData["mapImg"].asString());
 	bool isShowTile = _mapImg == nullptr;
 
-	_map->init(jData["sizeX"].asInt(), jData["sizeY"].asInt(), isShowTile, "mapTile");
+	//tile4 , mapTile
+	_map->init(jData["sizeX"].asInt(), jData["sizeY"].asInt(), isShowTile, "tile4");
 
 	Json::Value::iterator enemyRoot = jData["Enemy"].begin();
 	for (; enemyRoot != jData["Enemy"].end(); enemyRoot++)
@@ -171,6 +181,6 @@ void BattleScene::JsonSetUpIsoMap()
 	_turnSystem->init();
 	_turnSystem->setInitBattleUI(PointMake(jData["startPointX"].asInt(), jData["startPointY"].asInt()));
 
-	
+	_soundStr = jData["sound"].asString();
 
 }

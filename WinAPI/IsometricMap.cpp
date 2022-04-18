@@ -1001,7 +1001,7 @@ void IsometricMap::CheckEnemyTurnEnd(void)
 
 }
 
-void IsometricMap::computeTileRange(int range, IsometricTile* currentTile, bool isMove)
+void IsometricMap::computeTileRange(int range, IsometricTile* currentTile, bool isMove, bool playerAroundSearch)
 {
 	POINT cPoint = currentTile->getCoorPoint();
 
@@ -1023,7 +1023,7 @@ void IsometricMap::computeTileRange(int range, IsometricTile* currentTile, bool 
 		if (isMove)
 		{
 			currentTile->setSelectAbleTile(false);
-			if (!IsSamePoint(_currentCharacter->getCoorPoint(), cPoint)&& _thisTurn == TurnSubject::PLAYER)
+			if (!IsSamePoint(_currentCharacter->getCoorPoint(), cPoint)&& !playerAroundSearch)
 			{
 				return;
 			}
@@ -1065,13 +1065,13 @@ void IsometricMap::computeTileRange(int range, IsometricTile* currentTile, bool 
 	
 }
 
-void IsometricMap::startComputeTileRange(int range, POINT startTilePoint, bool isMove)
+void IsometricMap::startComputeTileRange(int range, POINT startTilePoint, bool isMove, bool playerAroundSearch)
 {
 	_qBFSTile.push(make_pair(range, _vTiles[startTilePoint.y][startTilePoint.x]));
 	
 	while (!_qBFSTile.empty())
 	{
-		computeTileRange(_qBFSTile.front().first, _qBFSTile.front().second,isMove);
+		computeTileRange(_qBFSTile.front().first, _qBFSTile.front().second,isMove, playerAroundSearch);
 		_qBFSTile.pop();
 	}
 
@@ -1152,7 +1152,7 @@ IsometricTile* IsometricMap::computeEnemyMoveTargetTile(GameCharacter* curCharac
 	{
 		if ((*iter)->getUnitType() == E_UnitType::Controllable)
 		{
-			startComputeTileRange(curCharacter->getAttackRange(), (*iter)->getCoorPoint(), true);
+			startComputeTileRange(curCharacter->getAttackRange(), (*iter)->getCoorPoint(), true, true);
 		}
 	}
 

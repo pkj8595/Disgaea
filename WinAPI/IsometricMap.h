@@ -121,7 +121,7 @@ public:
 	void enemyNextMoveTurn(void);
 	void StartEnemyTrun(void);
 
-	void startComputeTileRange(int range, POINT startTilePoint, bool isMove);
+	void startComputeTileRange(int range, POINT startTilePoint, bool isMove, bool playerAroundSearch = false);
 	void resetTileRange(void);
 
 	bool IsEmptyPlayerCharacter(void);
@@ -133,7 +133,7 @@ public:
 
 private:
 	void CheckEnemyTurnEnd(void);
-	void computeTileRange(int range, IsometricTile* startTile , bool isMove);
+	void computeTileRange(int range, IsometricTile* startTile , bool isMove, bool playerAroundSearch);
 	//POINT lerp(POINT start, POINT end, float percentage);
 
 	float sign(POINT p1, POINT p2, POINT p3);

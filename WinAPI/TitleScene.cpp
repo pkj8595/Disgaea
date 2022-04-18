@@ -40,7 +40,7 @@ void TitleScene::update(void)
 	//12초/에 페이드 아웃 인
 	if (TIMEMANAGER->getWorldTime() > 10 &&!_isFadeStart)
 	{
-		StartFadeInOut(true, 1);
+		StartFadeInOut( 1);
 	}
 
 	if (_isFadeStart)
@@ -84,6 +84,7 @@ void TitleScene::update(void)
 		}
 		if (KEYMANAGER->isOnceKeyDown('K'))
 		{
+			SOUNDMANAGER->play("OK", 1.0f);
 			_titleUI->excute();
 		}
 	}
@@ -106,7 +107,7 @@ void TitleScene::render(void)
 	_fadeImg->alphaRender(getMemDC(), _alpha);
 }
 
-void TitleScene::StartFadeInOut(bool isOut,int offset)
+void TitleScene::StartFadeInOut(int offset)
 {
 	_isFadeStart = true;
 	_alphaOffset = offset;

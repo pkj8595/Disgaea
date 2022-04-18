@@ -91,9 +91,7 @@ HRESULT GameCharacter::init(string fileName, int x, int y, int coorX, int coorY,
 
 	_zData = new ZOrderData;
 	_zData->setRenderData(&_rc, &_currentAnimation, &_characterImg);
-	//(*CAMERA->getVecZData()).push_back(make_pair(ZIndexType_Character, _zData));
 	_title = "";
-	//_callback = nullptr;
 	return S_OK;
 }
 
@@ -251,6 +249,7 @@ bool GameCharacter::addExp(int exp)
 			_stats->_level++;
 			_stats->_atk += 5;
 			_stats->_hp += 5;
+			_stats->_maxHp += 5;
 			_stats->_def += 5;
 			_stats->_maxExp = _stats->_maxExp * 1.4;
 		}
@@ -276,6 +275,8 @@ void GameCharacter::healCharacter(void)
 	_stats->_hp = _stats->_maxHp;
 	_stats->_sp = _stats->_maxSp;
 	_isDie = false;
+	_hpBar->setGauge(_stats->_hp, _stats->_maxHp);
+
 }
 
 Item* GameCharacter::setEquipmentItem(E_Equipment_Item itemSlot, Item* item)

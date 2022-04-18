@@ -15,6 +15,7 @@ private:
 	RECT			_backRc;
 	POINT			_backPoint;
 	int				_beforeCharCount;
+	string			_soundStr;
 
 public:
 	HRESULT init(void);

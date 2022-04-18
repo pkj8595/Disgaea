@@ -345,10 +345,12 @@ void TurnSystem::update(void)
 			
 			break;
 		case EControl_State::Character_BehaviorWindow:
+			//SOUNDMANAGER->play("OK", 1.0f);
 			_charStatusUI->setIsActive(false);
 			_charBehaviorWindow->excute();
 			break;
 		case EControl_State::Turn_Window:
+			//SOUNDMANAGER->play("OK", 1.0f);
 			_turnWindow->excute();
 			break;
 		case EControl_State::Character_CreateWindow:

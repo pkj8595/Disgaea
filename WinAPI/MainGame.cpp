@@ -42,6 +42,7 @@ void MainGame::update(void)
 	SCENEMANAGER->update();
 	ANIMATIONMANAGER->update();
 	CAMERA->update();
+	SOUNDMANAGER->update();
 }
 
 void MainGame::render(void)

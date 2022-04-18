@@ -94,7 +94,6 @@ using namespace Gdiplus;
 
 using namespace std;
 typedef function<void(void)> CALLBACKFUNCTION;
-typedef void(*VOIDCALLBACKFUNCTION)(void);
 
 //===================================
 //# 내가 만든 헤더파일을 이곳에 추가 #

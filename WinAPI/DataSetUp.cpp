@@ -42,8 +42,7 @@ void DataSetUp::ImageClassInit()
 	IMAGEMANAGER->addImage("red", "Resource/Images/Disgaea/red.bmp", 134, 1, false, RGB(255, 0, 255));
 	IMAGEMANAGER->addImage("shadow", "Resource/Images/Disgaea/shadow.bmp", 20, 10, true, RGB(255, 0, 255));
 	IMAGEMANAGER->addImage("black", "Resource/Images/Disgaea/black.bmp", 800, 800, false, RGB(255, 0, 255));
-	IMAGEMANAGER->addImage("mapTile", "Resource/Images/Disgaea/Tile/tile5.bmp", 60, 44, true, RGB(255, 0, 255));
-	//IMAGEMANAGER->addImage("mapTile", "Resource/Images/Disgaea/Tile/tile.bmp", 60, 30, true, RGB(255, 0, 255));
+	
 	IMAGEMANAGER->addImage("battleBack", "Resource/Images/Disgaea/UI/battleUI/battleBack.bmp", 600, 330, false, RGB(255, 0, 255));
 	IMAGEMANAGER->addImage("blueSign", "Resource/Images/Disgaea/UI/battleUI/1000_FILE_02.bmp", 20, 30, true, RGB(255, 0, 255));
 	IMAGEMANAGER->addImage("redSign", "Resource/Images/Disgaea/UI/battleUI/1000_FILE_03.bmp", 36, 30, true, RGB(255, 0, 255));
@@ -113,6 +112,10 @@ void DataSetUp::ImageClassInit()
 	IMAGEMANAGER->addFrameImage("Map2", "Resource/Images/Disgaea/Tile/map2.bmp", 900, 837, 1, 1, true, RGB(255, 0, 255));
 	IMAGEMANAGER->addFrameImage("Map3", "Resource/Images/Disgaea/Tile/map2.bmp", 1200, 1110, 1, 1, true, RGB(255, 0, 255));
 
+
+	IMAGEMANAGER->addImage("mapTile", "Resource/Images/Disgaea/Tile/tile5.bmp", 60, 44, true, RGB(255, 0, 255));
+	IMAGEMANAGER->addImage("tile4", "Resource/Images/Disgaea/Tile/tile4.bmp", 60, 57, true, RGB(255, 0, 255));
+	//IMAGEMANAGER->addImage("mapTile", "Resource/Images/Disgaea/Tile/tile.bmp", 60, 30, true, RGB(255, 0, 255));
 #pragma endregion
 
 #pragma region Effect
@@ -398,10 +401,10 @@ void DataSetUp::AnimationClassInit()
 	ANIMATIONMANAGER->addAnimation("Ghost_beAttacked_LT", "Ghost", 15, 15, ANI_FPS, false, false);
 	ANIMATIONMANAGER->addAnimation("Ghost_beAttacked_RT", "Ghost", 25, 25, ANI_FPS, false, false);
 	ANIMATIONMANAGER->addAnimation("Ghost_beAttacked_RB", "Ghost", 35, 35, ANI_FPS, false, false);
-	ANIMATIONMANAGER->addAnimation("Ghost_attack_LB", "Ghost", 40, 49, ANI_FPS, false, false);
-	ANIMATIONMANAGER->addAnimation("Ghost_attack_LT", "Ghost", 50, 59, ANI_FPS, false, false);
-	ANIMATIONMANAGER->addAnimation("Ghost_attack_RT", "Ghost", 60, 69, ANI_FPS, false, false);
-	ANIMATIONMANAGER->addAnimation("Ghost_attack_RB", "Ghost", 70, 79, ANI_FPS, false, false);
+	ANIMATIONMANAGER->addAnimation("Ghost_attack_LB", "Ghost", 40, 49, ANI_ATTACK_FPS, false, false);
+	ANIMATIONMANAGER->addAnimation("Ghost_attack_LT", "Ghost", 50, 59, ANI_ATTACK_FPS, false, false);
+	ANIMATIONMANAGER->addAnimation("Ghost_attack_RT", "Ghost", 60, 69, ANI_ATTACK_FPS, false, false);
+	ANIMATIONMANAGER->addAnimation("Ghost_attack_RB", "Ghost", 70, 79, ANI_ATTACK_FPS, false, false);
 	ANIMATIONMANAGER->addAnimation("Ghost_jumpAttack_LB", "Ghost", 80, 83, ANI_FPS, false, false);
 	ANIMATIONMANAGER->addAnimation("Ghost_jumpAttack_LT", "Ghost", 90, 93, ANI_FPS, false, false);
 	ANIMATIONMANAGER->addAnimation("Ghost_jumpAttack_RT", "Ghost", 100, 103, ANI_FPS, false, false);
@@ -430,10 +433,10 @@ void DataSetUp::AnimationClassInit()
 	ANIMATIONMANAGER->addAnimation("Vyers_beAttacked_RB", "Vyers", 25, 25, ANI_FPS, false, true);
 	ANIMATIONMANAGER->addAnimation("Vyers_beAttacked_RT", "Vyers", 35, 35, ANI_FPS, false, true);
 
-	ANIMATIONMANAGER->addAnimation("Vyers_move_LB", "Vyers", 40, 45, ANI_FPS, false, true);
-	ANIMATIONMANAGER->addAnimation("Vyers_move_LT", "Vyers", 50, 55, ANI_FPS, false, true);
-	ANIMATIONMANAGER->addAnimation("Vyers_move_RB", "Vyers", 60, 65, ANI_FPS, false, true);
-	ANIMATIONMANAGER->addAnimation("Vyers_move_RT", "Vyers", 70, 75, ANI_FPS, false, true);
+	ANIMATIONMANAGER->addAnimation("Vyers_move_LB", "Vyers", 40, 45, ANI_ATTACK_FPS, false, true);
+	ANIMATIONMANAGER->addAnimation("Vyers_move_LT", "Vyers", 50, 55, ANI_ATTACK_FPS, false, true);
+	ANIMATIONMANAGER->addAnimation("Vyers_move_RB", "Vyers", 60, 65, ANI_ATTACK_FPS, false, true);
+	ANIMATIONMANAGER->addAnimation("Vyers_move_RT", "Vyers", 70, 75, ANI_ATTACK_FPS, false, true);
 
 	ANIMATIONMANAGER->addAnimation("Vyers_Attack_LB", "Vyers", 80, 90, ANI_FPS, false, false);
 	ANIMATIONMANAGER->addAnimation("Vyers_Attack_LT", "Vyers", 91, 101, ANI_FPS, false, false);
@@ -473,4 +476,10 @@ void DataSetUp::AnimationJsonDataSetup()
 void DataSetUp::SoundInit()
 {
 	SOUNDMANAGER->addSound("Title", "Resource/Sound/Disgaea/back/BGM001.OGG", true, true);
+	SOUNDMANAGER->addSound("home", "Resource/Sound/Disgaea/back/BGM003_home.OGG", true, true);
+	SOUNDMANAGER->addSound("Battle1", "Resource/Sound/Disgaea/back/BGM020_Battle1.OGG", true, true);
+	SOUNDMANAGER->addSound("Battle2", "Resource/Sound/Disgaea/back/BGM022_Battle2.OGG", true, true);
+	SOUNDMANAGER->addSound("OK", "Resource/Sound/Disgaea/effect/00_01.OGG", false, false);
+
+	
 }
