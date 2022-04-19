@@ -16,12 +16,12 @@ HRESULT CWindowUIValue::init(void)
 	return S_OK;
 }
 
-HRESULT CWindowUIValue::init(string valueName, int x, int y, int width, int height, int fontSize, EWindow_Align align, CALLBACKFUNCTION function)
+HRESULT CWindowUIValue::init(string valueName, int x, int y, int width, int height, int fontSize, EWindow_Align textAlign, CALLBACKFUNCTION function)
 {
 	_rc = RectMake(x, y, width, height);
 	_windowState = WINDOW_DEFAULT;
 	_valueStr = valueName;
-	_align = align;
+	_align = textAlign;
 	_func = function;
 	_fontSize = fontSize;
 	_height = height;

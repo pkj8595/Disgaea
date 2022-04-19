@@ -42,6 +42,7 @@ void DataSetUp::ImageClassInit()
 	IMAGEMANAGER->addImage("red", "Resource/Images/Disgaea/red.bmp", 134, 1, false, RGB(255, 0, 255));
 	IMAGEMANAGER->addImage("shadow", "Resource/Images/Disgaea/shadow.bmp", 20, 10, true, RGB(255, 0, 255));
 	IMAGEMANAGER->addImage("black", "Resource/Images/Disgaea/black.bmp", 800, 800, false, RGB(255, 0, 255));
+	IMAGEMANAGER->addImage("brownBack", "Resource/Images/Disgaea/UI/WBG02.bmp", 800, 800, false, RGB(255, 0, 255));
 	
 	IMAGEMANAGER->addImage("battleBack", "Resource/Images/Disgaea/UI/battleUI/battleBack.bmp", 600, 330, false, RGB(255, 0, 255));
 	IMAGEMANAGER->addImage("blueSign", "Resource/Images/Disgaea/UI/battleUI/1000_FILE_02.bmp", 20, 30, true, RGB(255, 0, 255));

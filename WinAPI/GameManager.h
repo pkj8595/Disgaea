@@ -19,7 +19,7 @@ public:
 	HRESULT init(void);
 	void release(void);
 
-	void startNewGame(void);
+	void playerUnitClear(void);
 	void setStageIndex(int index) { _stageIndex = index; }
 	void setDetailStageIndex(int detailIndex){_DetailStageIndex = detailIndex;}
 	int getStageIndex(void) { return _stageIndex; }

@@ -31,7 +31,13 @@ void GameManager::release(void)
 
 void GameManager::playerUnitClear(void)
 {
-
+	vector<GameCharacter*>::iterator iter = _playerUnits.begin();
+	for (; iter != _playerUnits.end(); ++iter)
+	{
+		(*iter)->release();
+		SAFE_DELETE(*iter);
+	}
+	_playerUnits.clear();
 }
 
 void GameManager::healAllCharacter(void)

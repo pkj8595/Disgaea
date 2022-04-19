@@ -24,7 +24,6 @@ private:
 	bool		_isFadeOut;
 	bool		_isFadeStart;
 
-
 public:
 	HRESULT init(void);
 	void release(void);
@@ -32,7 +31,7 @@ public:
 	void render(void);
 
 	void TitleUISetUp();
-	void StartFadeInOut(bool isOut,int offset);
+	void StartFadeInOut(int offset);
 
 	TitleScene() {}
 	~TitleScene() {}

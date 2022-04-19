@@ -18,6 +18,8 @@ HRESULT BattleScene::init(void)
 	{
 		SOUNDMANAGER->play(_soundStr, 1.0f);
 	}
+	_gameEndUI = new VictoryUI;
+	_gameEndUI->init();
 
 	return S_OK;
 }
@@ -28,6 +30,9 @@ void BattleScene::release(void)
 	{
 		SOUNDMANAGER->stop(_soundStr);
 	}
+	_gameEndUI->release();
+	SAFE_DELETE(_gameEndUI);
+
 	_map->release();
 	SAFE_DELETE(_map);
 	_turnSystem->release();
@@ -36,8 +41,30 @@ void BattleScene::release(void)
 
 void BattleScene::update(void)
 {
+	if (_gameEndUI->getIsActive())
+	{
+		_gameEndUI->update();
+		if (KEYMANAGER->isOnceKeyDown('K'))
+		{
+			if (_gameEndUI->getIsPlayerWin())
+			{
+				CAMERA->FadeStart(4);
+				CAMERA->FadeChangeScenceName("WorldMapScene");
+			}
+			else
+			{
+				CAMERA->FadeStart(4);
+				CAMERA->FadeChangeScenceName("TitleScene");
+			}
+		}
+	}
+	else
+	{
+		_turnSystem->update();
+	}
+	
 	_map->update();
-	_turnSystem->update();
+	
 	
 	if (_map->getCharacterList()->size() != _beforeCharCount)
 	{
@@ -47,18 +74,12 @@ void BattleScene::update(void)
 
 		if ((isPlayerGameOver && !_turnSystem->confimeAliveCharacter()) || isEnemyGameOver)
 		{
-			if (isPlayerGameOver)
-			{
-				CAMERA->FadeStart(4);
-				CAMERA->FadeChangeScenceName("TitleScene");
-			}
-			else if (isEnemyGameOver)
-			{
-				CAMERA->FadeStart(4);
-				CAMERA->FadeChangeScenceName("WorldMapScene");
-			}
+			_gameEndUI->setGoldUI(100);
+			GAMEMANAGER->setGold(GAMEMANAGER->getGold() +100);
+			_gameEndUI->setIsActive(true, isEnemyGameOver);
 		}
 	}
+
 }
 
 void BattleScene::render(void)
@@ -123,7 +144,7 @@ void BattleScene::render(void)
 
 	}
 	_turnSystem->render();
-
+	_gameEndUI->render();
 }
 
 void BattleScene::JsonSetUpIsoMap()
@@ -141,14 +162,10 @@ void BattleScene::JsonSetUpIsoMap()
 	{
 		if (i == GAMEMANAGER->getDetailStageIndex()) break;
 	}
-
 	Json::Value jData = *stageIter;
 
-	
 	_mapImg = IMAGEMANAGER->findImage(jData["mapImg"].asString());
 	bool isShowTile = _mapImg == nullptr;
-
-	//tile4 , mapTile
 	_map->init(jData["sizeX"].asInt(), jData["sizeY"].asInt(), isShowTile, "tile4");
 
 	Json::Value::iterator enemyRoot = jData["Enemy"].begin();

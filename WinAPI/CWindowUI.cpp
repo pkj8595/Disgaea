@@ -11,8 +11,16 @@ CWindowUI::~CWindowUI()
 }
 
 
-HRESULT CWindowUI::init(int x, int y, int width, EWindow_Align align)
+HRESULT CWindowUI::init(int x, int y, int width, EWindow_Align align, bool useSelectObject)
 {
+	_x = x;
+	_y = y;
+	_width = width;
+	_rc = RectMake(x, y, width, 0);
+	_textAlign = align;
+	_isActive = false;
+	_useSelectObject = useSelectObject;
+
 	_leftOutLineImg = new my::Image;
 	_topOutLineImg = new my::Image;
 	_rightOutLineImg = new my::Image;
@@ -29,17 +37,9 @@ HRESULT CWindowUI::init(int x, int y, int width, EWindow_Align align)
 	_rightTopOutLineImg		= IMAGEMANAGER->findImage("selectWindow_outline_RT");
 	_leftBottomOutLineImg	= IMAGEMANAGER->findImage("selectWindow_outline_LB");
 	_rightbottomOutLineImg	= IMAGEMANAGER->findImage("selectWindow_outline_RB");
-	
 
 	_selectObject._img = IMAGEMANAGER->findImage("selectHand");
 	_selectObject._rc = RectMake(x - _selectObject._img->getWidth(), y, _selectObject._img->getWidth(), _selectObject._img->getHeight());
-
-	_x = x;
-	_y = y;
-	_width = width;
-	_rc = RectMake(x, y, width, 0);
-	_textAlign = align;
-	_isActive = false;
 
 	return S_OK;
 }
@@ -95,12 +95,15 @@ void CWindowUI::render(void)
 	_leftBottomOutLineImg->render(getMemDC(), _rc.left-3, _rc.bottom);
 	_rightbottomOutLineImg->render(getMemDC(), _rc.right, _rc.bottom);
 
-	_selectObject._img->render(getMemDC(), _selectObject._rc.left, _selectObject._rc.top);
+	if (_useSelectObject)
+	{
+		_selectObject._img->render(getMemDC(), _selectObject._rc.left, _selectObject._rc.top);
+	}
 }
 
 void CWindowUI::excute(void)
 {
-	if (!_isActive) { return; }
+	if (!_isActive || !_useSelectObject) { return; }
 	_currentWindowValue->excute();
 }
 
@@ -119,7 +122,6 @@ void CWindowUI::setWindowValue(string valueName, int height, int fontSize, CALLB
 		allHeight += (*iter)->getHeight();
 
 	}
-	
 
 	CWindowUIValue* temp = new CWindowUIValue;
 	temp->init(valueName, _x, _y + allHeight, _width, height, fontSize, _textAlign, function);
@@ -169,7 +171,11 @@ void CWindowUI::selectUp(void)
 		--_vWindowIter;
 		_currentWindowValue = *_vWindowIter;
 	}
-	_selectObject._rc = RectMake(_x - _selectObject._img->getWidth(), _currentWindowValue->getRect().top , _selectObject._img->getWidth(), _selectObject._img->getHeight());
+
+	if (_useSelectObject)
+	{
+		_selectObject._rc = RectMake(_x - _selectObject._img->getWidth(), _currentWindowValue->getRect().top , _selectObject._img->getWidth(), _selectObject._img->getHeight());
+	}
 }
 
 void CWindowUI::selectDown(void)
@@ -186,7 +192,11 @@ void CWindowUI::selectDown(void)
 		_vWindowIter = _vWindowValue.end()-1;
 		_currentWindowValue = *_vWindowIter;
 	}
-	_selectObject._rc = RectMake(_x - _selectObject._img->getWidth(), _currentWindowValue->getRect().top, _selectObject._img->getWidth(), _selectObject._img->getHeight());
+
+	if (_useSelectObject)
+	{
+		_selectObject._rc = RectMake(_x - _selectObject._img->getWidth(), _currentWindowValue->getRect().top, _selectObject._img->getWidth(), _selectObject._img->getHeight());
+	}
 }
 
 void CWindowUI::setWindowValueState(int index, EWindow_ValueState state)

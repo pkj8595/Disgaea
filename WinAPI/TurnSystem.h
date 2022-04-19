@@ -1,6 +1,6 @@
 #pragma once
 #include "GameNode.h"
-#include "BattleUI.h"
+#include "GameUI.h"
 #include "CWindowUI.h"
 #include "CharInfoUI.h"
 #include "TurnStateUI.h"

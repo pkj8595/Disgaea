@@ -153,7 +153,6 @@
     <ClCompile Include="AniTestScene.cpp" />
     <ClCompile Include="AttackList.cpp" />
     <ClCompile Include="BattleScene.cpp" />
-    <ClCompile Include="BattleUI.cpp" />
     <ClCompile Include="Bullets.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CBlock.cpp">
@@ -199,6 +198,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="TurnStateUI.cpp" />
+    <ClCompile Include="VictoryUI.cpp" />
     <ClCompile Include="WorldMapScene.cpp" />
     <ClCompile Include="mGpImage.cpp" />
     <ClCompile Include="Minion.cpp" />
@@ -263,7 +263,6 @@
     <ClInclude Include="AniTestScene.h" />
     <ClInclude Include="AttackList.h" />
     <ClInclude Include="BattleScene.h" />
-    <ClInclude Include="BattleUI.h" />
     <ClInclude Include="Bullets.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CBlock.h">
@@ -310,6 +309,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="TurnStateUI.h" />
+    <ClInclude Include="VictoryUI.h" />
     <ClInclude Include="WorldMapScene.h" />
     <ClInclude Include="mGpImage.h" />
     <ClInclude Include="Minion.h" />

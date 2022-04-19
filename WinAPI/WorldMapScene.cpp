@@ -77,7 +77,6 @@ void WorldMapScene::update(void)
 		switch (_mapType)
 		{
 		case E_WorldMapType::HOME:
-			//todo 마왕성씬으로 되돌아가기?
 			break;
 		case E_WorldMapType::STAGE1:
 		case E_WorldMapType::STAGE2:

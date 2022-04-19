@@ -2,7 +2,6 @@
 #include "GameNode.h"
 #include "CWindowUIValue.h"
 
-
 struct ST_CenterLine
 {
 	my::Image* _centerImg;
@@ -38,10 +37,11 @@ private:
 
 	RECT _rc;
 	float _x, _y, _width;
+	bool _useSelectObject;
 	bool _isActive;
 
 public:
-	virtual HRESULT init(int x, int y,int width,EWindow_Align align);
+	virtual HRESULT init(int x, int y,int width,EWindow_Align align,bool useSelectObject = true);
 	virtual void release(void);
 	virtual void update(void);
 	virtual void render(void);

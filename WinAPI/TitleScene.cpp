@@ -118,6 +118,8 @@ void TitleScene::TitleUISetUp()
 {
 	CALLBACKFUNCTION newGame = [this](void)->void
 	{
+		GAMEMANAGER->playerUnitClear();
+
 		GameCharacter* laharl = new Laharl;
 		laharl->init("laharl", 0, 0, 0, 0, E_UnitType::Controllable, 0, 20);
 		(*GAMEMANAGER->getAllPlayerUnits()).push_back(laharl);

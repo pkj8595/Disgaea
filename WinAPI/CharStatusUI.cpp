@@ -163,6 +163,7 @@ void CharStatusUI::render(void)
 	_boldLineImg[E_OutLine_RightTop]->render(getMemDC(), _headerRc.right - 7, _headerRc.top);
 	_boldLineImg[E_OutLine_LeftBottom]->render(getMemDC(), _headerRc.left, _headerRc.bottom - 7);
 	_boldLineImg[E_OutLine_RightBottom]->render(getMemDC(), _headerRc.right - 7, _headerRc.bottom - 7);
+
 	_lineImg[E_OutLine_Left]->render(getMemDC(), _cententRc.left, _cententRc.top);
 	_lineImg[E_OutLine_Top]->render(getMemDC(), _cententRc.left, _cententRc.top);
 	_lineImg[E_OutLine_Right]->render(getMemDC(), _cententRc.right - 3, _cententRc.top);

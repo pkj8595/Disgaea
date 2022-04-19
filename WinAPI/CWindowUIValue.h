@@ -28,7 +28,8 @@ private:
 
 public:
 	virtual HRESULT init(void);
-	virtual HRESULT init(string valueName, int x, int y,int width, int height, int fontSize, EWindow_Align align, CALLBACKFUNCTION function);
+	virtual HRESULT init(string valueName, int x, int y,int width, int height, int fontSize, EWindow_Align textalign, CALLBACKFUNCTION function);
+	
 	virtual void release(void);
 	virtual void update(void);
 	virtual void render(void);

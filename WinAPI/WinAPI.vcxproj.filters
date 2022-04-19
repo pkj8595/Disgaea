@@ -318,9 +318,6 @@
     <ClCompile Include="AnimationManager.cpp">
       <Filter>Disgaea\Util\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="BattleUI.cpp">
-      <Filter>Disgaea\UI</Filter>
-    </ClCompile>
     <ClCompile Include="GameUI.cpp">
       <Filter>Disgaea\UI</Filter>
     </ClCompile>
@@ -382,6 +379,7 @@
     <ClCompile Include="TurnStateUI.cpp">
       <Filter>Disgaea\UI</Filter>
     </ClCompile>
+    <ClCompile Include="VictoryUI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CommonMacroFunction.h">
@@ -582,9 +580,6 @@
     <ClInclude Include="AnimationManager.h">
       <Filter>Disgaea\Util\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="BattleUI.h">
-      <Filter>Disgaea\UI</Filter>
-    </ClInclude>
     <ClInclude Include="GameUI.h">
       <Filter>Disgaea\UI</Filter>
     </ClInclude>
@@ -646,6 +641,7 @@
     <ClInclude Include="TurnStateUI.h">
       <Filter>Disgaea\UI</Filter>
     </ClInclude>
+    <ClInclude Include="VictoryUI.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Question.txt">
