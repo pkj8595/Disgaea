@@ -16,7 +16,7 @@ HRESULT BattleScene::init(void)
 
 	if (_soundStr != "")
 	{
-		SOUNDMANAGER->play(_soundStr, 1.0f);
+		//SOUNDMANAGER->play(_soundStr, 1.0f);
 	}
 	_gameEndUI = new VictoryUI;
 	_gameEndUI->init();
@@ -64,7 +64,6 @@ void BattleScene::update(void)
 	}
 	
 	_map->update();
-	
 	
 	if (_map->getCharacterList()->size() != _beforeCharCount)
 	{

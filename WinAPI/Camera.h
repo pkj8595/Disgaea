@@ -231,12 +231,12 @@ public:
 	void removeZData(ZOrderData* zData);
 	void registerZData(ZIndexType zIndex , ZOrderData* zData);
 
-	Camera() :_TitleSceneSize({ 485,270}),
-		_BattleSceneSize({410,230}),
-		_WorldMapSceneSize({485,270}),
-		_HomeSceneSize({485,270}),
-		_zoomInSize({350,192}),
-		_zoomOutSize({ 485,270}),
+	Camera() :_TitleSceneSize({ 480,252}),
+		_BattleSceneSize({410,215}),
+		_WorldMapSceneSize({480,252}),
+		_HomeSceneSize({480,252}),
+		_zoomInSize({350,182}),
+		_zoomOutSize({ 500,262 }),
 		_cameraPt(nullptr),
 		_moveToTargetEndPt(nullptr)
 	{

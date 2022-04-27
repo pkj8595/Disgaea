@@ -19,6 +19,8 @@ HRESULT TurnSystem::init(void)
 	turnWindowSetup();
 	_charCreateWindow = new CWindowUI;
 	_charCreateWindow->init(300, 4, 80, EWindow_Align::WINDOW_LEFTTOP);
+	_charSkillWindow = new CWindowUI;
+	_charSkillWindow->init(20, 10, 250, EWindow_Align::WINDOW_LEFTTOP);
 
 	_infoUI = new CharInfoUI;
 	_infoUI->init();
@@ -51,6 +53,8 @@ HRESULT TurnSystem::init(void)
 
 	CAMERA->setCameraPoint(_battleUi[UI_MAPSIGN]->getPointAddress());
 	_vPlayerChar = *GAMEMANAGER->getAllPlayerUnits();
+
+	_curSkill = nullptr;
 
 	return S_OK; 
 }
@@ -87,6 +91,7 @@ void TurnSystem::update(void)
 	_turnStateUI->update();
 	_charStatusUI->update();
 	_charCreateWindow->update();
+	_charSkillWindow->update();
 
 	_battleUi[UI_MAPSIGN]->update();
 	_battleUi[UI_BLUESIGN]->update();
@@ -242,6 +247,16 @@ void TurnSystem::update(void)
 			_charCreateWindow->selectDown();
 		}
 		break;
+	case EControl_State::Character_SkillWindow:
+		if (KEYMANAGER->isOnceKeyDown('W'))
+		{
+			_charSkillWindow->selectUp();
+		}
+		if (KEYMANAGER->isOnceKeyDown('S'))
+		{
+			_charSkillWindow->selectDown();
+		}
+		break;
 	}
 	
 	if (KEYMANAGER->isOnceKeyDown('K'))
@@ -266,22 +281,14 @@ void TurnSystem::update(void)
 					if (tempCharacter->getUnitType() == E_UnitType::Controllable)
 					{
 						if (tempCharacter->getCommandState(E_CommandFlag::moveFlag))
-						{
 							_charBehaviorWindow->setWindowValueState(0, EWindow_ValueState::WINDOW_NOT_SELECTABLE);
-						}
 						else
-						{
 							_charBehaviorWindow->setWindowValueState(0, EWindow_ValueState::WINDOW_DEFAULT);
-						}
 
 						if (tempCharacter->getCommandState(E_CommandFlag::behaviorFalg))
-						{
 							_charBehaviorWindow->setWindowValueState(1, EWindow_ValueState::WINDOW_NOT_SELECTABLE);
-						}
 						else
-						{
 							_charBehaviorWindow->setWindowValueState(1, EWindow_ValueState::WINDOW_DEFAULT);
-						}
 
 						_selectedCharRange = tempCharacter->getCharicterAllStats()->_move;
 						_tileRangeStartPoint = _battleUi[UI_MAPSIGN]->getCoorPoint();
@@ -339,6 +346,17 @@ void TurnSystem::update(void)
 					//todo sound 
 				}
 				break;
+			case EOkBtnState::Skill:
+				cout << "TurnSystem>>EOkBtnState::Skill:" << endl;
+				//스킬을 스킬 리스트에 저장한다. 스킬리스트에 행동삽입. 
+				_map->setBehaviorSkill(_map->getCurrentCharacter(), _curSkill);
+				_controlState = EControl_State::Map_Cursor;
+				_okBtnState = EOkBtnState::Nomal;
+				//버튼의 상태를 nomal , mapcursor로 바꾼다. 
+				//행동리스트에서 스킬을 발동할때 범위에 있는 캐릭터를 이동시킨다. 
+				// _map -> vector<skill*> 턴 종료할때 모두 지워준다.
+
+				break;
 			default:
 				break;
 			}
@@ -355,6 +373,9 @@ void TurnSystem::update(void)
 			break;
 		case EControl_State::Character_CreateWindow:
 			_charCreateWindow->excute();
+			break;
+		case EControl_State::Character_SkillWindow:
+			_charSkillWindow->excute();
 			break;
 		}
 	
@@ -420,6 +441,12 @@ void TurnSystem::update(void)
 			_charCreateWindow->setIsActive(false);
 			_controlState = EControl_State::Map_Cursor;
 			break;
+		case EControl_State::Character_SkillWindow:
+			_charSkillWindow->setIsActive(false);
+			_charBehaviorWindow->setIsActive(true);
+			_controlState = EControl_State::Character_BehaviorWindow;
+			_okBtnState = EOkBtnState::Nomal;
+			break;
 		default:
 			break;
 		}
@@ -436,6 +463,7 @@ void TurnSystem::render(void)
 	_charStatusUI->render();
 	_turnStateUI->render();
 	_charCreateWindow->render();
+	_charSkillWindow->render();
 }
 
 inline void TurnSystem::updateBattleUI()
@@ -520,11 +548,21 @@ void TurnSystem::characterWindowSetup()
 		_okBtnState = EOkBtnState::Attack;
 		_map->startComputeTileRange(_map->getCurrentCharacter()->getAttackRange(), _tileRangeStartPoint,false);
 	};
+	CALLBACKFUNCTION  skillCallback = [this](void)->void
+	{
+		_charBehaviorWindow->setIsActive(false);
+		_controlState = EControl_State::Character_SkillWindow;
+		_okBtnState = EOkBtnState::Skill;
+		characterSkillSetup();
+		_charSkillWindow->setIsActive(true);
+	
+	};
 
 	_charBehaviorWindow = new CWindowUI;
 	_charBehaviorWindow->init(300, 4, 80, EWindow_Align::WINDOW_LEFTTOP);
 	_charBehaviorWindow->setWindowValue("이동", 15, 15, moveCallback);
 	_charBehaviorWindow->setWindowValue("공격", 15, 15, attackCallback);
+	_charBehaviorWindow->setWindowValue("특수 공격", 15, 15, skillCallback);
 }
 
 
@@ -546,16 +584,11 @@ void TurnSystem::turnWindowSetup()
 		_okBtnState = EOkBtnState::Nomal;
 		
 	};
-	CALLBACKFUNCTION exit = [this](void)->void
-	{
-		//todo
-	};
 
 	_turnWindow = new CWindowUI;
 	_turnWindow->init(300, 4, 80, EWindow_Align::WINDOW_LEFTTOP);
 	_turnWindow->setWindowValue("턴 종료", 15, 15, nextTrunCallBack);
 	_turnWindow->setWindowValue("공격 개시", 15, 15, acttackExcuteCallBack);
-	_turnWindow->setWindowValue("포기", 15, 15, exit);
 }
 
 
@@ -596,5 +629,43 @@ void TurnSystem::createCharacterWindowSetup()
 		}
 		
 	}
+}
+
+void TurnSystem::characterSkillSetup(void)
+{
+	vector<CSkill*>* tempVSkill = _map->getCurrentCharacter()->getVSkill();
+	if (tempVSkill->size() == 0)
+	{
+		_charSkillWindow->resetValue();
+		_charSkillWindow->setWindowValue("사용 가능한 스킬이 없습니다.", 20, 20, nullptr);
+	}
+	else
+	{
+		_charSkillWindow->resetValue();
+
+		int index = 0;
+		vector<CSkill*>::iterator skillIter = tempVSkill->begin();
+		for (; skillIter != tempVSkill->end(); ++skillIter)
+		{
+			_charSkillWindow->setWindowValue((*skillIter)->getName(), 20, 20, [this, skillIter](void)->void
+			{
+				//나중에 자기 중심의 스킬이 아니라 원거리 타결 스킬을 구현할 경우 skill에 원거리 bool하난 추가하고 이곳을 수정 작업하면 됨.
+				//범위 설정
+				_curSkill = (*skillIter);
+				_map->startComputeTileRange((*skillIter)->getSkillRange(),_map->getCurrentCharacter()->getCoorPoint(),false);
+				//창닫기
+				_charSkillWindow->setIsActive(false);
+				_controlState = EControl_State::Map_Cursor;
+				_okBtnState = EOkBtnState::Skill;
+			});
+
+			if (_map->getCurrentCharacter()->getCharicterStats()->_sp < (*skillIter)->getSp())
+			{
+				_charSkillWindow->setWindowValueState(index, EWindow_ValueState::WINDOW_DEFAULT);
+			}
+			index++;
+		}
+	}
+	
 }
 

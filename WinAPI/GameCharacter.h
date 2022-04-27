@@ -2,6 +2,7 @@
 #include "GameNode.h"
 #include "Item.h"
 #include "ProgressBar.h"
+#include "CSkill.h"
 
 enum class E_UnitType
 {
@@ -63,6 +64,7 @@ class ItemManager;
 class GameCharacter : public GameNode
 {
 protected:
+	vector<CSkill*> _vSkill;
 	my::Image*	_characterImg;
 	my::Image*	_shadowImg;
 	ZOrderData*	_zData;
@@ -152,6 +154,10 @@ public:
 
 	int getAttackRange(){return _attackRange;}
 	void setAttackRange(int range) { _attackRange = range; }
+
+	vector<CSkill*>* getVSkill(void) { return &_vSkill; }
+	void setSkill(CSkill* skill) { _vSkill.push_back(skill); }
+	void setSkill(string skillName, POINT coorPoint, float damageCalculation, int skillRange,int sp);
 
 	POINT getCoorPoint() { return _coordinate; }
 	POINT getBeforeCoorPoint() { return _beforeCoordinate; }

@@ -103,6 +103,13 @@ void GameCharacter::release(void)
 	SAFE_DELETE(_zData);
 	SAFE_DELETE(_stats);
 	SAFE_DELETE(_allStats);
+
+	while (!_vSkill.empty())
+	{
+		SAFE_DELETE(_vSkill.back());
+		_vSkill.pop_back();
+	}
+
 }
 
 void GameCharacter::update(void)
@@ -277,6 +284,13 @@ void GameCharacter::healCharacter(void)
 	_isDie = false;
 	_hpBar->setGauge(_stats->_hp, _stats->_maxHp);
 
+}
+
+void GameCharacter::setSkill(string skillName, POINT coorPoint, float damageCalculation, int skillRange, int sp)
+{
+	CSkill* tempSkill = new CSkill;
+	tempSkill->init(skillName, coorPoint, damageCalculation, skillRange,sp);
+	_vSkill.push_back(tempSkill);
 }
 
 Item* GameCharacter::setEquipmentItem(E_Equipment_Item itemSlot, Item* item)

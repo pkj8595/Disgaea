@@ -122,6 +122,7 @@ void TitleScene::TitleUISetUp()
 
 		GameCharacter* laharl = new Laharl;
 		laharl->init("laharl", 0, 0, 0, 0, E_UnitType::Controllable, 0, 20);
+		laharl->setSkill("메테오 임펙트", PointMake(0, 0), 1.5f, 3, 5);
 		(*GAMEMANAGER->getAllPlayerUnits()).push_back(laharl);
 
 		GameCharacter* flonne = new Flonne;

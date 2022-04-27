@@ -379,7 +379,10 @@
     <ClCompile Include="TurnStateUI.cpp">
       <Filter>Disgaea\UI</Filter>
     </ClCompile>
-    <ClCompile Include="VictoryUI.cpp" />
+    <ClCompile Include="CSkill.cpp" />
+    <ClCompile Include="VictoryUI.cpp">
+      <Filter>Disgaea\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CommonMacroFunction.h">
@@ -641,7 +644,10 @@
     <ClInclude Include="TurnStateUI.h">
       <Filter>Disgaea\UI</Filter>
     </ClInclude>
-    <ClInclude Include="VictoryUI.h" />
+    <ClInclude Include="CSkill.h" />
+    <ClInclude Include="VictoryUI.h">
+      <Filter>Disgaea\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Question.txt">

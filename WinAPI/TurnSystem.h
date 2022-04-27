@@ -21,14 +21,16 @@ enum class EControl_State
 	Map_Cursor,
 	Character_BehaviorWindow,
 	Turn_Window,
-	Character_CreateWindow
+	Character_CreateWindow,
+	Character_SkillWindow
 };
 
 enum class EOkBtnState
 {
 	Nomal,
 	Move,
-	Attack
+	Attack,
+	Skill,
 };
 
 class IsometricMap;
@@ -45,6 +47,7 @@ private:
 	CWindowUI* _charBehaviorWindow;
 	CWindowUI* _turnWindow;
 	CWindowUI* _charCreateWindow;
+	CWindowUI* _charSkillWindow;
 
 	POINT _tileRangeTargetPoint;
 	POINT _tileRangeStartPoint;
@@ -60,6 +63,10 @@ private:
 	vector<GameCharacter*> _vPlayerChar;
 	vector<GameCharacter*>::iterator _vIPlayerChar;
 	int	_playerCharSize;
+
+	CSkill* _curSkill;
+
+	
 
 public:
 	HRESULT init(void);
@@ -77,6 +84,7 @@ public:
 	void characterWindowSetup(void);
 	void turnWindowSetup(void);
 	void createCharacterWindowSetup(void);
+	void characterSkillSetup(void);
 
 	inline void updateBattleUI(void);
 	bool confimeAliveCharacter(void);

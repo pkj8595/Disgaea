@@ -10,7 +10,6 @@ HRESULT GameManager::init(void)
 	_stageIndex = 0;
 	_DetailStageIndex = 0;
 
-
 	return S_OK;
 }
 

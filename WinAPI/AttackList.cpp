@@ -86,7 +86,6 @@ bool BehaviorList::cancelBehavior(IsometricTile* excute)
 			break;
 		}
 	}
-	
 	return false;
 }
 
@@ -106,7 +105,7 @@ void BehaviorList::removeBehavior(IsometricTile* removeObject)
 		list<IsometricTile*>::iterator subIter = (*iter).second.begin();
 		for (; subIter != (*iter).second.end();)
 		{
-			if (*subIter == removeObject)
+			if ((*subIter) == removeObject)
 			{
 				subIter = (*iter).second.erase(subIter);
 			}

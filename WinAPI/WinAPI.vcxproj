@@ -169,6 +169,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="CRectObserverManager.cpp" />
+    <ClCompile Include="CSkill.cpp" />
     <ClCompile Include="CTileObject.cpp" />
     <ClCompile Include="CTimeMap.cpp" />
     <ClCompile Include="CWindowUI.cpp" />
@@ -277,6 +278,7 @@
     <ClInclude Include="CharStatusUI.h" />
     <ClInclude Include="CommonMacroFunction.h" />
     <ClInclude Include="CRectObserverManager.h" />
+    <ClInclude Include="CSkill.h" />
     <ClInclude Include="CTileObject.h" />
     <ClInclude Include="CTimeMap.h" />
     <ClInclude Include="CWindowUI.h" />

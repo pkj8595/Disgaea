@@ -37,6 +37,8 @@ private:
 	list<GameCharacter*> _characterList;
 	GameCharacter* _currentCharacter;
 
+	list<pair<GameCharacter*, CSkill*>> _lSavedSkill;
+
 	//astar move point
 	vector<POINT> _vCharMovePoints;
 	vector<POINT>::iterator _vCMovePointsIter;
@@ -130,6 +132,9 @@ public:
 	GameCharacter* computeNearControlableCharacter(GameCharacter* curCharacter);
 	IsometricTile* computeEnemyMoveTargetTile(GameCharacter* curCharacter);
 	IsometricTile* computeEnemyAttackRangeInPlayerTile(GameCharacter* currentEnemy);
+
+	void setBehaviorSkill(GameCharacter* Gchar, CSkill* skill);
+	
 
 private:
 	void CheckEnemyTurnEnd(void);

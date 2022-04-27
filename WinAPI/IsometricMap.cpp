@@ -142,7 +142,6 @@ void IsometricMap::update(void)
 	else _tileAlpha--;
 	if (_tileAlpha < 50 || _tileAlpha > 130) _isTileAlphaIncrease = !_isTileAlphaIncrease;
 
-
 	//현재 캐릭터 움직일때 애니메이션
 	if (_isCharacterMoving)
 	{
@@ -188,6 +187,7 @@ void IsometricMap::update(void)
 
 	if (_isRunnigBehavior)
 	{
+		//행동 셋팅
 		if (_isRunnigBehaviorSetting)
 		{
 			_currentCharacter = _behaviorList->front()->first->getTileGameCharacter();
@@ -230,8 +230,8 @@ void IsometricMap::update(void)
 					setFrontPushBehaviorList(
 						getTile(subCharacter->getCoorPoint()),
 						getTile(_behaviorList->front()->second.front()->getCoorPoint()),
-						E_BehaviorType::Sub2CollaboAttackStart
-					);
+						E_BehaviorType::Sub2CollaboAttackStart);
+
 					subCharacter->setAniDirecttion(_currentCharacter->getAniDirecttion());
 					//현재 캐릭터 이동
 					_collaborationStartPoint = _currentCharacter->getPoint();
@@ -244,6 +244,23 @@ void IsometricMap::update(void)
 					_portait->setPortraitAnimation(subCharacter->getBattleFaceIndex());
 					_portait->StartAnimation();
 				}
+			}
+			if (_currentCharacter->getBehaviorType() == E_BehaviorType::Skill)
+			{
+				
+				list<pair<GameCharacter*, CSkill*>>::iterator skillIter=_lSavedSkill.begin();
+				for (; skillIter != _lSavedSkill.end(); ++skillIter)
+				{
+					if ((*skillIter).first == _currentCharacter)
+					{
+						break;
+					}
+				}
+				//스킬 이름을 가져와서 클래스와 맵핑? 
+				//스킬 스타트 
+
+				_currentCharacter->setAniBehavior(E_AniBehavior::Ani_attack);
+				CAMERA->zoomIn();
 			}
 
 			//서브 캐릭터의 어택이 끝나면 현재 캐릭터의 위치를 리셋
@@ -312,30 +329,37 @@ void IsometricMap::update(void)
 				//공격당한 캐릭터의 애니메이션을 재생시킨다.
 				while (!_behaviorList->front()->second.empty())
 				{
+					bool isRemoveCharacter = false;
 					GameCharacter* attackedChar = _behaviorList->front()->second.front()->getTileGameCharacter();
-					attackedChar->setAniBehavior(E_AniBehavior::Ani_be_Attacked);
-					attackedChar->shakeStart(1.5f);
-
-					int damage = computeDamage(_currentCharacter, attackedChar);
-					attackedChar->beAttacked(damage);
-					//데미지 미터기
-					_damageMeter->createDamageEffect(PointMake(attackedChar->getPoint().x, attackedChar->getPoint().y-50), damage<0 ? 1: damage );
-
-					_effectManager->createParticleEffect("particle", PointMake(attackedChar->getPoint().x, attackedChar->getPoint().y - 30),8,false,150,20,5,60,30);
-					
-					if (attackedChar->getIsDie()&& _currentCharacter->getBehaviorType() != E_BehaviorType::Sub2CollaboAttackStart)
+					if (attackedChar != nullptr)
 					{
-						//레벨업을 하면 true를 반환한다.
-						if (_currentCharacter->addExp(attackedChar->getCharicterAllStats()->_exp))
+						attackedChar->setAniBehavior(E_AniBehavior::Ani_be_Attacked);
+						attackedChar->shakeStart(1.5f);
+
+						int damage = computeDamage(_currentCharacter, attackedChar);
+						attackedChar->beAttacked(damage);
+						//데미지 미터기
+						_damageMeter->createDamageEffect(PointMake(attackedChar->getPoint().x, attackedChar->getPoint().y - 50), damage < 0 ? 1 : damage);
+
+						_effectManager->createParticleEffect("particle", PointMake(attackedChar->getPoint().x, attackedChar->getPoint().y - 30), 8, false, 150, 20, 5, 60, 30);
+
+						if (attackedChar->getIsDie() && _currentCharacter->getBehaviorType() != E_BehaviorType::Sub2CollaboAttackStart)
 						{
-							_effectManager->createEffect("LevelUp", PointMake(_currentCharacter->getPoint().x, _currentCharacter->getPoint().y - 30), 6, true, 100, 244, 10.0f);
+							//레벨업을 하면 true를 반환한다.
+							if (_currentCharacter->addExp(attackedChar->getCharicterAllStats()->_exp))
+							{
+								_effectManager->createEffect("LevelUp", PointMake(_currentCharacter->getPoint().x, _currentCharacter->getPoint().y - 30), 6, true, 100, 244, 10.0f);
+							}
+							_behaviorList->removeBehavior(getTile(attackedChar->getCoorPoint()));
+							removeCharacter(attackedChar);
+							isRemoveCharacter = true;
 						}
-						_behaviorList->removeBehavior(getTile(attackedChar->getCoorPoint()));
-						removeCharacter(attackedChar);
 					}
 					
-					if (!_behaviorList->front()->second.empty())
+					if (!_behaviorList->front()->second.empty() && !isRemoveCharacter)
 					{
+						/*bool hasChar = _behaviorList->front()->second.front()->getTileGameCharacter() != nullptr;
+						cout << "tile: " << _behaviorList->front()->second.front() << (hasChar? " true":" false") << endl;*/
 						_behaviorList->front()->second.pop_front();
 					}
 				}
@@ -350,6 +374,11 @@ void IsometricMap::update(void)
 					break;
 				case E_BehaviorType::Sub2CollaboAttackStart:
 					_currentCharacter->setBehaviorType(E_BehaviorType::Sub2CollaboAttackEnd);
+					break;
+				case E_BehaviorType::Skill:
+					_currentCharacter->setReservationAniBehavior(E_AniBehavior::Ani_idle);
+					_currentCharacter->setBehaviorType(E_BehaviorType::Attack);
+					_isRunningBeAttackedAnimation = true;
 					break;
 				}
 			}   
@@ -493,6 +522,7 @@ void IsometricMap::render(void)
 
 void IsometricMap::removeCharacter(GameCharacter* character)
 {
+	cout << "IsometricMap::removeCharacter >>getTile(character->getCoorPoint()) : " << getTile(character->getCoorPoint()) << endl;
 	getTile(character->getCoorPoint())->setTileGameCharacter(nullptr);
 	
 	list<GameCharacter*>::iterator iter = _characterList.begin();
@@ -514,7 +544,7 @@ void IsometricMap::removeCharacter(GameCharacter* character)
 	{
 		character->unregisterZData();
 	}
-	cout << "_characterList.size() : " << _characterList.size()<< endl;
+	
 }
 
 void IsometricMap::setPlayerCharacter(GameCharacter* gameChar, int coorX, int coorY)
@@ -996,7 +1026,7 @@ void IsometricMap::CheckEnemyTurnEnd(void)
 	if (isMoveFinishOfAllCharacter && isBehaviorFinishOfAllCharacter && _behaviorList->empty())
 	{
 		TurnEnd(TurnSubject::ENUMY);
-		cout << "CheckEnemyTurnEnd :: turn end" << endl;
+		cout << "IsometricMap::CheckEnemyTurnEnd >> turn end" << endl;
 	}
 
 }
@@ -1095,7 +1125,6 @@ bool IsometricMap::IsEmptyPlayerCharacter(void)
 	{
 		if ((*iter)->getUnitType() == E_UnitType::Controllable )
 		{
-			cout << "플레이어 캐릭터가 있음" << _characterList.size() << endl;
 			return false;
 		}
 	}
@@ -1109,8 +1138,6 @@ bool IsometricMap::IsEmptyEnemyCharacter(void)
 	{
 		if ((*iter)->getUnitType() == E_UnitType::Monster)
 		{
-			cout << "에너미 캐릭터가 있음"<< _characterList.size() << endl;
-
 			return false;
 		}
 	}
@@ -1223,6 +1250,24 @@ IsometricTile* IsometricMap::computeEnemyAttackRangeInPlayerTile(GameCharacter* 
 	}
 
 	return returnTile;
+}
+
+void IsometricMap::setBehaviorSkill(GameCharacter* Gchar, CSkill * skill)
+{
+	list<IsometricTile*> tempTileList;
+
+	vector<IsometricTile*>::iterator iter = _vTileRange.begin();
+	for (; iter != _vTileRange.end(); ++iter)
+	{
+		if (getTile(Gchar->getCoorPoint()) != *iter)
+		{
+			tempTileList.push_back(*iter);
+		}
+	}
+
+	_lSavedSkill.push_back(make_pair( Gchar, skill));
+	setBehaviorList(getTile(Gchar->getCoorPoint()), tempTileList, E_BehaviorType::Skill);
+	resetTileRange();
 }
 
 //POINT IsometricMap::lerp(POINT start, POINT end, float percentage)
