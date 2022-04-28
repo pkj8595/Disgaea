@@ -128,6 +128,13 @@ void DataSetUp::ImageClassInit()
 	IMAGEMANAGER->addFrameImage("LevelUp", "Resource/Images/Disgaea/Effect/LevelUp.bmp", 240, 16, 4, 1, true, RGB(255, 0, 255));
 #pragma endregion
 	
+#pragma region skill
+	IMAGEMANAGER->addFrameImage("meteoFrame1", "Resource/Images/Disgaea/Skill/meteoFrame1.bmp", 4720, 1320, 10, 5, false, RGB(255, 0, 255));
+	IMAGEMANAGER->addFrameImage("meteoFrame2", "Resource/Images/Disgaea/Skill/meteoFrame2.bmp", 4720, 3432, 10, 13, false, RGB(255, 0, 255));
+	IMAGEMANAGER->addFrameImage("meteoFrame3", "Resource/Images/Disgaea/Skill/meteoFrame3.bmp", 4720, 528, 10, 2, false, RGB(255, 0, 255));
+	IMAGEMANAGER->addFrameImage("meteoFrame4", "Resource/Images/Disgaea/Skill/meteoFrame4.bmp", 4720, 1584, 10, 6, false, RGB(255, 0, 255));
+	IMAGEMANAGER->addFrameImage("meteoMap", "Resource/Images/Disgaea/Skill/meteoMap.bmp", 398, 300, 1, 1, true, RGB(255, 0, 255));
+#pragma endregion
 }
 
 void DataSetUp::AnimationClassInit()
@@ -182,79 +189,80 @@ void DataSetUp::AnimationClassInit()
 	SAFE_DELETE(data);
 #pragma endregion
 
-#pragma region Archer
-	int arrNpcLBIdle[5] = { 1,10,11,1,1 };
-	int arrNpcRBIdle[5] = { 7,12,13,7,7 };
-	ANIMATIONMANAGER->addAnimation("Archer_idle_B", "Archer", 0, 0, ANI_FPS, false, true);
-	ANIMATIONMANAGER->addAnimationArray( "Archer_idle_LB", "Archer", arrNpcLBIdle, 5, ANI_FPS, true);
-	ANIMATIONMANAGER->addAnimation( "Archer_idle_L", "Archer", 2, 2, ANI_FPS, false, true);
-	ANIMATIONMANAGER->addAnimation( "Archer_idle_LT", "Archer", 3, 3, ANI_FPS, false, true);
-	ANIMATIONMANAGER->addAnimation( "Archer_idle_T", "Archer", 4, 4, ANI_FPS, false, true);
-	ANIMATIONMANAGER->addAnimation( "Archer_idle_RT", "Archer", 5, 5, ANI_FPS, false, true);
-	ANIMATIONMANAGER->addAnimation( "Archer_idle_R", "Archer", 6, 6, ANI_FPS, false, true);
-	ANIMATIONMANAGER->addAnimationArray( "Archer_idle_RB", "Archer", arrNpcRBIdle, 5, ANI_FPS, true);
-#pragma endregion
+//#pragma region Archer
+//	int arrNpcLBIdle[5] = { 1,10,11,1,1 };
+//	int arrNpcRBIdle[5] = { 7,12,13,7,7 };
+//	ANIMATIONMANAGER->addAnimation("Archer_idle_B", "Archer", 0, 0, ANI_FPS, false, true);
+//	ANIMATIONMANAGER->addAnimationArray( "Archer_idle_LB", "Archer", arrNpcLBIdle, 5, ANI_FPS, true);
+//	ANIMATIONMANAGER->addAnimation( "Archer_idle_L", "Archer", 2, 2, ANI_FPS, false, true);
+//	ANIMATIONMANAGER->addAnimation( "Archer_idle_LT", "Archer", 3, 3, ANI_FPS, false, true);
+//	ANIMATIONMANAGER->addAnimation( "Archer_idle_T", "Archer", 4, 4, ANI_FPS, false, true);
+//	ANIMATIONMANAGER->addAnimation( "Archer_idle_RT", "Archer", 5, 5, ANI_FPS, false, true);
+//	ANIMATIONMANAGER->addAnimation( "Archer_idle_R", "Archer", 6, 6, ANI_FPS, false, true);
+//	ANIMATIONMANAGER->addAnimationArray( "Archer_idle_RB", "Archer", arrNpcRBIdle, 5, ANI_FPS, true);
+//#pragma endregion
+//
+//#pragma region Cleric
+//
+//	ANIMATIONMANAGER->addAnimation( "Cleric_idle_B", "Cleric", 0, 0, ANI_FPS, false, true);
+//	ANIMATIONMANAGER->addAnimationArray( "Cleric_idle_LB", "Cleric", arrNpcLBIdle, 5, ANI_FPS, true);
+//	ANIMATIONMANAGER->addAnimation( "Cleric_idle_L", "Cleric", 2, 2, ANI_FPS, false, true);
+//	ANIMATIONMANAGER->addAnimation( "Cleric_idle_LT", "Cleric", 3, 3, ANI_FPS, false, true);
+//	ANIMATIONMANAGER->addAnimation( "Cleric_idle_T", "Cleric", 4, 4, ANI_FPS, false, true);
+//	ANIMATIONMANAGER->addAnimation( "Cleric_idle_RT", "Cleric", 5, 5, ANI_FPS, false, true);
+//	ANIMATIONMANAGER->addAnimation( "Cleric_idle_R", "Cleric", 6, 6, ANI_FPS, false, true);
+//	ANIMATIONMANAGER->addAnimationArray( "Cleric_idle_RB", "Cleric", arrNpcRBIdle, 5, ANI_FPS, true);
+//#pragma endregion
+//
+//#pragma region Robin
+//
+//	ANIMATIONMANAGER->addAnimation( "Robin_idle_B", "Robin", 0, 0, ANI_FPS, false, true);
+//	ANIMATIONMANAGER->addAnimationArray( "Robin_idle_LB", "Robin", arrNpcLBIdle, 5, ANI_FPS, true);
+//	ANIMATIONMANAGER->addAnimation( "Robin_idle_L", "Robin", 2, 2, ANI_FPS, false, true);
+//	ANIMATIONMANAGER->addAnimation( "Robin_idle_LT", "Robin", 3, 3, ANI_FPS, false, true);
+//	ANIMATIONMANAGER->addAnimation( "Robin_idle_T", "Robin", 4, 4, ANI_FPS, false, true);
+//	ANIMATIONMANAGER->addAnimation("Robin_idle_RT", "Robin", 5, 5, ANI_FPS, false, true);
+//	ANIMATIONMANAGER->addAnimation( "Robin_idle_R", "Robin", 6, 6, ANI_FPS, false, true);
+//	ANIMATIONMANAGER->addAnimationArray( "Robin_idle_RB", "Robin", arrNpcRBIdle, 5, ANI_FPS, true);
+//#pragma endregion
+//
+//#pragma region Warrior
+//
+//	ANIMATIONMANAGER->addAnimation( "Warrior_idle_B", "Warrior", 0, 0, ANI_FPS, false, true);
+//	ANIMATIONMANAGER->addAnimationArray( "Warrior_idle_LB", "Warrior", arrNpcLBIdle, 5, ANI_FPS, true);
+//	ANIMATIONMANAGER->addAnimation("Warrior_idle_L", "Warrior", 2, 2, ANI_FPS, false, true);
+//	ANIMATIONMANAGER->addAnimation( "Warrior_idle_LT", "Warrior", 3, 3, ANI_FPS, false, true);
+//	ANIMATIONMANAGER->addAnimation( "Warrior_idle_T", "Warrior", 4, 4, ANI_FPS, false, true);
+//	ANIMATIONMANAGER->addAnimation( "Warrior_idle_RT", "Warrior", 5, 5, ANI_FPS, false, true);
+//	ANIMATIONMANAGER->addAnimation( "Warrior_idle_R", "Warrior", 6, 6, ANI_FPS, false, true);
+//	ANIMATIONMANAGER->addAnimationArray( "Warrior_idle_RB", "Warrior", arrNpcRBIdle, 5, ANI_FPS, true);
+//#pragma endregion
+//
+//#pragma region Beast
+//
+//	ANIMATIONMANAGER->addAnimation( "Beast_idle_LB", "Beast", 0, 5, ANI_FPS, false, true);
+//	ANIMATIONMANAGER->addAnimation( "Beast_idle_LT", "Beast", 6, 11, ANI_FPS, false, true);
+//	ANIMATIONMANAGER->addAnimation( "Beast_idle_RT", "Beast", 12, 17, ANI_FPS, false, true);
+//	ANIMATIONMANAGER->addAnimation(" Beast_idle_RB", "Beast", 18, 23, ANI_FPS, false, true);
+//#pragma endregion
+//
+//#pragma region Dragon
+//
+//	ANIMATIONMANAGER->addAnimation( "Dragon_idle_LB", "Dragon", 0, 3, ANI_FPS, false, true);
+//	ANIMATIONMANAGER->addAnimation( "Dragon_idle_LT", "Dragon", 4, 7, ANI_FPS, false, true);
+//	ANIMATIONMANAGER->addAnimation( "Dragon_idle_RT", "Dragon", 8, 11, ANI_FPS, false, true);
+//	ANIMATIONMANAGER->addAnimation( "Dragon_idle_RB", "Dragon", 12, 15, ANI_FPS, false, true);
+//#pragma endregion
+//
+//#pragma region Golem
+//
+//	ANIMATIONMANAGER->addAnimation( "Golem_idle_LB", "Golem", 0, 5, ANI_FPS, false, true);
+//	ANIMATIONMANAGER->addAnimation( "Golem_idle_LT", "Golem", 6, 11, ANI_FPS, false, true);
+//	ANIMATIONMANAGER->addAnimation( "Golem_idle_RT", "Golem", 12, 17, ANI_FPS, false, true);
+//	ANIMATIONMANAGER->addAnimation("Golem_idle_RB", "Golem", 18, 23, ANI_FPS, false, true);
+//#pragma endregion
+//	
 
-#pragma region Cleric
-
-	ANIMATIONMANAGER->addAnimation( "Cleric_idle_B", "Cleric", 0, 0, ANI_FPS, false, true);
-	ANIMATIONMANAGER->addAnimationArray( "Cleric_idle_LB", "Cleric", arrNpcLBIdle, 5, ANI_FPS, true);
-	ANIMATIONMANAGER->addAnimation( "Cleric_idle_L", "Cleric", 2, 2, ANI_FPS, false, true);
-	ANIMATIONMANAGER->addAnimation( "Cleric_idle_LT", "Cleric", 3, 3, ANI_FPS, false, true);
-	ANIMATIONMANAGER->addAnimation( "Cleric_idle_T", "Cleric", 4, 4, ANI_FPS, false, true);
-	ANIMATIONMANAGER->addAnimation( "Cleric_idle_RT", "Cleric", 5, 5, ANI_FPS, false, true);
-	ANIMATIONMANAGER->addAnimation( "Cleric_idle_R", "Cleric", 6, 6, ANI_FPS, false, true);
-	ANIMATIONMANAGER->addAnimationArray( "Cleric_idle_RB", "Cleric", arrNpcRBIdle, 5, ANI_FPS, true);
-#pragma endregion
-
-#pragma region Robin
-
-	ANIMATIONMANAGER->addAnimation( "Robin_idle_B", "Robin", 0, 0, ANI_FPS, false, true);
-	ANIMATIONMANAGER->addAnimationArray( "Robin_idle_LB", "Robin", arrNpcLBIdle, 5, ANI_FPS, true);
-	ANIMATIONMANAGER->addAnimation( "Robin_idle_L", "Robin", 2, 2, ANI_FPS, false, true);
-	ANIMATIONMANAGER->addAnimation( "Robin_idle_LT", "Robin", 3, 3, ANI_FPS, false, true);
-	ANIMATIONMANAGER->addAnimation( "Robin_idle_T", "Robin", 4, 4, ANI_FPS, false, true);
-	ANIMATIONMANAGER->addAnimation("Robin_idle_RT", "Robin", 5, 5, ANI_FPS, false, true);
-	ANIMATIONMANAGER->addAnimation( "Robin_idle_R", "Robin", 6, 6, ANI_FPS, false, true);
-	ANIMATIONMANAGER->addAnimationArray( "Robin_idle_RB", "Robin", arrNpcRBIdle, 5, ANI_FPS, true);
-#pragma endregion
-
-#pragma region Warrior
-
-	ANIMATIONMANAGER->addAnimation( "Warrior_idle_B", "Warrior", 0, 0, ANI_FPS, false, true);
-	ANIMATIONMANAGER->addAnimationArray( "Warrior_idle_LB", "Warrior", arrNpcLBIdle, 5, ANI_FPS, true);
-	ANIMATIONMANAGER->addAnimation("Warrior_idle_L", "Warrior", 2, 2, ANI_FPS, false, true);
-	ANIMATIONMANAGER->addAnimation( "Warrior_idle_LT", "Warrior", 3, 3, ANI_FPS, false, true);
-	ANIMATIONMANAGER->addAnimation( "Warrior_idle_T", "Warrior", 4, 4, ANI_FPS, false, true);
-	ANIMATIONMANAGER->addAnimation( "Warrior_idle_RT", "Warrior", 5, 5, ANI_FPS, false, true);
-	ANIMATIONMANAGER->addAnimation( "Warrior_idle_R", "Warrior", 6, 6, ANI_FPS, false, true);
-	ANIMATIONMANAGER->addAnimationArray( "Warrior_idle_RB", "Warrior", arrNpcRBIdle, 5, ANI_FPS, true);
-#pragma endregion
-
-#pragma region Beast
-
-	ANIMATIONMANAGER->addAnimation( "Beast_idle_LB", "Beast", 0, 5, ANI_FPS, false, true);
-	ANIMATIONMANAGER->addAnimation( "Beast_idle_LT", "Beast", 6, 11, ANI_FPS, false, true);
-	ANIMATIONMANAGER->addAnimation( "Beast_idle_RT", "Beast", 12, 17, ANI_FPS, false, true);
-	ANIMATIONMANAGER->addAnimation(" Beast_idle_RB", "Beast", 18, 23, ANI_FPS, false, true);
-#pragma endregion
-
-#pragma region Dragon
-
-	ANIMATIONMANAGER->addAnimation( "Dragon_idle_LB", "Dragon", 0, 3, ANI_FPS, false, true);
-	ANIMATIONMANAGER->addAnimation( "Dragon_idle_LT", "Dragon", 4, 7, ANI_FPS, false, true);
-	ANIMATIONMANAGER->addAnimation( "Dragon_idle_RT", "Dragon", 8, 11, ANI_FPS, false, true);
-	ANIMATIONMANAGER->addAnimation( "Dragon_idle_RB", "Dragon", 12, 15, ANI_FPS, false, true);
-#pragma endregion
-
-#pragma region Golem
-
-	ANIMATIONMANAGER->addAnimation( "Golem_idle_LB", "Golem", 0, 5, ANI_FPS, false, true);
-	ANIMATIONMANAGER->addAnimation( "Golem_idle_LT", "Golem", 6, 11, ANI_FPS, false, true);
-	ANIMATIONMANAGER->addAnimation( "Golem_idle_RT", "Golem", 12, 17, ANI_FPS, false, true);
-	ANIMATIONMANAGER->addAnimation("Golem_idle_RB", "Golem", 18, 23, ANI_FPS, false, true);
-#pragma endregion
-	
 #pragma region Etna
 
 	ANIMATIONMANAGER->addAnimation("Etna_homeIdle_B", "Etna", 0, 0, ANI_FPS, false, true);
@@ -450,6 +458,10 @@ void DataSetUp::AnimationClassInit()
 	ANIMATIONMANAGER->addAnimation("Vyers_Skill1_RB", "Vyers", 181, 191, ANI_FPS, false, false);
 #pragma endregion
 
+	ANIMATIONMANAGER->addAnimation("meteoFrame1", "meteoFrame1", 0, 42, 20,false,false);
+	ANIMATIONMANAGER->addAnimation("meteoFrame2", "meteoFrame2", 0, 124, 20,false,false);
+	ANIMATIONMANAGER->addAnimation("meteoFrame3", "meteoFrame3", 0, 12, 10,false,false);
+	ANIMATIONMANAGER->addAnimation("meteoFrame4", "meteoFrame4", 0, 58, 20,false,false);
 
 }
 

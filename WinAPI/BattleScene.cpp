@@ -112,10 +112,11 @@ void BattleScene::render(void)
 					zData->getRECT()->top - CAMERA->getTop());
 				break;
 			case ZIndexType_Character:
-				(*zData->getImage())->aniRender(getMemDC(),
+				/*(*zData->getImage())->aniRender(getMemDC(),
 					zData->getRECT()->left - CAMERA->getLeft(),
 					zData->getRECT()->top - CAMERA->getTop(),
-					(*zData->getAnimation()));
+					(*zData->getAnimation()));*/
+				(*zData).excuteRenderCallback();
 				break;
 			case ZIndexType_ProgressDownbar:
 				(*zData->getImage())->render(getMemDC(),

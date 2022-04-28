@@ -383,6 +383,7 @@
     <ClCompile Include="VictoryUI.cpp">
       <Filter>Disgaea\UI</Filter>
     </ClCompile>
+    <ClCompile Include="SkillMeteoAnimation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CommonMacroFunction.h">
@@ -648,6 +649,7 @@
     <ClInclude Include="VictoryUI.h">
       <Filter>Disgaea\UI</Filter>
     </ClInclude>
+    <ClInclude Include="SkillMeteoAnimation.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Question.txt">

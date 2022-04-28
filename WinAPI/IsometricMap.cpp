@@ -75,6 +75,9 @@ HRESULT IsometricMap::init(int mapsizeX, int mapsizeY, bool isshowTileImg, strin
 	_isRunningBeAttackedAnimation = false;
 	_isCurrentCharAttacked = true;
 	_isPortaitEnd = false;
+	_skillMeteoAni = new SkillMeteoAnimation;
+	_skillMeteoAni->init();
+
 	return S_OK;
 }
 
@@ -100,10 +103,15 @@ void IsometricMap::release(void)
 		}
 		else
 		{
+			cout << "IsometricMap::release >> (*_vIterCharList)->unregisterZData() start" << endl;
 			(*_vIterCharList)->unregisterZData();
+			cout << "IsometricMap::release >> (*_vIterCharList)->unregisterZData() end" << endl;
 		}
 	}
 	_characterList.clear();
+
+	_skillMeteoAni->release();
+	SAFE_DELETE(_skillMeteoAni);
 
 	_effectManager->release();
 	SAFE_DELETE(_effectManager);
@@ -118,6 +126,8 @@ void IsometricMap::update(void)
 	_damageMeter->update();
 	_effectManager->update();
 	_portait->update();
+	_skillMeteoAni->update();
+
 	if (_portait->getIsActive())
 	{
 		_isPortaitEnd = true;
@@ -138,6 +148,8 @@ void IsometricMap::update(void)
 		(*_vIterCharList)->update();
 	}
 	
+	if (_skillMeteoAni->getIsActive()) return;
+
 	if (_isTileAlphaIncrease) _tileAlpha++;
 	else _tileAlpha--;
 	if (_tileAlpha < 50 || _tileAlpha > 130) _isTileAlphaIncrease = !_isTileAlphaIncrease;
@@ -256,11 +268,22 @@ void IsometricMap::update(void)
 						break;
 					}
 				}
+
+				list<GameCharacter*> tempCharacterList;
+				list<IsometricTile*>::iterator inIter = _behaviorList->front()->second.begin();
+				for (; inIter != _behaviorList->front()->second.end(); ++inIter)
+				{
+					if ((*inIter)->getTileGameCharacter() != nullptr)
+					{
+						tempCharacterList.push_back((*inIter)->getTileGameCharacter());
+					}
+				}
+
 				//스킬 이름을 가져와서 클래스와 맵핑? 
 				//스킬 스타트 
+				_skillMeteoAni->StartAnimation(_currentCharacter, tempCharacterList);
 
-				_currentCharacter->setAniBehavior(E_AniBehavior::Ani_attack);
-				CAMERA->zoomIn();
+				//_currentCharacter->setAniBehavior(E_AniBehavior::Ani_attack);
 			}
 
 			//서브 캐릭터의 어택이 끝나면 현재 캐릭터의 위치를 리셋
@@ -511,13 +534,13 @@ void IsometricMap::render(void)
 		}
 	}
 	
-	for (GameCharacter* character : _characterList)
+	/*for (GameCharacter* character : _characterList)
 	{
 		character->render();
-	}
+	}*/
 	_damageMeter->render();
 	_effectManager->render();
-
+	_skillMeteoAni->render();
 }
 
 void IsometricMap::removeCharacter(GameCharacter* character)

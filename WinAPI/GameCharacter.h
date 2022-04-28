@@ -114,6 +114,7 @@ protected:
 	//½ºÅ³
 	int			_attackIndex;
 	bool		_isDie;
+	bool		_isRender;
 
 	ProgressBar*	_hpBar;
 
@@ -130,6 +131,8 @@ public:
 	void unregisterZData(void);
 	ZOrderData* getZData() { return _zData; }
 	void registerZData(); 
+	void setIsRender(bool isrender) { _isRender = isrender; }
+	bool getIsRender(void) { return _isRender; }
 
 	void setReservationAniBehavior(E_AniBehavior behavior);
 	bool IsAttackIndex(void);

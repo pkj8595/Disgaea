@@ -65,7 +65,7 @@ HRESULT GameCharacter::init(string fileName, int x, int y, int coorX, int coorY,
 	{
 		_hpBar->init(_point.x, _point.y, 37, 3, false);
 	}
-	_hpBar->setZData();
+	//_hpBar->setZData();
 
 	for (int i = 0; i < E_CommandFlag_end; i++)
 	{
@@ -88,9 +88,11 @@ HRESULT GameCharacter::init(string fileName, int x, int y, int coorX, int coorY,
 	_LinerMoveStartPoint = PointMake(0, 0);
 	_reservationBehavior = E_AniBehavior::E_Behavior_end;
 	_isDie = false;
+	_isRender = true;
 
 	_zData = new ZOrderData;
-	_zData->setRenderData(&_rc, &_currentAnimation, &_characterImg);
+	//_zData->setRenderData(&_rc, &_currentAnimation, &_characterImg);
+	_zData->setRenderCallback(&_rc, [this](void)-> void { render(); });
 	_title = "";
 	return S_OK;
 }
@@ -201,23 +203,25 @@ void GameCharacter::update(void)
 
 void GameCharacter::render(void)
 {
+	if (!_isRender) return;
+
 	_shadowImg->render(getMemDC(), _shadowRc.left-CAMERA->getLeft(), _shadowRc.top - CAMERA->getTop());
+	_characterImg->aniRender(getMemDC(),_rc.left - CAMERA->getLeft(),_rc.top - CAMERA->getTop(), _currentAnimation);
 	_hpBar->render();
-	//_characterImg->aniRender(getMemDC(),_rc.left - CAMERA->getLeft(),_rc.top - CAMERA->getTop(), _currentAnimation);
 }
 
 void GameCharacter::unregisterZData(void)
 {
 	TurnEnd();
 	CAMERA->removeZData(_zData);
-	_hpBar->removeZData();
+	//_hpBar->removeZData();
 }
 
 void GameCharacter::registerZData()
 {
 	_rc = RectMakeCenter((int)_point.x - _imgCorrectionX, (int)_point.y - _imgCorrectionY, _characterImg->getFrameWidth(), _characterImg->getFrameHeight());
 	CAMERA->registerZData(ZIndexType::ZIndexType_Character,_zData);
-	_hpBar->registerZData();
+	//_hpBar->registerZData();
 }
 
 void GameCharacter::setReservationAniBehavior(E_AniBehavior behavior)
