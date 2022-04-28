@@ -22,8 +22,9 @@ private:
 	list<GameCharacter*>	_lGameChar;
 	GameCharacter*	_mainCharacter;
 
-	my::Image*		_curImg;
+	my::Image*		_curFrameImg;
 	my::Image*		_skillMap;
+	my::Image*		_backImg;
 	Animation*		_curAnimation;
 
 	RECT			_frameRc;
@@ -32,6 +33,7 @@ private:
 	POINT			_basePt;
 
 	POINT			_zoom;
+	POINT			_jumpPoint;
 
 	float			_time;
 	float			_endtime;
@@ -39,7 +41,8 @@ private:
 	bool			_isActive;
 	bool			_isPlayFrame;
 	bool			_isFade;
-
+	bool			_isbackRender;
+	
 public:
 	HRESULT init(void);
 	void release(void);

@@ -225,6 +225,7 @@ void Camera::zoomOut(void)
 
 void Camera::zoomChange(POINT cameraSize)
 {
+	_currentCameraSize = cameraSize;
 	SendMessage(_hWnd, WM_COMMAND, 0x1000, MAKELPARAM(cameraSize.x, cameraSize.y));
 }
 

@@ -271,18 +271,17 @@ void IsometricMap::update(void)
 
 				list<GameCharacter*> tempCharacterList;
 				list<IsometricTile*>::iterator inIter = _behaviorList->front()->second.begin();
+				int count = 0;
 				for (; inIter != _behaviorList->front()->second.end(); ++inIter)
 				{
 					if ((*inIter)->getTileGameCharacter() != nullptr)
 					{
 						tempCharacterList.push_back((*inIter)->getTileGameCharacter());
+						count++;
 					}
 				}
-
-				//스킬 이름을 가져와서 클래스와 맵핑? 
-				//스킬 스타트 
+				cout <<" count : "<< count << endl;
 				_skillMeteoAni->StartAnimation(_currentCharacter, tempCharacterList);
-
 				//_currentCharacter->setAniBehavior(E_AniBehavior::Ani_attack);
 			}
 
@@ -343,7 +342,8 @@ void IsometricMap::update(void)
 			}
 		
 			//타격
-			if (_currentCharacter->IsAttackIndex() && !_isCurrentCharAttacked)
+			if (_currentCharacter->IsAttackIndex() && !_isCurrentCharAttacked||
+				(_currentCharacter->getBehaviorType() == E_BehaviorType::Skill && !_skillMeteoAni->getIsActive()))
 			{
 				CAMERA->shakeStart(0.5f);
 				_isCurrentCharAttacked = true;
@@ -359,8 +359,26 @@ void IsometricMap::update(void)
 						attackedChar->setAniBehavior(E_AniBehavior::Ani_be_Attacked);
 						attackedChar->shakeStart(1.5f);
 
-						int damage = computeDamage(_currentCharacter, attackedChar);
+						int damage = 0;
+						if (_currentCharacter->getBehaviorType() == E_BehaviorType::Skill)
+						{
+							damage = computeDamage(_currentCharacter, attackedChar);
+							list<pair<GameCharacter*, CSkill*>>::iterator skillIter = _lSavedSkill.begin();
+							for (; skillIter != _lSavedSkill.end(); ++skillIter)
+							{
+								if ((*skillIter).first == _currentCharacter)
+								{
+									break;
+								}
+							}
+							damage *= (*skillIter).second->getDamageCalculation();
+						}
+						else
+						{
+							damage = computeDamage(_currentCharacter, attackedChar);
+						}
 						attackedChar->beAttacked(damage);
+
 						//데미지 미터기
 						_damageMeter->createDamageEffect(PointMake(attackedChar->getPoint().x, attackedChar->getPoint().y - 50), damage < 0 ? 1 : damage);
 

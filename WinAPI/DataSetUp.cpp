@@ -123,16 +123,15 @@ void DataSetUp::ImageClassInit()
 	IMAGEMANAGER->addFrameImage("effect2", "Resource/Images/Disgaea/Effect/effect2.bmp", 354, 124, 3, 1, true, RGB(255, 0, 255));
 	IMAGEMANAGER->addFrameImage("Effect", "Resource/Images/Disgaea/Effect/Effect.bmp", 960, 160, 6, 1, true, RGB(255, 0, 255));
 	IMAGEMANAGER->addFrameImage("wind1", "Resource/Images/Disgaea/Effect/wind1.bmp", 2400, 2880, 8, 10, true, RGB(255, 0, 255));
-
 	IMAGEMANAGER->addFrameImage("particle", "Resource/Images/Disgaea/Effect/particle.bmp", 50, 10, 5, 1, true, RGB(255, 0, 255));
 	IMAGEMANAGER->addFrameImage("LevelUp", "Resource/Images/Disgaea/Effect/LevelUp.bmp", 240, 16, 4, 1, true, RGB(255, 0, 255));
 #pragma endregion
 	
 #pragma region skill
-	IMAGEMANAGER->addFrameImage("meteoFrame1", "Resource/Images/Disgaea/Skill/meteoFrame1.bmp", 4720, 1320, 10, 5, false, RGB(255, 0, 255));
-	IMAGEMANAGER->addFrameImage("meteoFrame2", "Resource/Images/Disgaea/Skill/meteoFrame2.bmp", 4720, 3432, 10, 13, false, RGB(255, 0, 255));
-	IMAGEMANAGER->addFrameImage("meteoFrame3", "Resource/Images/Disgaea/Skill/meteoFrame3.bmp", 4720, 528, 10, 2, false, RGB(255, 0, 255));
-	IMAGEMANAGER->addFrameImage("meteoFrame4", "Resource/Images/Disgaea/Skill/meteoFrame4.bmp", 4720, 1584, 10, 6, false, RGB(255, 0, 255));
+	IMAGEMANAGER->addFrameImage("meteoFrame1", "Resource/Images/Disgaea/Skill/meteoFrame1.bmp", 4860, 1320, 10, 5, false, RGB(255, 0, 255));
+	IMAGEMANAGER->addFrameImage("meteoFrame2", "Resource/Images/Disgaea/Skill/meteoFrame2.bmp", 4860, 3432, 10, 13, false, RGB(255, 0, 255));
+	IMAGEMANAGER->addFrameImage("meteoFrame3", "Resource/Images/Disgaea/Skill/meteoFrame3.bmp", 4860, 528, 10, 2, false, RGB(255, 0, 255));
+	IMAGEMANAGER->addFrameImage("meteoFrame4", "Resource/Images/Disgaea/Skill/meteoFrame4.bmp", 4860, 1584, 10, 6, false, RGB(255, 0, 255));
 	IMAGEMANAGER->addFrameImage("meteoMap", "Resource/Images/Disgaea/Skill/meteoMap.bmp", 398, 300, 1, 1, true, RGB(255, 0, 255));
 #pragma endregion
 }
@@ -458,10 +457,10 @@ void DataSetUp::AnimationClassInit()
 	ANIMATIONMANAGER->addAnimation("Vyers_Skill1_RB", "Vyers", 181, 191, ANI_FPS, false, false);
 #pragma endregion
 
-	ANIMATIONMANAGER->addAnimation("meteoFrame1", "meteoFrame1", 0, 42, 20,false,false);
-	ANIMATIONMANAGER->addAnimation("meteoFrame2", "meteoFrame2", 0, 124, 20,false,false);
-	ANIMATIONMANAGER->addAnimation("meteoFrame3", "meteoFrame3", 0, 12, 10,false,false);
-	ANIMATIONMANAGER->addAnimation("meteoFrame4", "meteoFrame4", 0, 58, 20,false,false);
+	ANIMATIONMANAGER->addAnimation("meteoFrame1", "meteoFrame1", 0, 42, 30,false,false);
+	ANIMATIONMANAGER->addAnimation("meteoFrame2", "meteoFrame2", 0, 124, 30,false,false);
+	ANIMATIONMANAGER->addAnimation("meteoFrame3", "meteoFrame3", 0, 12, 30,false,false);
+	ANIMATIONMANAGER->addAnimation("meteoFrame4", "meteoFrame4", 0, 58, 30,false,false);
 
 }
 
