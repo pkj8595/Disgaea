@@ -103,9 +103,7 @@ void IsometricMap::release(void)
 		}
 		else
 		{
-			cout << "IsometricMap::release >> (*_vIterCharList)->unregisterZData() start" << endl;
 			(*_vIterCharList)->unregisterZData();
-			cout << "IsometricMap::release >> (*_vIterCharList)->unregisterZData() end" << endl;
 		}
 	}
 	_characterList.clear();
@@ -268,21 +266,16 @@ void IsometricMap::update(void)
 						break;
 					}
 				}
+				_currentCharacter->getCharicterStats()->_sp -= (*skillIter).second->getSp();
 
-				list<GameCharacter*> tempCharacterList;
+				vector<GameCharacter*> tempCharacterList;
 				list<IsometricTile*>::iterator inIter = _behaviorList->front()->second.begin();
-				int count = 0;
 				for (; inIter != _behaviorList->front()->second.end(); ++inIter)
 				{
-					if ((*inIter)->getTileGameCharacter() != nullptr)
-					{
-						tempCharacterList.push_back((*inIter)->getTileGameCharacter());
-						count++;
-					}
+					if ((*inIter)->getTileGameCharacter() == nullptr) continue;
+					tempCharacterList.push_back((*inIter)->getTileGameCharacter());
 				}
-				cout <<" count : "<< count << endl;
 				_skillMeteoAni->StartAnimation(_currentCharacter, tempCharacterList);
-				//_currentCharacter->setAniBehavior(E_AniBehavior::Ani_attack);
 			}
 
 			//서브 캐릭터의 어택이 끝나면 현재 캐릭터의 위치를 리셋
@@ -399,8 +392,6 @@ void IsometricMap::update(void)
 					
 					if (!_behaviorList->front()->second.empty() && !isRemoveCharacter)
 					{
-						/*bool hasChar = _behaviorList->front()->second.front()->getTileGameCharacter() != nullptr;
-						cout << "tile: " << _behaviorList->front()->second.front() << (hasChar? " true":" false") << endl;*/
 						_behaviorList->front()->second.pop_front();
 					}
 				}
@@ -563,7 +554,6 @@ void IsometricMap::render(void)
 
 void IsometricMap::removeCharacter(GameCharacter* character)
 {
-	cout << "IsometricMap::removeCharacter >>getTile(character->getCoorPoint()) : " << getTile(character->getCoorPoint()) << endl;
 	getTile(character->getCoorPoint())->setTileGameCharacter(nullptr);
 	
 	list<GameCharacter*>::iterator iter = _characterList.begin();
@@ -1018,6 +1008,8 @@ void IsometricMap::TurnEnd(TurnSubject subject)
 		tempChar->setBehaviorType(E_BehaviorType::NONE);
 		_behaviorList->pop_front();
 	}
+
+	_lSavedSkill.clear();
 }
 
 void IsometricMap::enemyNextMoveTurn(void)
@@ -1067,7 +1059,6 @@ void IsometricMap::CheckEnemyTurnEnd(void)
 	if (isMoveFinishOfAllCharacter && isBehaviorFinishOfAllCharacter && _behaviorList->empty())
 	{
 		TurnEnd(TurnSubject::ENUMY);
-		cout << "IsometricMap::CheckEnemyTurnEnd >> turn end" << endl;
 	}
 
 }
@@ -1079,16 +1070,16 @@ void IsometricMap::computeTileRange(int range, IsometricTile* currentTile, bool 
 	if (range <= 0)return;
 	else if (currentTile->getShowTileRange()) 
 	{
-		if (currentTile->getTileGameCharacter() == nullptr)
-		{
-			return; 
-		}
+		return; 
 	}
-	else if (currentTile->getTileType() == IsoTileType::WALL) return;
-
+	currentTile->showTileRange(true);
 	_vTileRange.push_back(currentTile);
 
-	currentTile->showTileRange(true);
+	if (currentTile->getTileType() == IsoTileType::WALL)
+	{
+		currentTile->setSelectAbleTile(false);
+		return;
+	}
 	if (currentTile->getTileGameCharacter() != nullptr)
 	{
 		if (isMove)
@@ -1109,7 +1100,7 @@ void IsometricMap::computeTileRange(int range, IsometricTile* currentTile, bool 
 		else
 			currentTile->setSelectAbleTile(false);
 	}
-	
+
 	
 	for (int i = 0; i < 4; i++)
 	{
@@ -1310,16 +1301,6 @@ void IsometricMap::setBehaviorSkill(GameCharacter* Gchar, CSkill * skill)
 	setBehaviorList(getTile(Gchar->getCoorPoint()), tempTileList, E_BehaviorType::Skill);
 	resetTileRange();
 }
-
-//POINT IsometricMap::lerp(POINT start, POINT end, float percentage)
-//{
-//	if (0 > percentage) percentage = 0;
-//	else if (percentage > 1) percentage = 1;
-//	LONG x = start.x + ((end.x - start.x) * percentage);
-//	LONG y = start.y + ((end.y - start.y) * percentage);
-//
-//	return { x,y };
-//}
 
 
 void IsometricMap::correctionTileIndex(int &coorx, int &coory)

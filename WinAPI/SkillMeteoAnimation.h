@@ -19,7 +19,7 @@ class SkillMeteoAnimation : public GameNode
 private:
 	E_SkillProcessState		_skillState;
 	E_SkillProcessState		_beforeSkillState;
-	list<GameCharacter*>	_lGameChar;
+	vector<GameCharacter*>	_lGameChar;
 	GameCharacter*	_mainCharacter;
 
 	my::Image*		_curFrameImg;
@@ -53,7 +53,7 @@ public:
 	void setIsActive(bool isActive) { _isActive = isActive; }
 	bool getIsActive(void) { return _isActive; }
 
-	void StartAnimation( GameCharacter* mainChar, list<GameCharacter*> beAttackCharList);
+	void StartAnimation( GameCharacter* mainChar, vector<GameCharacter*> beAttackCharList);
 
 	SkillMeteoAnimation();
 	~SkillMeteoAnimation();

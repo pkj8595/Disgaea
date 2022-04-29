@@ -34,29 +34,11 @@
     <Filter Include="API FrameWork\Image">
       <UniqueIdentifier>{8ecdd767-053c-4108-8f75-9ed679a52eab}</UniqueIdentifier>
     </Filter>
-    <Filter Include="API FrameWork\ExampleClasses">
-      <UniqueIdentifier>{b4430109-f1bc-406f-ae8a-c2c92daec737}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="API FrameWork\ExampleClasses\Scene">
-      <UniqueIdentifier>{3b6764da-c672-4991-a775-af78f99a0f1b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="API FrameWork\Sound">
-      <UniqueIdentifier>{8557f922-f806-4efa-a4c3-6c068006ad66}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="API FrameWork\ExampleClasses\ShootingGame">
-      <UniqueIdentifier>{9edc4438-24ee-4fc6-b5ea-21f190d8ce57}</UniqueIdentifier>
-    </Filter>
     <Filter Include="CodingInterview">
       <UniqueIdentifier>{893419de-c5d9-4dc1-8867-a9183c8575ad}</UniqueIdentifier>
     </Filter>
     <Filter Include="GameClass\port">
       <UniqueIdentifier>{704ed228-884a-4fce-8293-5bb9b4ec572c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="API FrameWork\ExampleClasses\ShootingGame\Enemy">
-      <UniqueIdentifier>{c4de4360-dec2-49a3-ad9c-a5383c648ba1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="API FrameWork\ExampleClasses\ShootingGame\Bullets">
-      <UniqueIdentifier>{fc024b1e-7ddf-4f4f-bbf5-896c4a065d9c}</UniqueIdentifier>
     </Filter>
     <Filter Include="API FrameWork\Manager\TimeManager">
       <UniqueIdentifier>{1307e192-e6f6-4d8d-98a7-509b0dfe1d28}</UniqueIdentifier>
@@ -64,17 +46,8 @@
     <Filter Include="API FrameWork\Utility\ToolClass">
       <UniqueIdentifier>{d65f76cb-0ed2-40d4-89ac-de7f519c499a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="API FrameWork\ExampleClasses\ShootingGame\Observer">
-      <UniqueIdentifier>{9db6fb26-f3e7-48b7-89f7-6145c88250c0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="API FrameWork\ExampleClasses\ShootingGame\Rocket">
-      <UniqueIdentifier>{41da0ea2-9d2d-480a-b594-27c5d959d77f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="API FrameWork\Animation">
       <UniqueIdentifier>{0bc4185d-54c2-4c9e-914d-b1e332e4f589}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="API FrameWork\ExampleClasses\Scene\pixel">
-      <UniqueIdentifier>{5834f62d-e679-4e67-bdb0-ec7e7b91845c}</UniqueIdentifier>
     </Filter>
     <Filter Include="GameClass\EffectManager">
       <UniqueIdentifier>{c11dc7e6-0bee-4030-9870-f97ae33bb98d}</UniqueIdentifier>
@@ -130,6 +103,9 @@
     <Filter Include="Disgaea\Util\DamageUI">
       <UniqueIdentifier>{967bdafb-cadd-4d63-9b44-5c1b9de23f99}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Disgaea\Skill">
+      <UniqueIdentifier>{ee47f324-fbcc-441f-ade3-e4841f471db6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -156,20 +132,8 @@
     <ClCompile Include="ImageManager.cpp">
       <Filter>API FrameWork\Image</Filter>
     </ClCompile>
-    <ClCompile Include="SecondScene.cpp">
-      <Filter>API FrameWork\ExampleClasses\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="StartScene.cpp">
-      <Filter>API FrameWork\ExampleClasses\Scene</Filter>
-    </ClCompile>
     <ClCompile Include="FontManager.cpp">
       <Filter>API FrameWork\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="TempSoundManager.cpp">
-      <Filter>API FrameWork\Sound</Filter>
-    </ClCompile>
-    <ClCompile Include="TempSoundTest.cpp">
-      <Filter>API FrameWork\Sound</Filter>
     </ClCompile>
     <ClCompile Include="CShapePlayer.cpp">
       <Filter>GameClass\port</Filter>
@@ -192,18 +156,6 @@
     <ClCompile Include="Utils.cpp">
       <Filter>API FrameWork\Utility</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>API FrameWork\ExampleClasses\ShootingGame\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemyManager.cpp">
-      <Filter>API FrameWork\ExampleClasses\ShootingGame\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="Minion.cpp">
-      <Filter>API FrameWork\ExampleClasses\ShootingGame\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="Bullets.cpp">
-      <Filter>API FrameWork\ExampleClasses\ShootingGame\Bullets</Filter>
-    </ClCompile>
     <ClCompile Include="TimeManager.cpp">
       <Filter>API FrameWork\Manager\TimeManager</Filter>
     </ClCompile>
@@ -216,35 +168,11 @@
     <ClCompile Include="ProgressBar.cpp">
       <Filter>API FrameWork\Utility\ToolClass</Filter>
     </ClCompile>
-    <ClCompile Include="CRectObserverManager.cpp">
-      <Filter>API FrameWork\ExampleClasses\ShootingGame\Observer</Filter>
-    </ClCompile>
-    <ClCompile Include="Flame.cpp">
-      <Filter>API FrameWork\ExampleClasses\ShootingGame\Rocket</Filter>
-    </ClCompile>
-    <ClCompile Include="Rocket.cpp">
-      <Filter>API FrameWork\ExampleClasses\ShootingGame\Rocket</Filter>
-    </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>API FrameWork\Animation</Filter>
     </ClCompile>
-    <ClCompile Include="AniTestScene.cpp">
-      <Filter>API FrameWork\ExampleClasses\Scene</Filter>
-    </ClCompile>
     <ClCompile Include="TextDataManager.cpp">
       <Filter>API FrameWork\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="ShootingEffect.cpp">
-      <Filter>API FrameWork\ExampleClasses\ShootingGame</Filter>
-    </ClCompile>
-    <ClCompile Include="ShootingScene.cpp">
-      <Filter>API FrameWork\ExampleClasses\ShootingGame</Filter>
-    </ClCompile>
-    <ClCompile Include="PixelCollision.cpp">
-      <Filter>API FrameWork\ExampleClasses\Scene\pixel</Filter>
-    </ClCompile>
-    <ClCompile Include="PixelScene.cpp">
-      <Filter>API FrameWork\ExampleClasses\Scene\pixel</Filter>
     </ClCompile>
     <ClCompile Include="CEffect.cpp">
       <Filter>GameClass\EffectManager</Filter>
@@ -257,9 +185,6 @@
     </ClCompile>
     <ClCompile Include="FileIO.cpp">
       <Filter>API FrameWork\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="Collision.cpp">
-      <Filter>API FrameWork\ExampleClasses\ShootingGame</Filter>
     </ClCompile>
     <ClCompile Include="CTimeMap.cpp">
       <Filter>GameClass\Tilemap\Astar</Filter>
@@ -276,23 +201,11 @@
     <ClCompile Include="SoundManager.cpp">
       <Filter>API FrameWork\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="JsonDataScene.cpp">
-      <Filter>API FrameWork\Json</Filter>
-    </ClCompile>
     <ClCompile Include="JsonSaveLoader.cpp">
-      <Filter>API FrameWork\Json</Filter>
-    </ClCompile>
-    <ClCompile Include="Quest.cpp">
-      <Filter>API FrameWork\Json</Filter>
-    </ClCompile>
-    <ClCompile Include="QuestSample.cpp">
       <Filter>API FrameWork\Json</Filter>
     </ClCompile>
     <ClCompile Include="TileMapScene.cpp">
       <Filter>GameClass\Tilemap\Astar</Filter>
-    </ClCompile>
-    <ClCompile Include="SoundScene.cpp">
-      <Filter>API FrameWork\Sound</Filter>
     </ClCompile>
     <ClCompile Include="IsometricTile.cpp">
       <Filter>Disgaea\Util\Map</Filter>
@@ -375,15 +288,21 @@
     <ClCompile Include="DamageMeter.cpp">
       <Filter>Disgaea\Util\DamageUI</Filter>
     </ClCompile>
-    <ClCompile Include="CharStatusUI.cpp" />
     <ClCompile Include="TurnStateUI.cpp">
       <Filter>Disgaea\UI</Filter>
     </ClCompile>
-    <ClCompile Include="CSkill.cpp" />
     <ClCompile Include="VictoryUI.cpp">
       <Filter>Disgaea\UI</Filter>
     </ClCompile>
-    <ClCompile Include="SkillMeteoAnimation.cpp" />
+    <ClCompile Include="SkillMeteoAnimation.cpp">
+      <Filter>Disgaea\Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="CSkill.cpp">
+      <Filter>Disgaea\Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="CharStatusUI.cpp">
+      <Filter>Disgaea\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CommonMacroFunction.h">
@@ -416,20 +335,8 @@
     <ClInclude Include="ImageManager.h">
       <Filter>API FrameWork\Image</Filter>
     </ClInclude>
-    <ClInclude Include="StartScene.h">
-      <Filter>API FrameWork\ExampleClasses\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="SecondScene.h">
-      <Filter>API FrameWork\ExampleClasses\Scene</Filter>
-    </ClInclude>
     <ClInclude Include="FontManager.h">
       <Filter>API FrameWork\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="TempSoundManager.h">
-      <Filter>API FrameWork\Sound</Filter>
-    </ClInclude>
-    <ClInclude Include="TempSoundTest.h">
-      <Filter>API FrameWork\Sound</Filter>
     </ClInclude>
     <ClInclude Include="CShapePlayer.h">
       <Filter>GameClass\port</Filter>
@@ -452,18 +359,6 @@
     <ClInclude Include="Utils.h">
       <Filter>API FrameWork\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <Filter>API FrameWork\ExampleClasses\ShootingGame\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemyManager.h">
-      <Filter>API FrameWork\ExampleClasses\ShootingGame\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="Minion.h">
-      <Filter>API FrameWork\ExampleClasses\ShootingGame\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="Bullets.h">
-      <Filter>API FrameWork\ExampleClasses\ShootingGame\Bullets</Filter>
-    </ClInclude>
     <ClInclude Include="TimeManager.h">
       <Filter>API FrameWork\Manager\TimeManager</Filter>
     </ClInclude>
@@ -476,41 +371,11 @@
     <ClInclude Include="ProgressBar.h">
       <Filter>API FrameWork\Utility\ToolClass</Filter>
     </ClInclude>
-    <ClInclude Include="CRectObserverManager.h">
-      <Filter>API FrameWork\ExampleClasses\ShootingGame\Observer</Filter>
-    </ClInclude>
-    <ClInclude Include="IRectObserved.h">
-      <Filter>API FrameWork\ExampleClasses\ShootingGame\Observer</Filter>
-    </ClInclude>
-    <ClInclude Include="ISubject.h">
-      <Filter>API FrameWork\ExampleClasses\ShootingGame\Observer</Filter>
-    </ClInclude>
-    <ClInclude Include="Flame.h">
-      <Filter>API FrameWork\ExampleClasses\ShootingGame\Rocket</Filter>
-    </ClInclude>
-    <ClInclude Include="Rocket.h">
-      <Filter>API FrameWork\ExampleClasses\ShootingGame\Rocket</Filter>
-    </ClInclude>
     <ClInclude Include="Animation.h">
       <Filter>API FrameWork\Animation</Filter>
     </ClInclude>
-    <ClInclude Include="AniTestScene.h">
-      <Filter>API FrameWork\ExampleClasses\Scene</Filter>
-    </ClInclude>
     <ClInclude Include="TextDataManager.h">
       <Filter>API FrameWork\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="ShootingScene.h">
-      <Filter>API FrameWork\ExampleClasses\ShootingGame</Filter>
-    </ClInclude>
-    <ClInclude Include="ShootingEffect.h">
-      <Filter>API FrameWork\ExampleClasses\ShootingGame</Filter>
-    </ClInclude>
-    <ClInclude Include="PixelScene.h">
-      <Filter>API FrameWork\ExampleClasses\Scene\pixel</Filter>
-    </ClInclude>
-    <ClInclude Include="PixelCollision.h">
-      <Filter>API FrameWork\ExampleClasses\Scene\pixel</Filter>
     </ClInclude>
     <ClInclude Include="EffectManager.h">
       <Filter>GameClass\EffectManager</Filter>
@@ -539,23 +404,11 @@
     <ClInclude Include="SoundManager.h">
       <Filter>API FrameWork\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="JsonDataScene.h">
-      <Filter>API FrameWork\Json</Filter>
-    </ClInclude>
     <ClInclude Include="JsonSaveLoader.h">
-      <Filter>API FrameWork\Json</Filter>
-    </ClInclude>
-    <ClInclude Include="Quest.h">
-      <Filter>API FrameWork\Json</Filter>
-    </ClInclude>
-    <ClInclude Include="QuestSample.h">
       <Filter>API FrameWork\Json</Filter>
     </ClInclude>
     <ClInclude Include="TileMapScene.h">
       <Filter>GameClass\Tilemap\Astar</Filter>
-    </ClInclude>
-    <ClInclude Include="SoundScene.h">
-      <Filter>API FrameWork\Sound</Filter>
     </ClInclude>
     <ClInclude Include="IsometricTile.h">
       <Filter>Disgaea\Util\Map</Filter>
@@ -641,15 +494,21 @@
     <ClInclude Include="DamageMeter.h">
       <Filter>Disgaea\Util\DamageUI</Filter>
     </ClInclude>
-    <ClInclude Include="CharStatusUI.h" />
     <ClInclude Include="TurnStateUI.h">
       <Filter>Disgaea\UI</Filter>
     </ClInclude>
-    <ClInclude Include="CSkill.h" />
     <ClInclude Include="VictoryUI.h">
       <Filter>Disgaea\UI</Filter>
     </ClInclude>
-    <ClInclude Include="SkillMeteoAnimation.h" />
+    <ClInclude Include="CSkill.h">
+      <Filter>Disgaea\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillMeteoAnimation.h">
+      <Filter>Disgaea\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="CharStatusUI.h">
+      <Filter>Disgaea\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Question.txt">
@@ -658,12 +517,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Character.json">
-      <Filter>API FrameWork\Json\Schema</Filter>
-    </None>
-    <None Include="Quest.json">
-      <Filter>API FrameWork\Json\Schema</Filter>
-    </None>
-    <None Include="item.json">
       <Filter>API FrameWork\Json\Schema</Filter>
     </None>
     <None Include="Map.json">

@@ -20,10 +20,8 @@ HRESULT GameNode::init(bool managerInit)
 		KEYMANAGER->init();
 		RND->init();
 		IMAGEMANAGER->init();
-		TEMPSOUNDMANAGER->init();
 		TIMEMANAGER->init();
 		TEXTDATAMANAGER->init();
-		RECTOBSERVERMANAGER->init();
 		SCENEMANAGER->init();
 		SOUNDMANAGER->init();
 		JSONDATAMANAGER->init();
@@ -49,15 +47,11 @@ void GameNode::release(void)
 
 		FONTMANAGER->releaseSingleton();
 
-		TEMPSOUNDMANAGER->releaseSingleton();
-
 		TIMEMANAGER->release();
 		TIMEMANAGER->releaseSingleton();
 
 		TEXTDATAMANAGER->release();
 		TEXTDATAMANAGER->releaseSingleton();
-
-		RECTOBSERVERMANAGER->releaseSingleton();
 
 		SCENEMANAGER->release();
 		SCENEMANAGER->releaseSingleton();
@@ -80,7 +74,6 @@ void GameNode::release(void)
 
 void GameNode::update(void)
 {
-	//InvalidateRect(_hWnd, NULL, FALSE);		//ÀÌ¹ÌÁö
 }
 
 void GameNode::render(void)
@@ -96,14 +89,12 @@ LRESULT GameNode::MainProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lPara
 	switch (iMessage)
 	{
 	case WM_TIMER:
-		//this->update();
 		break;
 	case WM_CREATE:		
 		break;
 
 	case WM_PAINT:
 		hdc = BeginPaint(hWnd, &ps);
-		//this->render();
 		EndPaint(hWnd, &ps);
 		break;
 	case WM_MOUSEMOVE:

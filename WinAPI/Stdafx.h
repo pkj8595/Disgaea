@@ -103,10 +103,8 @@ typedef function<void(void)> CALLBACKFUNCTION;
 #include "KeyManager.h"
 #include "ImageManager.h"
 #include "FontManager.h"
-#include "TempSoundManager.h"
 #include "TimeManager.h"
 #include "Utils.h"
-#include "CRectObserverManager.h"
 #include "TextDataManager.h"
 #include "SceneManager.h"
 #include "SoundManager.h"
@@ -128,10 +126,8 @@ using namespace MY_UTIL;
 #define KEYMANAGER KeyManager::getSingleton()
 #define IMAGEMANAGER ImageManager::getSingleton()
 #define FONTMANAGER	FontManager::getSingleton()
-#define TEMPSOUNDMANAGER TempSoundManager::getSingleton()
 #define TIMEMANAGER TimeManager::getSingleton()
 #define TEXTDATAMANAGER TextDataManager::getSingleton()
-#define RECTOBSERVERMANAGER CRectObserverManager::getSingleton()
 #define SCENEMANAGER SceneManager::getSingleton()
 #define SOUNDMANAGER SoundManager::getSingleton()
 #define JSONDATAMANAGER JsonSaveLoader::getSingleton()

@@ -42,7 +42,6 @@ private:
 	POINT* _mapSize;
 	bool* _isCharacterMove;
 	bool* _isRunnigBehavior;
-	bool _isCharacterSelect;
 	bool _isPlayerTrunStart;
 	CWindowUI* _charBehaviorWindow;
 	CWindowUI* _turnWindow;

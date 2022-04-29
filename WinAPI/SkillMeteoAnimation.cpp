@@ -156,7 +156,7 @@ void SkillMeteoAnimation::update(void)
 		{
 			_mainCharacter->setPoint(PointMake(_beforePt.x, _beforePt.y - 200));
 
-			list<GameCharacter*>::iterator iter = _lGameChar.begin();
+			vector<GameCharacter*>::iterator iter = _lGameChar.begin();
 			for (; iter != _lGameChar.end(); ++iter)
 			{
 				(*iter)->setPoint(PointMake((*iter)->getPoint().x, (*iter)->getPoint().y - 2000));
@@ -194,7 +194,7 @@ void SkillMeteoAnimation::update(void)
 				{
 					_mainCharacter->setPoint(_basePt);
 
-					list<GameCharacter*>::iterator iter = _lGameChar.begin();
+					vector<GameCharacter*>::iterator iter = _lGameChar.begin();
 					for (; iter != _lGameChar.end(); ++iter)
 					{
 						(*iter)->setPoint(PointMake((*iter)->getPoint().x, (*iter)->getPoint().y+2000));
@@ -228,7 +228,7 @@ void SkillMeteoAnimation::changeCharacterRender(bool isRender)
 {
 	_mainCharacter->setIsRender(isRender);
 
-	list<GameCharacter*>::iterator iter = _lGameChar.begin();
+	vector<GameCharacter*>::iterator iter = _lGameChar.begin();
 	for (; iter != _lGameChar.end(); ++iter)
 	{
 		(*iter)->setIsRender(isRender);
@@ -248,9 +248,8 @@ void SkillMeteoAnimation::render(void)
 	else _skillMap->render(getMemDC(), _skillMapRc.left - CAMERA->getLeft(), _skillMapRc.top - CAMERA->getTop());
 }
 
-void SkillMeteoAnimation::StartAnimation(GameCharacter* mainChar, list<GameCharacter*> beAttackCharList)
+void SkillMeteoAnimation::StartAnimation(GameCharacter* mainChar, vector<GameCharacter*> beAttackCharList)
 {
-	cout << beAttackCharList.size() << endl;
 	_skillState = E_SkillProcessState::SKILL_START;
 	_beforeSkillState = E_SkillProcessState::SKILL_END;
 	_lGameChar = beAttackCharList;

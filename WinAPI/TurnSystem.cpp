@@ -9,7 +9,6 @@ HRESULT TurnSystem::init(void)
 	_isCharacterMove = _map->getIsCharacterMove();
 	_isRunnigBehavior = _map->getIsRunningBehavior();
 	
-	_isCharacterSelect = false; 
 	_selectedCharRange = 0;
 	_playerCharSize = 0;
 	_okBtnState = EOkBtnState::Nomal;
@@ -267,8 +266,6 @@ void TurnSystem::update(void)
 			switch (_okBtnState)
 			{
 			case EOkBtnState::Nomal:
-				_isCharacterSelect = true;
-				
 
 				if (_map->selectCharacter(_battleUi[UI_MAPSIGN]->getCoorPoint()) != nullptr)
 				{
@@ -286,9 +283,17 @@ void TurnSystem::update(void)
 							_charBehaviorWindow->setWindowValueState(0, EWindow_ValueState::WINDOW_DEFAULT);
 
 						if (tempCharacter->getCommandState(E_CommandFlag::behaviorFalg))
+						{
 							_charBehaviorWindow->setWindowValueState(1, EWindow_ValueState::WINDOW_NOT_SELECTABLE);
+							_charBehaviorWindow->setWindowValueState(2, EWindow_ValueState::WINDOW_NOT_SELECTABLE);
+
+						}
 						else
+						{
 							_charBehaviorWindow->setWindowValueState(1, EWindow_ValueState::WINDOW_DEFAULT);
+							_charBehaviorWindow->setWindowValueState(2, EWindow_ValueState::WINDOW_DEFAULT);
+						}
+
 
 						_selectedCharRange = tempCharacter->getCharicterAllStats()->_move;
 						_tileRangeStartPoint = _battleUi[UI_MAPSIGN]->getCoorPoint();
@@ -318,7 +323,6 @@ void TurnSystem::update(void)
 					_map->getCurrentCharacter()->setCommandState(E_CommandFlag::moveFlag, true);
 					_controlState = EControl_State::Map_Cursor;
 					_okBtnState = EOkBtnState::Nomal;
-					_isCharacterSelect = false;
 					updateBattleUI();
 				}
 				else
@@ -338,7 +342,6 @@ void TurnSystem::update(void)
 					_map->getCurrentCharacter()->setCommandState(E_CommandFlag::behaviorFalg, true);
 					_controlState = EControl_State::Map_Cursor;
 					_okBtnState = EOkBtnState::Nomal;
-					_isCharacterSelect = false;
 					updateBattleUI();
 				}
 				else
@@ -347,14 +350,12 @@ void TurnSystem::update(void)
 				}
 				break;
 			case EOkBtnState::Skill:
-				cout << "TurnSystem>>EOkBtnState::Skill:" << endl;
-				//스킬을 스킬 리스트에 저장한다. 스킬리스트에 행동삽입. 
 				_map->setBehaviorSkill(_map->getCurrentCharacter(), _curSkill);
 				_controlState = EControl_State::Map_Cursor;
 				_okBtnState = EOkBtnState::Nomal;
+				_map->getCurrentCharacter()->setCommandState(E_CommandFlag::behaviorFalg, true);
 				//버튼의 상태를 nomal , mapcursor로 바꾼다. 
 				//행동리스트에서 스킬을 발동할때 범위에 있는 캐릭터를 이동시킨다. 
-				// _map -> vector<skill*> 턴 종료할때 모두 지워준다.
 
 				break;
 			default:
@@ -383,7 +384,8 @@ void TurnSystem::update(void)
 	}
 	if (KEYMANAGER->isOnceKeyDown('I'))
 	{
-		if (!_charBehaviorWindow->getIsActive())
+		//if (!_charBehaviorWindow->getIsActive())
+		if (_controlState == EControl_State::Map_Cursor&&_okBtnState == EOkBtnState::Nomal)
 		{
 			if (_map->getBehaviorList()->empty())
 			{
@@ -416,13 +418,16 @@ void TurnSystem::update(void)
 				_map->resetTileRange();
 				_controlState = EControl_State::Map_Cursor;
 				_okBtnState = EOkBtnState::Nomal;
-				_isCharacterSelect = false;
 				break;
 			case EOkBtnState::Attack:
 				_map->resetTileRange();
 				_controlState = EControl_State::Map_Cursor;
 				_okBtnState = EOkBtnState::Nomal;
-				_isCharacterSelect = false;
+				break;
+			case EOkBtnState::Skill:
+				_map->resetTileRange();
+				_controlState = EControl_State::Map_Cursor;
+				_okBtnState = EOkBtnState::Nomal;
 				break;
 			default:
 				break;
