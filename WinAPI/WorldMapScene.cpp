@@ -8,7 +8,7 @@ HRESULT WorldMapScene::init(void)
 	stageSetup();
 	changeWorldMapType(E_WorldMapType::HOME);
 	_currentUI = (*_stageList.begin()).second;
-	_backRc = RectMakeCenter(CAMERA->getCameraCenterX(),CAMERA->getCameraCenterY(), _backImg->getWidth(), _backImg->getHeight());
+	_backRc = RectMakeCenter(CAMERA->getCameraCenterX(),CAMERA->getCameraCenterY()+10, _backImg->getWidth(), _backImg->getHeight());
 
 	_isExcuteChangeScene = true;
 	_stageMainNum = 0;

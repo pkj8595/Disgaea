@@ -141,7 +141,7 @@ using namespace MY_UTIL;
 
 #define WINNAME			(LPSTR)(TEXT("WindowAPI"))
 
-//#define FULLSCREEN
+#define FULLSCREEN
 
 #ifdef FULLSCREEN
 

@@ -457,10 +457,12 @@ void DataSetUp::AnimationClassInit()
 	ANIMATIONMANAGER->addAnimation("Vyers_Skill1_RB", "Vyers", 181, 191, ANI_FPS, false, false);
 #pragma endregion
 
+#pragma region meteo
 	ANIMATIONMANAGER->addAnimation("meteoFrame1", "meteoFrame1", 0, 42, 30,false,false);
 	ANIMATIONMANAGER->addAnimation("meteoFrame2", "meteoFrame2", 0, 124, 30,false,false);
 	ANIMATIONMANAGER->addAnimation("meteoFrame3", "meteoFrame3", 0, 12, 30,false,false);
 	ANIMATIONMANAGER->addAnimation("meteoFrame4", "meteoFrame4", 0, 58, 30,false,false);
+#pragma endregion 
 
 }
 

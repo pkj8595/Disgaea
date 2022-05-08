@@ -354,8 +354,6 @@ void TurnSystem::update(void)
 				_controlState = EControl_State::Map_Cursor;
 				_okBtnState = EOkBtnState::Nomal;
 				_map->getCurrentCharacter()->setCommandState(E_CommandFlag::behaviorFalg, true);
-				//버튼의 상태를 nomal , mapcursor로 바꾼다. 
-				//행동리스트에서 스킬을 발동할때 범위에 있는 캐릭터를 이동시킨다. 
 
 				break;
 			default:

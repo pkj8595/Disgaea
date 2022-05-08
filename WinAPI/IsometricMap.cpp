@@ -504,7 +504,7 @@ void IsometricMap::update(void)
 				{
 					tile->setTileType(_currentType);
 					break;
-				}
+				}	
 			}
 		}
 	}

@@ -38,18 +38,19 @@ void TitleScene::release(void)
 void TitleScene::update(void)
 {
 	//12초/에 페이드 아웃 인
-	if (TIMEMANAGER->getWorldTime() > 10 &&!_isFadeStart)
+	if (TIMEMANAGER->getWorldTime() > 10 && !_isFadeStart)
 	{
-		StartFadeInOut( 1);
+		CAMERA->FadeStart(1);
+		_isFadeStart = true;
 	}
 
-	if (_isFadeStart)
+	if (CAMERA->getIsFadeStart())
 	{
-		if(_alpha > 255)
+		if (!CAMERA->getIsFadeOut() && _isFadeStart)
 		{
-			_alphaOffset = 0;
+			_isShowlagarlImg = false;
+			_isFadeStart = true;
 		}
-		 _alpha += _alphaOffset;
 	}
 
 	if (_isShowlagarlImg)
