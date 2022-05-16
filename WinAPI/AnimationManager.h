@@ -21,7 +21,6 @@ public:
 	bool deleteAniamation(string strKey);
 	bool deleteAll();
 
-	// 애니메이션이 있는거 가져와서 함수 형태 잡고
 
 	void addAnimation(string animationKeyName, char* imageKeyName,int fps, bool reverse = false, bool loop = false);
 

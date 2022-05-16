@@ -15,7 +15,6 @@ void ImageManager::release(void)
 
 my::Image* ImageManager::addImage(string strKey, int width, int height)
 {
-	//추가하려는 이미지가 존재하는지 키값으로 확인
 	my::Image* img = findImage(strKey);
 
 	if (img) return img;
@@ -27,7 +26,6 @@ my::Image* ImageManager::addImage(string strKey, int width, int height)
 		return NULL;
 	}
 
-	//_mImageList.insert(pair<string, mycustom::Image*>(strKey, img));
 	_mImageList.insert(make_pair(strKey, img));
 
 
@@ -36,7 +34,6 @@ my::Image* ImageManager::addImage(string strKey, int width, int height)
 
 my::Image* ImageManager::addImage(string strKey, const char * fileName, int width, int height, BOOL isTrans, COLORREF transColor)
 {
-	//추가하려는 이미지가 존재하는지 키값으로 확인
 	my::Image* img = findImage(strKey);
 
 	if (img) return img;
@@ -48,7 +45,6 @@ my::Image* ImageManager::addImage(string strKey, const char * fileName, int widt
 		return NULL;
 	}
 
-	//_mImageList.insert(pair<string, mycustom::Image*>(strKey, img));
 	_mImageList.insert(make_pair(strKey, img));
 
 	return img;
@@ -67,7 +63,6 @@ my::Image* ImageManager::addImage(string strKey, const char* fileName, float x, 
 		return NULL;
 	}
 
-	//_mImageList.insert(pair<string, mycustom::Image*>(strKey, img));
 	_mImageList.insert(make_pair(strKey, img));
 
 	return img;
@@ -86,7 +81,6 @@ my::Image* ImageManager::addFrameImage(string strKey, const char* fileName, int 
 		return NULL;
 	}
 
-	//_mImageList.insert(pair<string, mycustom::Image*>(strKey, img));
 	_mImageList.insert(make_pair(strKey, img));
 
 	return img;
@@ -105,7 +99,6 @@ my::Image* ImageManager::addFrameImage(string strKey, const char* fileName, floa
 		return NULL;
 	}
 
-	//_mImageList.insert(pair<string, mycustom::Image*>(strKey, img));
 	_mImageList.insert(make_pair(strKey, img));
 
 	return img;
@@ -115,13 +108,11 @@ my::Image* ImageManager::findImage(string strKey)
 {
 	auto key = _mImageList.find(strKey);
 
-	//검색한키로 이미지를 찾았다면
 	if (key != _mImageList.end())
 	{
 		return key->second;
 	}
 
-	//검색한키로 이미지를 못찾았다면
 	return nullptr;
 }
 
@@ -237,7 +228,6 @@ void ImageManager::loopAlphaRender(string strKey, HDC hdc, const LPRECT drawArea
 //=====================
 mGpImage* ImageManager::initForGPbitmap(string strKey, WCHAR* fileName,  INT size, BOOL useEmbeddedColorManagement)
 {
-	//추가하려는 이미지가 존재하는지 키값으로 확인
 	mGpImage* img = findGPbitmap(strKey);
 
 	if (img) return img;
@@ -272,13 +262,11 @@ mGpImage* ImageManager::findGPbitmap(string strKey)
 {
 	auto key = _mGpBitmapList.find(strKey);
 
-	//검색한키로 이미지를 찾았다면
 	if (key != _mGpBitmapList.end())
 	{
 		return key->second;
 	}
 
-	//검색한키로 이미지를 못찾았다면
 	return nullptr;
 }
 

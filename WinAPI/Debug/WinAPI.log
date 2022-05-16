@@ -1,0 +1,140 @@
+﻿  Stdafx.cpp
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\timemanager.h(16): warning C4244: 'return': 'unsigned long'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\camera.h(223): warning C4244: 'return': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\camera.h(227): warning C4244: 'return': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  AniData.cpp
+  Animation.cpp
+  AnimationManager.cpp
+  AttackList.cpp
+  BattleScene.cpp
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\battlescene.cpp(13): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\battlescene.cpp(125): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Camera.cpp
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\camera.cpp(124): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  CEffect.cpp
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\ceffect.cpp(27): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\ceffect.cpp(48): warning C4244: '=': 'LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\ceffect.cpp(49): warning C4244: '=': 'LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\ceffect.cpp(63): warning C4244: '=': 'LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\ceffect.cpp(64): warning C4244: '=': 'LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\ceffect.cpp(78): warning C4244: '=': 'LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\ceffect.cpp(79): warning C4244: '=': 'LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\ceffect.cpp(92): warning C4244: '=': 'LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\ceffect.cpp(93): warning C4244: '=': 'LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\ceffect.cpp(106): warning C4244: '=': 'LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\ceffect.cpp(107): warning C4244: '=': 'LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  CharInfoUI.cpp
+  CharStatusUI.cpp
+  CSkill.cpp
+  CWindowUI.cpp
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\cwindowui.cpp(16): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\cwindowui.cpp(17): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\cwindowui.cpp(18): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\cwindowui.cpp(31): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\cwindowui.cpp(33): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\cwindowui.cpp(127): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\cwindowui.cpp(135): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\cwindowui.cpp(136): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\cwindowui.cpp(138): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\cwindowui.cpp(177): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\cwindowui.cpp(198): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\cwindowui.cpp(204): warning C4018: '>': signed 또는 unsigned가 일치하지 않습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\cwindowui.cpp(211): warning C4018: '>': signed 또는 unsigned가 일치하지 않습니다.
+  CWindowUIValue.cpp
+  DamageEffectNum.cpp
+  DamageMeter.cpp
+  EffectManager.cpp
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\effectmanager.cpp(89): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\effectmanager.cpp(89): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\effectmanager.cpp(101): warning C4244: '=': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\effectmanager.cpp(102): warning C4244: '=': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Etna.cpp
+  FileIO.cpp
+  Flonne.cpp
+  GameManager.cpp
+  GameUI.cpp
+  코드를 생성하고 있습니다...
+  컴파일하고 있습니다...
+  Ghost.cpp
+  HpImgBar.cpp
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\hpimgbar.cpp(16): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  IsometricMap.cpp
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\isometricmap.cpp(56): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\isometricmap.cpp(55): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\isometricmap.cpp(367): warning C4244: '*=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\isometricmap.cpp(501): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\isometricmap.cpp(502): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\isometricmap.cpp(684): warning C4244: 'return': 'LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\isometricmap.cpp(1190): warning C4244: '인수': 'LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\isometricmap.cpp(1338): warning C4244: '초기화 중': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  IsometricTile.cpp
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\isometrictile.cpp(26): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\isometrictile.cpp(27): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\isometrictile.cpp(28): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\isometrictile.cpp(29): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\isometrictile.cpp(89): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\isometrictile.cpp(90): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\isometrictile.cpp(91): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\isometrictile.cpp(92): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  ItemManager.cpp
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\itemmanager.cpp(19): warning C4018: '>': signed 또는 unsigned가 일치하지 않습니다.
+  DataSetUp.cpp
+  JsonSaveLoader.cpp
+  Laharl.cpp
+  SkillMeteoAnimation.cpp
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\skillmeteoanimation.cpp(53): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\skillmeteoanimation.cpp(107): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  TurnStateUI.cpp
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\turnstateui.cpp(16): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  VictoryUI.cpp
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\victoryui.cpp(55): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\victoryui.cpp(59): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  WorldMapScene.cpp
+  mGpImage.cpp
+  PortraitAnimation.cpp
+  ProgressBar.cpp
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\progressbar.cpp(19): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\progressbar.cpp(46): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\progressbar.cpp(99): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\progressbar.cpp(114): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  SceneManager.cpp
+  FontManager.cpp
+  GameNode.cpp
+  HPprogressBar.cpp
+  Image.cpp
+  코드를 생성하고 있습니다...
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\isometricmap.cpp(817): warning C4715: 'IsometricMap::OnTriggerPathfinding': 모든 제어 경로에서 값을 반환하지는 않습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\isometricmap.cpp(767): warning C4715: 'IsometricMap::startPathfinding': 모든 제어 경로에서 값을 반환하지는 않습니다.
+  컴파일하고 있습니다...
+  ImageManager.cpp
+  KeyManager.cpp
+  MainGame.cpp
+  SoundManager.cpp
+  TextDataManager.cpp
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\textdatamanager.cpp(38): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\textdatamanager.cpp(41): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\textdatamanager.cpp(67): warning C4101: 'temp' :참조되지 않은 지역 변수입니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\textdatamanager.cpp(96): warning C4244: '=': 'std::streamoff'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  TitleScene.cpp
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\titlescene.cpp(12): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\titlescene.cpp(15): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\titlescene.cpp(147): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  TurnSystem.cpp
+  TimeManager.cpp
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\timemanager.cpp(30): warning C4101: 'str' :참조되지 않은 지역 변수입니다.
+  Timer.cpp
+  GameCharacter.cpp
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\gamecharacter.cpp(122): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\gamecharacter.cpp(265): warning C4244: '=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\gamecharacter.cpp(281): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\gamecharacter.cpp(289): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Utils.cpp
+  Vyers.cpp
+  코드를 생성하고 있습니다...
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\textdatamanager.cpp(45): warning C4172: 지역 변수 또는 임시: str의 주소를 반환하고 있습니다.
+  CButtonState.cpp
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\cbuttonstate.cpp(16): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\park\source\repos\gameclassproject\disgaea\winapi\cbuttonstate.cpp(17): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  WinMain.cpp
+  코드를 생성하고 있습니다...
+  WinAPI.vcxproj -> C:\Users\park\source\repos\GameClassProject\Disgaea\Debug\WinAPI.exe

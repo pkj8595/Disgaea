@@ -11,7 +11,6 @@ private:
 	vector<Item*> _vInvenItem;
 	int _gold;
 
-	//todo jsondata
 	int _stageIndex;
 	int _DetailStageIndex;
 

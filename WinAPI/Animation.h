@@ -41,9 +41,7 @@ public:
 	void AniPause(void);
 	void AniResume(void);
 
-	//플레이 중인지?
 	inline bool isPlay(void) { return _isPlay;}
-	//프레임 위치 얻어오겟다
 	inline POINT getFramePos(void) { return _frameList[_playList[_nowPlayIdx]]; }
 
 	//현재 애니메이션의 프레임 순서를 얻어온다.

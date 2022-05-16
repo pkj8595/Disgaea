@@ -11,15 +11,7 @@ _skillMap(nullptr)
 SkillMeteoAnimation::~SkillMeteoAnimation()
 {
 }
-/*
-meteoFrame1
 
-meteoFrame2
-
-meteoFrame3
-
-meteoFrame4
-*/
 HRESULT SkillMeteoAnimation::init(void)
 {
 	_skillState = E_SkillProcessState::SKILL_START;

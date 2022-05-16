@@ -3,7 +3,6 @@
 
 namespace MY_UTIL 
 {
-	//두 점 사이의 거리를 구한다.
 	float getDistance(float startX, float startY, float endX, float endY)
 	{
 		float x = endX - startX;
@@ -30,7 +29,7 @@ namespace MY_UTIL
 		vector<string> vfileNameList;
 
 		WIN32_FIND_DATA fd;
-		HANDLE hFind = FindFirstFile(searching.c_str(), &fd);  //현재 폴더 내 모든 파일을 찾는다.
+		HANDLE hFind = FindFirstFile(searching.c_str(), &fd); 
 
 		if (hFind != INVALID_HANDLE_VALUE)
 		{

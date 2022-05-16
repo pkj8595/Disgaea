@@ -1,25 +1,6 @@
 #pragma once
 
 
-//1.include "Animation.h"
-//2.class Animation;
-//잘써야한다.-> 판단 -> 어떤 상황에서 들어가는지 
-//참조해서 쓰겠다. 메모리가 다 들어가지 않기때문에 접근되지않는게 많다.
-/*
-클래스 전방선언(class forword Declaration)
-전방선언, 전처리문 # include
-1. is a 관계		: 제네시스는 차다.				-> #include
-2. has a 관계	: 제니시스는 바퀴를 가지고있다.	-> 전방선언
-
--클래스 전방선언은 함수 전방선언과 비슷하면서도 다른점이 있다.
--#include 전처리기를 많이 사용할 경우 전처리기 단계가 길어지게 된다.
-	ㄴ 컴파일 시간 증가
-
--이를 해결하기 위해 전방 선언을 이용할 수도 있다.
-1. 클래스의 포인터/ 참조형식으로 이름만 참조할 경우
-2. 매개 변수나 리턴 타입을 위한 이름만 참조할 경우
-3. 메모리 절약
-*/
 class Animation;
 
 namespace my {
@@ -27,11 +8,7 @@ namespace my {
 class Image
 {
 public:
-	/*
-		vs에서에서 리소스를 가져오는 법 
-		ㄴ 1 프로젝트 내부에 심기 -> 이미지가 별로 없을때 사용하는 방법
-		ㄴ 디렉토리에서 끌고오는 법 
-	*/
+
 	enum IMAGE_LOAD_KIND 
 	{
 		LOAD_RESOURCE = 0,	//리소스
@@ -39,15 +16,7 @@ public:
 		LOAD_EMPTY,		//빈 비트맵
 		LOAD_END		//아무것도 정의하지 않는 것
 	};
-	/*
-	DWORD	:	Unsigened long
-	WORD	:	Unsigened short
-	BYTE	:	Unsigened char		크기(256)
-
-	렌더링이 되고있을때 
-	게임에서 자연스럽게 이미지를 교체하기 위해 
-	올드 이미지를 저장하고 자연스럽게 교체한다?
-	*/
+	
 	typedef struct tagImage 
 	{
 		DWORD		resID;		//리소스 아이디
@@ -87,10 +56,10 @@ public:
 	}IMAGE_INFO, *LPIMAGE_INFO;
 
 private:
-	LPIMAGE_INFO	_imageInfo;		//위에 정의한 구조체 주소값
-	CHAR*			_fileName;		//파일이름
-	BOOL			_isTrans;		//배경색을 없앨건지
-	COLORREF		_transColor;	//없앨거라면 없앨 RGB값 지정 //RGB (각각 1바이트 0~255 농도 표현가능)
+	LPIMAGE_INFO	_imageInfo;		
+	CHAR*			_fileName;		
+	BOOL			_isTrans;		
+	COLORREF		_transColor;	
 
 	BLENDFUNCTION	_blendFunc;		
 	LPIMAGE_INFO	_blendImage;	//블랜드 이미지 

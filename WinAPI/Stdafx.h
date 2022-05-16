@@ -1,26 +1,8 @@
 #pragma once
 #pragma comment(lib,"gdiplus")
 
-/*
-PreCompiled Header (PCH)
- - 필요한 이유는 cpp 하나당 컴파일러가 컴파일하여 .obj 파일을 만들고, obj 파일마다 코드 최적화를 매번 하기 힘들기 때문에 파일마다 파싱을 해줘야 한다.
-												ㄴ컴파일 된 파일을
 
--최적화를 위해서, 실행속도 향상을 위해서 사용한다.
--컴파일 할때마다 올리기는 실행속도가 느리기 때문에 메모리에 미리 올려놓고 쓰겠다.
--자주 사용하지만 자주 바뀌지 않는 파일을 넣는게 좋다.
-*/
-
-//#include "targetver.h" // 윈도우 os 호환시 씀 근데 api에서는 
-// 거의 사용되지 않는 내용을 Windows 헤더에서 제외합니다.
-
-//프로그램에서 지원할 os에 따라 windows 헤더에서 
-//코드에 포함될 함수 상수를 제어하는데 사용된다.
-#include <SDKDDKVer.h>	//os마다 api한정으로 공통적인 함수들을 바꿔준다. 어뎁터?
-
-//거의 사용되지 않는 내용은 windows헤더에서 제외
-//ㄴGDI+를 사용하면 헤더파일 봉인해제 
-//<ole.h>	GDI+ 를 쓸때 필요
+#include <SDKDDKVer.h>	
 
 //===================================
 //! Windows 헤더 파일
@@ -58,13 +40,7 @@ PreCompiled Header (PCH)
 #include <stdlib.h>
 #include <time.h>
 #include <tchar.h>
-//윈도우 내장 재생 라이브러리
-//PlaySound()를 사용하기위해
 #include <mmsystem.h>
-
-//미디어 컨트롤 인터페이스 api
-//mciSendString()를 사용하기위해 사용
-//mci : media Control Interface
 #include <mciapi.h>
 
 
@@ -148,9 +124,6 @@ using namespace MY_UTIL;
 //#ifdef FULLSCREEN
 #define WINSTART_X		0
 #define WINSTART_Y		0
-//GetSystemMetrics() : 인자로 전달되는 시스템 설정정보 반환
-//ㄴ SM_CXSCREEN : 현재 화면 해상도 X축반환
-//ㄴ SM_CYSCREEN : 현재 화면 해상도 Y축반환
 #define WINSIZE_X		GetSystemMetrics(SM_CXSCREEN)
 #define WINSIZE_Y		GetSystemMetrics(SM_CYSCREEN)
 #define WINSTYLE		WS_POPUPWINDOW | WS_MAXIMIZE
@@ -186,11 +159,9 @@ using namespace MY_UTIL;
 //===================================
 //# 전역변수 #
 //===================================
-//헤더 cpp 에서 변수를 공유해서 쓰기 위함
 
 extern HINSTANCE	_hInstance;
 extern HWND			_hWnd;
 extern POINT		_ptMouse;	// 마우스 사용시 xy
-//extern mycustom::Image _CImage;  //깡통인데
 
 

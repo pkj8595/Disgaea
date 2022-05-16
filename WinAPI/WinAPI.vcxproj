@@ -153,10 +153,6 @@
     <ClCompile Include="AttackList.cpp" />
     <ClCompile Include="BattleScene.cpp" />
     <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="CBlock.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="CButtonState.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
@@ -164,8 +160,6 @@
     <ClCompile Include="CharInfoUI.cpp" />
     <ClCompile Include="CharStatusUI.cpp" />
     <ClCompile Include="CSkill.cpp" />
-    <ClCompile Include="CTileObject.cpp" />
-    <ClCompile Include="CTimeMap.cpp" />
     <ClCompile Include="CWindowUI.cpp" />
     <ClCompile Include="CWindowUIValue.cpp" />
     <ClCompile Include="DamageEffectNum.cpp" />
@@ -184,10 +178,6 @@
     <ClCompile Include="DataSetUp.cpp" />
     <ClCompile Include="JsonSaveLoader.cpp" />
     <ClCompile Include="Laharl.cpp" />
-    <ClCompile Include="MapPatternController.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="SkillMeteoAnimation.cpp" />
     <ClCompile Include="TurnStateUI.cpp" />
     <ClCompile Include="VictoryUI.cpp" />
@@ -196,20 +186,8 @@
     <ClCompile Include="PortraitAnimation.cpp" />
     <ClCompile Include="ProgressBar.cpp" />
     <ClCompile Include="SceneManager.cpp" />
-    <ClCompile Include="SimpleTranslate.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="CShapePlayer.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="FontManager.cpp" />
     <ClCompile Include="GameNode.cpp" />
-    <ClCompile Include="GDIplusTest.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="HPprogressBar.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="ImageManager.cpp" />
@@ -223,9 +201,6 @@
     <ClCompile Include="TextDataManager.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="TurnSystem.cpp" />
-    <ClCompile Include="Tilemap.cpp" />
-    <ClCompile Include="TileMapObject.cpp" />
-    <ClCompile Include="TileMapScene.cpp" />
     <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="GameCharacter.cpp" />
@@ -242,10 +217,6 @@
     <ClInclude Include="AttackList.h" />
     <ClInclude Include="BattleScene.h" />
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="CBlock.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClInclude>
     <ClInclude Include="CButtonState.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>
@@ -254,8 +225,6 @@
     <ClInclude Include="CharStatusUI.h" />
     <ClInclude Include="CommonMacroFunction.h" />
     <ClInclude Include="CSkill.h" />
-    <ClInclude Include="CTileObject.h" />
-    <ClInclude Include="CTimeMap.h" />
     <ClInclude Include="CWindowUI.h" />
     <ClInclude Include="CWindowUIValue.h" />
     <ClInclude Include="DamageEffectNum.h" />
@@ -275,10 +244,6 @@
     <ClInclude Include="DataSetUp.h" />
     <ClInclude Include="JsonSaveLoader.h" />
     <ClInclude Include="Laharl.h" />
-    <ClInclude Include="MapPatternController.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClInclude>
     <ClInclude Include="SkillMeteoAnimation.h" />
     <ClInclude Include="TurnStateUI.h" />
     <ClInclude Include="VictoryUI.h" />
@@ -287,20 +252,8 @@
     <ClInclude Include="PortraitAnimation.h" />
     <ClInclude Include="ProgressBar.h" />
     <ClInclude Include="SceneManager.h" />
-    <ClInclude Include="SimpleTranslate.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClInclude>
-    <ClInclude Include="CShapePlayer.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClInclude>
     <ClInclude Include="FontManager.h" />
     <ClInclude Include="GameNode.h" />
-    <ClInclude Include="GDIplusTest.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClInclude>
     <ClInclude Include="HPprogressBar.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="ImageManager.h" />
@@ -315,17 +268,11 @@
     <ClInclude Include="TextDataManager.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="TurnSystem.h" />
-    <ClInclude Include="Tilemap.h" />
-    <ClInclude Include="TileMapObject.h" />
-    <ClInclude Include="TileMapScene.h" />
     <ClInclude Include="TimeManager.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="GameCharacter.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="Vyers.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Question.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Character.json" />

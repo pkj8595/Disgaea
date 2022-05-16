@@ -25,20 +25,8 @@
     <Filter Include="API FrameWork\Manager">
       <UniqueIdentifier>{81c1d898-4ea9-4cec-8d31-ab087375cc39}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameClass">
-      <UniqueIdentifier>{4afa747c-b86f-46f9-a1bf-21e77a7b9951}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameClass\CostomClass">
-      <UniqueIdentifier>{6a15edb5-11d5-4ae9-b0b7-74493b7bc5a1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="API FrameWork\Image">
       <UniqueIdentifier>{8ecdd767-053c-4108-8f75-9ed679a52eab}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="CodingInterview">
-      <UniqueIdentifier>{893419de-c5d9-4dc1-8867-a9183c8575ad}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameClass\port">
-      <UniqueIdentifier>{704ed228-884a-4fce-8293-5bb9b4ec572c}</UniqueIdentifier>
     </Filter>
     <Filter Include="API FrameWork\Manager\TimeManager">
       <UniqueIdentifier>{1307e192-e6f6-4d8d-98a7-509b0dfe1d28}</UniqueIdentifier>
@@ -48,18 +36,6 @@
     </Filter>
     <Filter Include="API FrameWork\Animation">
       <UniqueIdentifier>{0bc4185d-54c2-4c9e-914d-b1e332e4f589}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameClass\EffectManager">
-      <UniqueIdentifier>{c11dc7e6-0bee-4030-9870-f97ae33bb98d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameClass\Tilemap">
-      <UniqueIdentifier>{c2cd7251-33f9-4ea7-80b6-264052853fdf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameClass\Tilemap\Astar">
-      <UniqueIdentifier>{6f437b3a-3bfc-4563-bd18-5e23b9283ad1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameClass\Tilemap\homework">
-      <UniqueIdentifier>{9f366ef6-3103-4ecb-a2b0-ecc032ecdec9}</UniqueIdentifier>
     </Filter>
     <Filter Include="API FrameWork\Json">
       <UniqueIdentifier>{0a652ce1-3040-4d6f-84fa-d356baaa0a48}</UniqueIdentifier>
@@ -106,6 +82,15 @@
     <Filter Include="Disgaea\Skill">
       <UniqueIdentifier>{ee47f324-fbcc-441f-ade3-e4841f471db6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Disgaea\GameClass">
+      <UniqueIdentifier>{4afa747c-b86f-46f9-a1bf-21e77a7b9951}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Disgaea\GameClass\CostomClass">
+      <UniqueIdentifier>{6a15edb5-11d5-4ae9-b0b7-74493b7bc5a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Disgaea\GameClass\EffectManager">
+      <UniqueIdentifier>{c11dc7e6-0bee-4030-9870-f97ae33bb98d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -124,7 +109,7 @@
       <Filter>API FrameWork\Manager</Filter>
     </ClCompile>
     <ClCompile Include="HPprogressBar.cpp">
-      <Filter>GameClass\CostomClass</Filter>
+      <Filter>Disgaea\GameClass\CostomClass</Filter>
     </ClCompile>
     <ClCompile Include="Image.cpp">
       <Filter>API FrameWork\Image</Filter>
@@ -135,23 +120,8 @@
     <ClCompile Include="FontManager.cpp">
       <Filter>API FrameWork\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="CShapePlayer.cpp">
-      <Filter>GameClass\port</Filter>
-    </ClCompile>
-    <ClCompile Include="SimpleTranslate.cpp">
-      <Filter>GameClass\port</Filter>
-    </ClCompile>
-    <ClCompile Include="CBlock.cpp">
-      <Filter>GameClass\port</Filter>
-    </ClCompile>
-    <ClCompile Include="GDIplusTest.cpp">
-      <Filter>GameClass\port</Filter>
-    </ClCompile>
     <ClCompile Include="mGpImage.cpp">
       <Filter>API FrameWork\Image</Filter>
-    </ClCompile>
-    <ClCompile Include="MapPatternController.cpp">
-      <Filter>GameClass\port</Filter>
     </ClCompile>
     <ClCompile Include="Utils.cpp">
       <Filter>API FrameWork\Utility</Filter>
@@ -175,10 +145,10 @@
       <Filter>API FrameWork\Manager</Filter>
     </ClCompile>
     <ClCompile Include="CEffect.cpp">
-      <Filter>GameClass\EffectManager</Filter>
+      <Filter>Disgaea\GameClass\EffectManager</Filter>
     </ClCompile>
     <ClCompile Include="EffectManager.cpp">
-      <Filter>GameClass\EffectManager</Filter>
+      <Filter>Disgaea\GameClass\EffectManager</Filter>
     </ClCompile>
     <ClCompile Include="SceneManager.cpp">
       <Filter>API FrameWork\Manager</Filter>
@@ -186,26 +156,11 @@
     <ClCompile Include="FileIO.cpp">
       <Filter>API FrameWork\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="CTimeMap.cpp">
-      <Filter>GameClass\Tilemap\Astar</Filter>
-    </ClCompile>
-    <ClCompile Include="CTileObject.cpp">
-      <Filter>GameClass\Tilemap\Astar</Filter>
-    </ClCompile>
-    <ClCompile Include="Tilemap.cpp">
-      <Filter>GameClass\Tilemap\homework</Filter>
-    </ClCompile>
-    <ClCompile Include="TileMapObject.cpp">
-      <Filter>GameClass\Tilemap\homework</Filter>
-    </ClCompile>
     <ClCompile Include="SoundManager.cpp">
       <Filter>API FrameWork\Manager</Filter>
     </ClCompile>
     <ClCompile Include="JsonSaveLoader.cpp">
       <Filter>API FrameWork\Json</Filter>
-    </ClCompile>
-    <ClCompile Include="TileMapScene.cpp">
-      <Filter>GameClass\Tilemap\Astar</Filter>
     </ClCompile>
     <ClCompile Include="IsometricTile.cpp">
       <Filter>Disgaea\Util\Map</Filter>
@@ -327,7 +282,7 @@
       <Filter>API FrameWork\DesignPattern\Singleton</Filter>
     </ClInclude>
     <ClInclude Include="HPprogressBar.h">
-      <Filter>GameClass\CostomClass</Filter>
+      <Filter>Disgaea\GameClass\CostomClass</Filter>
     </ClInclude>
     <ClInclude Include="Image.h">
       <Filter>API FrameWork\Image</Filter>
@@ -338,23 +293,8 @@
     <ClInclude Include="FontManager.h">
       <Filter>API FrameWork\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="CShapePlayer.h">
-      <Filter>GameClass\port</Filter>
-    </ClInclude>
-    <ClInclude Include="SimpleTranslate.h">
-      <Filter>GameClass\port</Filter>
-    </ClInclude>
-    <ClInclude Include="CBlock.h">
-      <Filter>GameClass\port</Filter>
-    </ClInclude>
-    <ClInclude Include="GDIplusTest.h">
-      <Filter>GameClass\port</Filter>
-    </ClInclude>
     <ClInclude Include="mGpImage.h">
       <Filter>API FrameWork\Image</Filter>
-    </ClInclude>
-    <ClInclude Include="MapPatternController.h">
-      <Filter>GameClass\port</Filter>
     </ClInclude>
     <ClInclude Include="Utils.h">
       <Filter>API FrameWork\Utility</Filter>
@@ -378,10 +318,10 @@
       <Filter>API FrameWork\Manager</Filter>
     </ClInclude>
     <ClInclude Include="EffectManager.h">
-      <Filter>GameClass\EffectManager</Filter>
+      <Filter>Disgaea\GameClass\EffectManager</Filter>
     </ClInclude>
     <ClInclude Include="CEffect.h">
-      <Filter>GameClass\EffectManager</Filter>
+      <Filter>Disgaea\GameClass\EffectManager</Filter>
     </ClInclude>
     <ClInclude Include="SceneManager.h">
       <Filter>API FrameWork\Manager</Filter>
@@ -389,26 +329,11 @@
     <ClInclude Include="FileIO.h">
       <Filter>API FrameWork\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="CTimeMap.h">
-      <Filter>GameClass\Tilemap\Astar</Filter>
-    </ClInclude>
-    <ClInclude Include="CTileObject.h">
-      <Filter>GameClass\Tilemap\Astar</Filter>
-    </ClInclude>
-    <ClInclude Include="Tilemap.h">
-      <Filter>GameClass\Tilemap\homework</Filter>
-    </ClInclude>
-    <ClInclude Include="TileMapObject.h">
-      <Filter>GameClass\Tilemap\homework</Filter>
-    </ClInclude>
     <ClInclude Include="SoundManager.h">
       <Filter>API FrameWork\Manager</Filter>
     </ClInclude>
     <ClInclude Include="JsonSaveLoader.h">
       <Filter>API FrameWork\Json</Filter>
-    </ClInclude>
-    <ClInclude Include="TileMapScene.h">
-      <Filter>GameClass\Tilemap\Astar</Filter>
     </ClInclude>
     <ClInclude Include="IsometricTile.h">
       <Filter>Disgaea\Util\Map</Filter>
@@ -509,11 +434,6 @@
     <ClInclude Include="CharStatusUI.h">
       <Filter>Disgaea\UI</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Question.txt">
-      <Filter>CodingInterview</Filter>
-    </Text>
   </ItemGroup>
   <ItemGroup>
     <None Include="Character.json">

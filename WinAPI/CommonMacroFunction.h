@@ -1,6 +1,5 @@
 #pragma once
 
-// 필요한 함수는 직접 만들어 추가
 
 inline POINT PointMake(int  x, int y)
 {
@@ -16,20 +15,16 @@ inline void LineMake(HDC hdc,int startX,int startY,int endX,int endY)
 	
 inline RECT RectMake(int x, int y, int width, int height) 
 {
-	//todo
 	RECT rc = { (LONG)x, (LONG)y,(LONG)x + width,(LONG)y + height };
 	return rc;
 }
 
-//RECT 중심점에 만들기
 inline RECT RectMakeCenter(int x, int y, int width, int height)
 {
 	RECT rc = { (LONG)x - width / 2 , (LONG)y - height / 2,(LONG)x + width / 2 , (LONG)y + height / 2 };
 	return rc;
 
 }
-
-//사각형 그리기 
 
 inline void RectangleMake(HDC hdc, int x, int y, int width, int height) 
 {

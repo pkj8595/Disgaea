@@ -8,7 +8,6 @@
 #include "EffectManager.h"
 #include "SkillMeteoAnimation.h"
 
-//TILE_START_X = RECT_VECTOR_SIZE_Y * 30
 #define TILE_START_X			450
 #define TILE_START_Y			15
 #define RECTANGLE_X				60

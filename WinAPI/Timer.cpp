@@ -3,23 +3,15 @@
 
 HRESULT Timer::init(void)
 {
-	//QueryPerformanceFrequency():1초당 진동 수를체크하며
-	//고성능타이머를 지원하면 ture,아니라면 false반환
-	//LARGE_INTEGER 공용체
-	//_periodFrequency : 값에 초당 파악 할 수 있는 시간이 들어간다.
-	//밀리세컨까지 계산이 가능하다면 1000의 값이 그대로 들어간다.
+	
 	if (QueryPerformanceFrequency((LARGE_INTEGER*)&_periodFrequency))
 	{
-		//OS에서 승인받으면 들어옴
 		_isHardware = true;
 
-		//QueryPerformanceCounter() : 특점 시점에서 몇번 진동했는가를 체크
 		QueryPerformanceCounter((LARGE_INTEGER*)&_lastTime);
 
-		//초당 시간을 계산할 수 있는 시간 주기
 		_timeScale = 1.0f / _periodFrequency;
 	}
-	//고성능 타이머지원을 안한다면
 	else
 	{
 		_isHardware = false;
@@ -35,7 +27,6 @@ HRESULT Timer::init(void)
 	return S_OK;
 }
 
-//lockFPS 수직동기화걸기
 void Timer::tick(float lockFPS)
 {
 	if (_isHardware) 
@@ -47,7 +38,6 @@ void Timer::tick(float lockFPS)
 		_curTime = timeGetTime();
 	}
 
-	//마지막 시간과 현재 시간의 경과량 측정
 	_timeElapsed = (_curTime - _lastTime)*_timeScale;
 
 	if (lockFPS > 0.0f) {
@@ -85,7 +75,6 @@ void Timer::tick(float lockFPS)
 
 }
 
-//현재 FPS 
 unsigned long Timer::getFrameRate(char* str) const
 {
 	if (str != nullptr) 
